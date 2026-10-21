@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BienestarMental+ | Plataforma de Acompañamiento Emocional para Colombia</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            darkGreen: '#0F5132',
+                            deepTeal: '#134E4A',
+                            turq: '#0D9488',
+                            lightTurq: '#14B8A6',
+                            softBg: '#F8FAFC',
+                            navy: '#1E3A8A',
+                            darkNavy: '#0F172A',
+                            warmGray: '#F1F5F9'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+            color: #1E293B;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+        /* Breathing animation circle */
+        @keyframes breatheAnimation {
+            0% { transform: scale(0.9); opacity: 0.6; }
+            50% { transform: scale(1.35); opacity: 0.95; }
+            100% { transform: scale(0.9); opacity: 0.6; }
+        }
+        .animate-breathe {
+            animation: breatheAnimation 8s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased">
+
+    <!-- TOP NOTICE / MEDICAL DISCLAIMER BANNER -->
+    <div class="bg-brand-darkNavy text-white text-xs sm:text-sm py-2 px-4 text-center font-medium shadow-inner flex justify-between items-center flex-wrap gap-2">
+        <div class="flex-1 text-center">
+            <i class="fa-solid fa-triangle-exclamation text-yellow-400 mr-2"></i>
+            <span><strong>Aviso Importante:</strong> Esta plataforma ofrece orientación emocional inicial y no sustituye la consulta médica o psicológica profesional. En caso de emergencia en Colombia, marca inmediatamente al <strong>123</strong> o <strong>106</strong>.</span>
+        </div>
+        <button onclick="toggleCrisisModal(true)" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-full text-xs font-bold transition flex items-center gap-1 mx-auto sm:mx-0">
+            <i class="fa-solid fa-phone-volume animate-pulse"></i> Líneas de Crisis Colombia
+        </button>
+    </div>
+
+    <!-- MAIN HEADER NAVIGATION -->
+    <header class="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center cursor-pointer" onclick="navigateTo('home')">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-darkGreen to-brand-turq flex items-center justify-center text-white shadow-md mr-3">
+                        <i class="fa-solid fa-brain text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-bold tracking-tight text-brand-darkNavy">BienestarMental<span class="text-brand-turq">+</span></span>
+                        <span class="block text-[10px] text-slate-500 font-semibold tracking-wider uppercase">Colombia</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center space-x-1 font-medium text-sm text-slate-700">
+                    <button onclick="navigateTo('home')" id="nav-home" class="px-3 py-2 rounded-lg hover:text-brand-turq hover:bg-slate-100 transition">Inicio</button>
+                    <button onclick="navigateTo('chatbot')" id="nav-chatbot" class="px-3 py-2 rounded-lg hover:text-brand-turq hover:bg-slate-100 transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-robot text-brand-turq"></i> Chatbot IA
+                    </button>
+                    <button onclick="navigateTo('foro')" id="nav-foro" class="px-3 py-2 rounded-lg hover:text-brand-turq hover:bg-slate-100 transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-comments text-emerald-600"></i> Foro Anónimo
+                    </button>
+                    <button onclick="navigateTo('directorio')" id="nav-directorio" class="px-3 py-2 rounded-lg hover:text-brand-turq hover:bg-slate-100 transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-user-doctor text-indigo-600"></i> Especialistas
+                    </button>
+                    <button onclick="navigateTo('biblioteca')" id="nav-biblioteca" class="px-3 py-2 rounded-lg hover:text-brand-turq hover:bg-slate-100 transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-book-open text-amber-600"></i> Biblioteca
+                    </button>
+                    <button onclick="navigateTo('metodologia')" id="nav-metodologia" class="px-3 py-2 rounded-lg hover:text-brand-turq hover:bg-slate-100 transition">Academia</button>
+                </nav>
+
+                <!-- Actions / Auth / Admin -->
+                <div class="hidden lg:flex items-center space-x-3">
+                    <button onclick="navigateTo('perfil')" class="p-2 text-slate-600 hover:text-brand-turq hover:bg-slate-100 rounded-full transition" title="Mi Perfil y Privacidad">
+                        <i class="fa-solid fa-user-gear text-lg"></i>
+                    </button>
+                    <button onclick="navigateTo('admin')" class="px-3 py-1.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-shield-halved text-slate-500"></i> Admin Panel
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex lg:hidden items-center gap-2">
+                    <button onclick="toggleMobileMenu()" class="p-2 text-slate-700 rounded-lg hover:bg-slate-100 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-2">
+            <button onclick="navigateTo('home'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-slate-100 font-medium">Inicio</button>
+            <button onclick="navigateTo('chatbot'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-slate-100 font-medium text-brand-turq">Asistente IA Chatbot</button>
+            <button onclick="navigateTo('foro'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-slate-100 font-medium">Foro Comunitario Anónimo</button>
+            <button onclick="navigateTo('directorio'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-slate-100 font-medium">Directorio de Especialistas</button>
+            <button onclick="navigateTo('biblioteca'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-slate-100 font-medium">Biblioteca de Recursos</button>
+            <button onclick="navigateTo('metodologia'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-slate-100 font-medium">Metodología Académica</button>
+            <div class="pt-3 border-t border-slate-200 flex justify-between items-center">
+                <button onclick="navigateTo('perfil'); toggleMobileMenu()" class="text-sm font-medium text-slate-600 flex items-center gap-2">
+                    <i class="fa-solid fa-user-gear"></i> Perfil & Privacidad
+                </button>
+                <button onclick="navigateTo('admin'); toggleMobileMenu()" class="text-xs font-semibold px-3 py-1.5 bg-slate-100 rounded-lg text-slate-700">
+                    <i class="fa-solid fa-shield-halved"></i> Admin
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENT WRAPPER (DYNAMIC SECTIONS) -->
+    <main class="flex-grow">
+        
+        <!-- ==================== SECTION 1: HOME ==================== -->
+        <section id="sec-home" class="view-section">
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-b from-teal-900 via-brand-darkGreen to-slate-900 text-white py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                <div class="max-w-5xl mx-auto text-center relative z-10">
+                    <span class="inline-block bg-teal-800/80 text-teal-200 text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full mb-6 border border-teal-500/30 shadow-sm">
+                        <i class="fa-solid fa-shield-heart mr-1.5"></i> Transformación Digital en Salud Mental Colombia
+                    </span>
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                        No estás solo. <br class="hidden sm:inline"/>Estamos aquí para acompañarte.
+                    </h1>
+                    <p class="text-base sm:text-xl text-teal-100 max-w-3xl mx-auto mb-10 leading-relaxed font-light">
+                        Una plataforma accesible, segura y confidencial diseñada para derribar barreras de acceso, estigmas y distancias en la atención del bienestar emocional en Colombia.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
+                        <button onclick="navigateTo('chatbot')" class="bg-brand-turq hover:bg-teal-500 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-teal-500/25 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-base">
+                            <i class="fa-solid fa-comment-dots text-xl"></i> Comenzar Acompañamiento
+                        </button>
+                        <button onclick="navigateTo('biblioteca')" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 font-semibold py-4 px-8 rounded-xl backdrop-blur-sm transition flex items-center justify-center gap-2 text-base">
+                            <i class="fa-solid fa-compass"></i> Explorar Recursos
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Access Modules Grid -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20 mb-16">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Card 1 -->
+                    <div onclick="navigateTo('chatbot')" class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover:shadow-xl hover:border-brand-turq/40 transition cursor-pointer group">
+                        <div class="w-12 h-12 rounded-xl bg-teal-50 text-brand-turq flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-brand-turq transition">Chatbot IA Empático</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">Orientación emocional 24/7, desahogo guiado y ejercicios interactivos de respiración.</p>
+                        <span class="text-xs font-bold text-brand-turq flex items-center gap-1">Hablar ahora <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div onclick="navigateTo('foro')" class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover:shadow-xl hover:border-emerald-500/40 transition cursor-pointer group">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-users text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-emerald-600 transition">Foro Anónimo</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">Un espacio seguro sin juicios para compartir vivencias usando seudónimos protegidos.</p>
+                        <span class="text-xs font-bold text-emerald-600 flex items-center gap-1">Entrar al foro <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div onclick="navigateTo('directorio')" class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover:shadow-xl hover:border-indigo-500/40 transition cursor-pointer group">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition">Directorio Profesional</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">Psicólogos y terapeutas verificados con registro ReTHUS por región y modalidad.</p>
+                        <span class="text-xs font-bold text-indigo-600 flex items-center gap-1">Buscar especialista <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div onclick="navigateTo('biblioteca')" class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover:shadow-xl hover:border-amber-500/40 transition cursor-pointer group">
+                        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-amber-600 transition">Biblioteca Emocional</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">Guías psicoeducativas, artículos sobre ansiedad, estrés laboral y descanso.</p>
+                        <span class="text-xs font-bold text-amber-600 flex items-center gap-1">Aprender más <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Problem Context & Digital Solution -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-slate-200/80 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="text-brand-turq font-bold text-xs uppercase tracking-widest">Enfoque Social Colombia</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2 mb-6">Transformando el acceso a la salud mental</h2>
+                        <p class="text-slate-600 mb-6 leading-relaxed">
+                            En Colombia, la dispersión geográfica, los costos de consulta y el estigma social impiden que millones de personas reciban apoyo psicoemocional a tiempo. <strong>BienestarMental+</strong> nace como una iniciativa tecnológica que complementa la labor humana, no para reemplazar a los profesionales, sino para acercar el apoyo a quien más lo necesita.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-teal-100 text-brand-turq flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-check text-xs"></i>
+                                </div>
+                                <p class="text-sm text-slate-700"><strong>Inclusivo y Gratuito:</strong> Herramientas públicas sin costos ocultos.</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-teal-100 text-brand-turq flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-check text-xs"></i>
+                                </div>
+                                <p class="text-sm text-slate-700"><strong>Privacidad por Diseño:</strong> Cumplimiento estricto con la Ley 1581 de 2012 de Colombia.</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-teal-100 text-brand-turq flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-check text-xs"></i>
+                                </div>
+                                <p class="text-sm text-slate-700"><strong>Detección de Crisis:</strong> Protocolos activos para direccionar a líneas de atención de emergencia.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="font-bold text-slate-800 text-base mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved text-brand-darkGreen"></i> Seguridad y Uso Responsable de IA
+                        </h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Nuestros asistentes de inteligencia artificial están entrenados bajo reglas éticas de no emisión de diagnósticos clínicos ni formulación de medicamentos.
+                        </p>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200/80 mb-4">
+                            <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Protección de Datos Sensibles</h4>
+                            <p class="text-xs text-slate-500">No registramos nombres reales en foros ni conservamos registros identificables sin tu consentimiento explícito.</p>
+                        </div>
+                        <button onclick="navigateTo('perfil')" class="text-xs font-semibold text-brand-turq hover:underline">Ver Políticas de Datos y Consentimiento Informado &rarr;</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: CHATBOT IA ==================== -->
+        <section id="sec-chatbot" class="view-section hidden max-w-6xl mx-auto px-4 py-8">
+            <div class="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden flex flex-col h-[780px]">
+                
+                <!-- Chat Header -->
+                <div class="bg-gradient-to-r from-brand-deepTeal to-brand-darkNavy p-4 sm:p-6 text-white flex justify-between items-center">
+                    <div class="flex items-center gap-3">
+                        <div class="relative">
+                            <div class="w-12 h-12 rounded-full bg-teal-500/20 border-2 border-teal-300 flex items-center justify-center text-white text-xl">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+                            <span class="w-3.5 h-3.5 bg-emerald-400 border-2 border-slate-900 rounded-full absolute bottom-0 right-0"></span>
+                        </div>
+                        <div>
+                            <h2 class="font-bold text-lg flex items-center gap-2">
+                                Asistente BienestarMental+ 
+                                <span class="bg-teal-800/80 text-teal-200 text-[10px] uppercase font-semibold px-2 py-0.5 rounded-full border border-teal-500/30">Demostración IA</span>
+                            </h2>
+                            <p class="text-xs text-teal-200">Acompañamiento empático inicial &bull; Confidencial</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="openBreathingModal()" class="bg-teal-700/60 hover:bg-teal-700 text-teal-100 px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-wind"></i> Ejercicio Respiración
+                        </button>
+                        <button onclick="resetChat()" class="p-2 hover:bg-white/10 rounded-lg text-teal-200 transition" title="Reiniciar Conversación">
+                            <i class="fa-solid fa-rotate-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Emergency Banner inside Chat -->
+                <div class="bg-amber-50 border-b border-amber-200 px-4 py-2 flex justify-between items-center text-xs text-amber-900">
+                    <span><i class="fa-solid fa-heart-pulse text-amber-600 mr-1.5"></i> Si te encuentras en un momento de crisis severa o riesgo personal, por favor solicita ayuda inmediata.</span>
+                    <button onclick="toggleCrisisModal(true)" class="font-bold text-amber-800 underline ml-2 whitespace-nowrap">Ver Líneas Colombia</button>
+                </div>
+
+                <!-- Chat Messages Scroll Container -->
+                <div id="chat-messages" class="flex-grow p-4 sm:p-6 overflow-y-auto space-y-4 bg-slate-50/50">
+                    <!-- Messages will be dynamically rendered here -->
+                </div>
+
+                <!-- Quick Prompts / Chips -->
+                <div class="px-4 py-2 bg-white border-t border-slate-100 flex gap-2 overflow-x-auto text-xs whitespace-nowrap">
+                    <button onclick="sendQuickPrompt('Me siento muy abrumado y con ansiedad')" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-brand-turq border border-slate-200 text-slate-700 transition">
+                        😰 Siento mucha ansiedad
+                    </button>
+                    <button onclick="sendQuickPrompt('Necesito desahogarme un momento')" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-brand-turq border border-slate-200 text-slate-700 transition">
+                        💬 Necesito desahogarme
+                    </button>
+                    <button onclick="sendQuickPrompt('Quiero hacer un ejercicio para calmarme')" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-brand-turq border border-slate-200 text-slate-700 transition">
+                        🧘 Ejercicio de calma
+                    </button>
+                    <button onclick="sendQuickPrompt('¿Dónde encuentro un psicólogo en Colombia?')" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-brand-turq border border-slate-200 text-slate-700 transition">
+                        👨‍⚕️ Buscar profesional
+                    </button>
+                </div>
+
+                <!-- Chat Input Bar -->
+                <form onsubmit="handleChatSubmit(event)" class="p-3 sm:p-4 bg-white border-t border-slate-200 flex gap-2 items-center">
+                    <input type="text" id="chat-input" placeholder="Escribe cómo te sientes hoy..." class="flex-grow px-4 py-3 bg-slate-100 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-turq/50 focus:bg-white transition" />
+                    <button type="submit" class="bg-brand-turq hover:bg-teal-600 text-white font-semibold px-5 py-3 rounded-xl transition flex items-center gap-1">
+                        <span class="hidden sm:inline">Enviar</span>
+                        <i class="fa-solid fa-paper-plane text-sm"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: FORO ANÓNIMO ==================== -->
+        <section id="sec-foro" class="view-section hidden max-w-7xl mx-auto px-4 py-8">
+            <div class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h1 class="text-3xl font-extrabold text-slate-900">Foro Comunitario Anónimo</h1>
+                    <p class="text-slate-600 text-sm mt-1">Comparte tus vivencias e inquietudes bajo un seudónimo seguro. Respeto y empatía mutua.</p>
+                </div>
+                <button onclick="toggleNewPostModal(true)" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-3 rounded-xl shadow-md transition flex items-center gap-2 self-start md:self-auto">
+                    <i class="fa-solid fa-plus"></i> Crear Publicación
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <!-- Sidebar Categories & Guidelines -->
+                <div class="lg:col-span-1 space-y-6">
+                    <!-- Rules Box -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                        <h3 class="font-bold text-slate-800 text-sm mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-shield-cat text-emerald-600"></i> Reglas del Foro
+                        </h3>
+                        <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside leading-relaxed">
+                            <li>Usa un seudónimo, nunca tu nombre real.</li>
+                            <li>Cero tolerancia al acoso o discriminación.</li>
+                            <li>No compartas datos personales de contacto.</li>
+                            <li>Contenido de crisis será redireccionado por moderación.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Filter Categories -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                        <h3 class="font-bold text-slate-800 text-sm mb-3">Filtrar por Tema</h3>
+                        <div class="space-y-1" id="forum-categories-list">
+                            <button onclick="filterForum('Todas')" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-700 flex justify-between items-center">
+                                <span>Todas las categorías</span>
+                                <span id="count-cat-todas" class="bg-emerald-200/60 px-2 py-0.5 rounded-full text-[10px]">0</span>
+                            </button>
+                            <button onclick="filterForum('Ansiedad')" class="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100 flex justify-between items-center">
+                                <span>Ansiedad y Estrés</span>
+                                <span id="count-cat-ansiedad" class="bg-slate-200 px-2 py-0.5 rounded-full text-[10px]">0</span>
+                            </button>
+                            <button onclick="filterForum('Duelo')" class="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100 flex justify-between items-center">
+                                <span>Duelo y Pérdida</span>
+                                <span id="count-cat-duelo" class="bg-slate-200 px-2 py-0.5 rounded-full text-[10px]">0</span>
+                            </button>
+                            <button onclick="filterForum('Laboral')" class="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100 flex justify-between items-center">
+                                <span>Estrés Académico/Laboral</span>
+                                <span id="count-cat-laboral" class="bg-slate-200 px-2 py-0.5 rounded-full text-[10px]">0</span>
+                            </button>
+                            <button onclick="filterForum('Relaciones')" class="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100 flex justify-between items-center">
+                                <span>Relaciones Interpersonales</span>
+                                <span id="count-cat-relaciones" class="bg-slate-200 px-2 py-0.5 rounded-full text-[10px]">0</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Forum Posts List -->
+                <div class="lg:col-span-3 space-y-4" id="forum-posts-container">
+                    <!-- Posts will be dynamically generated -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: DIRECTORIO DE ESPECIALISTAS ==================== -->
+        <section id="sec-directorio" class="view-section hidden max-w-7xl mx-auto px-4 py-8">
+            <div class="mb-8">
+                <h1 class="text-3xl font-extrabold text-slate-900">Directorio de Especialistas Verificados</h1>
+                <p class="text-slate-600 text-sm mt-1">Conecta con psicólogos y psiquiatras registrados en Colombia. Perfiles verificados de demostración.</p>
+            </div>
+
+            <!-- Search & Filters Bar -->
+            <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-slate-200 mb-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Especialidad</label>
+                    <select id="filter-especialidad" onchange="renderDirectorio()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-turq/50">
+                        <option value="Todas">Todas las especialidades</option>
+                        <option value="Psicología Clínica">Psicología Clínica</option>
+                        <option value="Terapia Cognitivo-Conductual">Terapia Cognitivo-Conductual</option>
+                        <option value="Psiquiatría Adultos">Psiquiatría Adultos</option>
+                        <option value="Psicología Infantil">Psicología Infantil / Adolescentes</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Ubicación / Ciudad</label>
+                    <select id="filter-ubicacion" onchange="renderDirectorio()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-turq/50">
+                        <option value="Todas">Toda Colombia / Virtual</option>
+                        <option value="Bogotá">Bogotá D.C.</option>
+                        <option value="Medellín">Medellín</option>
+                        <option value="Cali">Cali</option>
+                        <option value="Barranquilla">Barranquilla</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Modalidad</label>
+                    <select id="filter-modalidad" onchange="renderDirectorio()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-turq/50">
+                        <option value="Todas">Todas las modalidades</option>
+                        <option value="Virtual">Virtual / Teleconsulta</option>
+                        <option value="Presencial">Presencial</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Specialists Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="specialists-grid">
+                <!-- Dynamically populated specialist cards -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 5: BIBLIOTECA EDUCACIONAL ==================== -->
+        <section id="sec-biblioteca" class="view-section hidden max-w-7xl mx-auto px-4 py-8">
+            <div class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h1 class="text-3xl font-extrabold text-slate-900">Biblioteca de Bienestar Emocional</h1>
+                    <p class="text-slate-600 text-sm mt-1">Guías psicoeducativas, artículos sobre autocuidado y herramientas para la salud mental.</p>
+                </div>
+                <div class="relative w-full md:w-72">
+                    <input type="text" id="biblio-search" oninput="renderBiblioteca()" placeholder="Buscar artículos..." class="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-turq/50" />
+                    <i class="fa-solid fa-magnifying-glass text-slate-400 absolute left-3 top-3 text-sm"></i>
+                </div>
+            </div>
+
+            <!-- Categories Tabs -->
+            <div class="flex gap-2 overflow-x-auto pb-4 mb-6 text-xs font-semibold" id="biblio-tabs">
+                <button onclick="setBiblioTab('Todos')" class="biblio-tab-btn active bg-brand-darkNavy text-white px-4 py-2 rounded-xl whitespace-nowrap">Todos los Recursos</button>
+                <button onclick="setBiblioTab('Ansiedad')" class="biblio-tab-btn bg-white text-slate-700 border border-slate-200 px-4 py-2 rounded-xl whitespace-nowrap hover:bg-slate-50">Ansiedad y Estrés</button>
+                <button onclick="setBiblioTab('Autocuidado')" class="biblio-tab-btn bg-white text-slate-700 border border-slate-200 px-4 py-2 rounded-xl whitespace-nowrap hover:bg-slate-50">Autocuidado y Hábitos</button>
+                <button onclick="setBiblioTab('Sueño')" class="biblio-tab-btn bg-white text-slate-700 border border-slate-200 px-4 py-2 rounded-xl whitespace-nowrap hover:bg-slate-50">Sueño y Descanso</button>
+                <button onclick="setBiblioTab('Regulacion')" class="biblio-tab-btn bg-white text-slate-700 border border-slate-200 px-4 py-2 rounded-xl whitespace-nowrap hover:bg-slate-50">Regulación Emocional</button>
+            </div>
+
+            <!-- Articles Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="articles-grid">
+                <!-- Dynamically populated articles -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 6: PERFIL & PRIVACIDAD ==================== -->
+        <section id="sec-perfil" class="view-section hidden max-w-4xl mx-auto px-4 py-8">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+                <div class="flex items-center gap-4 mb-6 pb-6 border-b border-slate-100">
+                    <div class="w-16 h-16 rounded-2xl bg-teal-100 text-brand-turq flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-slate-900">Configuración de Perfil & Privacidad</h1>
+                        <p class="text-xs text-slate-500">Gestión de tus datos personales bajo la Ley 1581 de 2012 de Colombia</p>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Session / Demo Account Status -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <h3 class="font-bold text-slate-800 text-sm mb-1">Estado de Sesión Anónima</h3>
+                        <p class="text-xs text-slate-600 mb-3">Te encuentras navegando en modo seguro de demostración. No se han recopilado datos identificables de tu navegador.</p>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                            <span class="font-semibold text-slate-700">Sesión Encriptada en Cliente (HTTPS Simulado)</span>
+                        </div>
+                    </div>
+
+                    <!-- ARCO Rights (Ley 1581) -->
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-base mb-3">Derechos ARCO (Acceso, Rectificación, Cancelación y Oposición)</h3>
+                        <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+                            Conforme al Habeas Data colombiano, tienes derecho a conocer, actualizar y solicitar la supresión de tus registros almacenados en cualquier momento.
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <button onclick="exportUserData()" class="w-full sm:w-auto px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-download"></i> Descargar mis datos locales (JSON)
+                            </button>
+                            <button onclick="purgeUserData()" class="w-full sm:w-auto px-4 py-2.5 bg-red-50 hover:bg-red-100 text-red-700 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-trash-can"></i> Solicitar eliminación total de datos
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Consent Informado -->
+                    <div class="pt-6 border-t border-slate-100">
+                        <h3 class="font-bold text-slate-800 text-base mb-2">Consentimiento Informado</h3>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-2">
+                            <p>1. Entiendo que BienestarMental+ no reemplaza psicoterapia clínica continuada.</p>
+                            <p>2. Acepto que en caso de detectar riesgos inminentes a mi integridad o la de terceros, el sistema desplegará información de servicios de emergencia oficiales.</p>
+                            <p>3. Doy mi consentimiento libre y voluntario para el uso de herramientas psicoeducativas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 7: PANEL ADMINISTRATIVO ==================== -->
+        <section id="sec-admin" class="view-section hidden max-w-7xl mx-auto px-4 py-8">
+            <div class="mb-8 flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-extrabold text-slate-900 flex items-center gap-2">
+                        Panel de Administración y Métricas <span class="text-xs bg-slate-200 text-slate-700 px-2 py-1 rounded-md">Protegido</span>
+                    </h1>
+                    <p class="text-slate-600 text-sm mt-1">Supervisión agregada de la plataforma, moderación del foro e indicadores de impacto.</p>
+                </div>
+                <button onclick="exportMetrics()" class="bg-brand-darkNavy hover:bg-slate-800 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition flex items-center gap-2">
+                    <i class="fa-solid fa-file-export"></i> Exportar Métricas
+                </button>
+            </div>
+
+            <!-- Aggregated KPI Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Interacciones Chatbot</div>
+                    <div class="text-3xl font-extrabold text-brand-turq" id="metric-chats">1,248</div>
+                    <span class="text-[10px] text-emerald-600 font-semibold">+18% esta semana</span>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Publicaciones Foro</div>
+                    <div class="text-3xl font-extrabold text-emerald-600" id="metric-posts">0</div>
+                    <span class="text-[10px] text-slate-500 font-semibold">Moderación activa</span>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Consultas Directorio</div>
+                    <div class="text-3xl font-extrabold text-indigo-600">382</div>
+                    <span class="text-[10px] text-slate-500 font-semibold">Derivación efectiva</span>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Satisfacción (CSAT)</div>
+                    <div class="text-3xl font-extrabold text-amber-500">4.8 / 5</div>
+                    <span class="text-[10px] text-slate-500 font-semibold">Basado en encuestas</span>
+                </div>
+            </div>
+
+            <!-- Moderation Table -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden mb-8">
+                <div class="p-4 bg-slate-50 border-b border-slate-200 font-bold text-slate-800 text-sm flex justify-between items-center">
+                    <span><i class="fa-solid fa-list-check text-brand-turq mr-2"></i> Cola de Moderación de Publicaciones</span>
+                    <span class="text-xs font-normal text-slate-500">Reportes de la comunidad</span>
+                </div>
+                <div class="divide-y divide-slate-100" id="admin-moderation-list">
+                    <div class="p-4 text-xs text-slate-500 text-center">No hay contenido pendiente de moderación o reportado actualmente.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 8: METODOLOGÍA Y ACADEMIA ==================== -->
+        <section id="sec-metodologia" class="view-section hidden max-w-7xl mx-auto px-4 py-8">
+            <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200 mb-8">
+                <span class="text-brand-turq font-bold text-xs uppercase tracking-widest">Proyecto Académico Colombia</span>
+                <h1 class="text-3xl font-extrabold text-slate-900 mt-2 mb-4">Modelo de Transformación Digital en Salud Mental</h1>
+                <p class="text-slate-600 leading-relaxed text-sm max-w-4xl mb-8">
+                    Este desarrollo responde al proyecto marco de investigación aplicada para validar el impacto de las tecnologías digitales emergentes en la reducción de barreras de acceso al acompañamiento emocional en regiones urbanas y rurales de Colombia.
+                </p>
+
+                <!-- Framework Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <div class="w-10 h-10 rounded-xl bg-teal-100 text-brand-darkGreen flex items-center justify-center font-bold mb-3">1</div>
+                        <h3 class="font-bold text-slate-800 mb-2">Lean Startup</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Validación temprana de hipótesis mediante la construcción de un Producto Mínimo Viable (MVP) y ciclos iterativos de aprendizaje.</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <div class="w-10 h-10 rounded-xl bg-teal-100 text-brand-darkGreen flex items-center justify-center font-bold mb-3">2</div>
+                        <h3 class="font-bold text-slate-800 mb-2">Diseño Centrado en el Usuario</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Interfaces accesibles para estudiantes, adultos mayores e individuos con diversidad de alfabetización digital.</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <div class="w-10 h-10 rounded-xl bg-teal-100 text-brand-darkGreen flex items-center justify-center font-bold mb-3">3</div>
+                        <h3 class="font-bold text-slate-800 mb-2">Metodología Scrum</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Desarrollo incremental organizado por Sprints con priorización de módulos críticos de atención e integración.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-darkNavy text-white pt-12 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-lg bg-brand-turq flex items-center justify-center text-white">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <span class="text-xl font-bold">BienestarMental+</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Plataforma digital de acompañamiento emocional para Colombia. Tecnología con propósito social y empatía.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">Navegación</h4>
+                    <ul class="text-xs text-slate-400 space-y-2">
+                        <li><button onclick="navigateTo('chatbot')" class="hover:text-white">Chatbot IA Empático</button></li>
+                        <li><button onclick="navigateTo('foro')" class="hover:text-white">Foro Anónimo</button></li>
+                        <li><button onclick="navigateTo('directorio')" class="hover:text-white">Directorio Profesional</button></li>
+                        <li><button onclick="navigateTo('biblioteca')" class="hover:text-white">Biblioteca de Recursos</button></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">Líneas de Crisis Colombia</h4>
+                    <ul class="text-xs text-slate-400 space-y-2">
+                        <li><strong>Bogotá:</strong> Línea 106 / WhatsApp 300 754 8933</li>
+                        <li><strong>Medellín:</strong> Línea 106 / (604) 444 4448</li>
+                        <li><strong>Cali:</strong> Línea 106 / 106 Opción 1</li>
+                        <li><strong>Nacional Mujer:</strong> Línea 155</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">Seguridad & Legal</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-2">
+                        Cumplimiento de la Ley 1581 de 2012 de Protección de Datos Personales en Colombia.
+                    </p>
+                    <button onclick="navigateTo('perfil')" class="text-xs text-brand-turq hover:underline">Ver políticas de datos</button>
+                </div>
+            </div>
+            <div class="pt-6 border-t border-slate-800 text-center text-xs text-slate-500">
+                &copy; 2026 BienestarMental+ Colombia. Proyecto Académico de Transformación Digital en Salud Mental.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== MODALS & OVERLAYS ==================== -->
+
+    <!-- EMERGENCY CRISIS MODAL -->
+    <div id="modal-crisis" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative border-2 border-red-500">
+            <button onclick="toggleCrisisModal(false)" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="w-12 h-12 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center text-2xl mb-4">
+                <i class="fa-solid fa-phone-volume"></i>
+            </div>
+            <h2 class="text-xl font-bold text-slate-900 mb-2">Líneas de Atención de Emergencia en Colombia</h2>
+            <p class="text-xs text-slate-600 mb-6 leading-relaxed">
+                Si tú o alguien que conoces está atravesando por una crisis severa o riesgo personal, por favor comunícate de inmediato a los siguientes números gratuitos disponibles 24/7:
+            </p>
+
+            <div class="space-y-3 mb-6">
+                <a href="tel:106" class="block bg-red-50 hover:bg-red-100 p-3 rounded-xl border border-red-200 transition">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-red-900 text-sm">Línea 106 (Salud Mental)</div>
+                            <div class="text-[11px] text-red-700">Atención gratuita, confidencial 24 horas</div>
+                        </div>
+                        <span class="bg-red-600 text-white font-bold px-3 py-1 rounded-lg text-xs"><i class="fa-solid fa-phone mr-1"></i> Marcación 106</span>
+                    </div>
+                </a>
+                <a href="tel:123" class="block bg-slate-50 hover:bg-slate-100 p-3 rounded-xl border border-slate-200 transition">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-slate-900 text-sm">Línea Unificada de Emergencias</div>
+                            <div class="text-[11px] text-slate-600">Policía y servicios de ambulancia</div>
+                        </div>
+                        <span class="bg-slate-800 text-white font-bold px-3 py-1 rounded-lg text-xs"><i class="fa-solid fa-phone mr-1"></i> Marcación 123</span>
+                    </div>
+                </a>
+                <a href="tel:155" class="block bg-purple-50 hover:bg-purple-100 p-3 rounded-xl border border-purple-200 transition">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-purple-900 text-sm">Línea 155 (Orientación a Mujeres)</div>
+                            <div class="text-[11px] text-purple-700">Atención a violencia de género</div>
+                        </div>
+                        <span class="bg-purple-700 text-white font-bold px-3 py-1 rounded-lg text-xs"><i class="fa-solid fa-phone mr-1"></i> Marcación 155</span>
+                    </div>
+                </a>
+            </div>
+
+            <button onclick="toggleCrisisModal(false)" class="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-xl text-xs transition">
+                Entendido, regresar a la plataforma
+            </button>
+        </div>
+    </div>
+
+    <!-- BREATHING EXERCISE MODAL -->
+    <div id="modal-breathing" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl text-center relative">
+            <button onclick="closeBreathingModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-xl font-bold text-slate-900 mb-1">Ejercicio Guiado de Respiración</h3>
+            <p class="text-xs text-slate-500 mb-6">Técnica 4-7-8 para calmar el sistema nervioso</p>
+
+            <div class="relative w-48 h-48 mx-auto mb-6 flex items-center justify-center">
+                <div id="breathe-circle" class="w-36 h-36 rounded-full bg-gradient-to-tr from-brand-turq to-teal-300 opacity-80 flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                    <span id="breathe-text">Inhala...</span>
+                </div>
+            </div>
+
+            <div class="text-xs text-slate-600 mb-6 h-8 flex items-center justify-center" id="breathe-instruction">
+                Sigue el ritmo de expansión para inhalar y contraerte al exhalar.
+            </div>
+
+            <button onclick="closeBreathingModal()" class="w-full py-3 bg-brand-turq hover:bg-teal-600 text-white font-bold rounded-xl text-xs transition">
+                Finalizar ejercicio
+            </button>
+        </div>
+    </div>
+
+    <!-- NEW FORUM POST MODAL -->
+    <div id="modal-new-post" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative">
+            <button onclick="toggleNewPostModal(false)" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Crear Publicación Anónima</h3>
+            <p class="text-xs text-slate-500 mb-6">Expresa tus pensamientos en un entorno protegido sin revelar tus nombres reales.</p>
+
+            <form onsubmit="handleCreatePost(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Seudónimo Protegido</label>
+                    <input type="text" id="post-pseudonym" required placeholder="Ej. MenteEnPaz_88" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand-turq/50" />
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Categoría</label>
+                    <select id="post-category" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand-turq/50">
+                        <option value="Ansiedad">Ansiedad y Estrés</option>
+                        <option value="Duelo">Duelo y Pérdida</option>
+                        <option value="Laboral">Estrés Académico/Laboral</option>
+                        <option value="Relaciones">Relaciones Interpersonales</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Mensaje / Vivencia</label>
+                    <textarea id="post-content" rows="4" required placeholder="Escribe lo que sientes hoy..." class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs focus:outline-none focus:ring-2 focus:ring-brand-turq/50"></textarea>
+                </div>
+                <div class="pt-2">
+                    <button type="submit" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs transition">
+                        Publicar en el Foro
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- BOOK SPECIALIST APPOINTMENT MODAL -->
+    <div id="modal-appointment" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative">
+            <button onclick="toggleAppointmentModal(false)" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-xl font-bold text-slate-900 mb-1">Solicitar Orientación / Cita</h3>
+            <p class="text-xs text-slate-500 mb-4" id="appoint-spec-name">Contacto Profesional</p>
+
+            <form onsubmit="handleAppointmentSubmit(event)" class="space-y-3">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Tu Nombre o Seudónimo</label>
+                    <input type="text" required placeholder="Nombre para contacto" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand-turq/50" />
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Correo Electrónico o Teléfono</label>
+                    <input type="text" required placeholder="contacto@ejemplo.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand-turq/50" />
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Modalidad Preferida</label>
+                    <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand-turq/50">
+                        <option>Consulta Virtual (Teleorientación)</option>
+                        <option>Consulta Presencial</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full py-3 bg-brand-turq hover:bg-teal-600 text-white font-bold rounded-xl text-xs transition mt-2">
+                    Enviar Solicitud
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ARTICLE DETAIL MODAL -->
+    <div id="modal-article" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative max-h-[85vh] overflow-y-auto">
+            <button onclick="toggleArticleModal(false)" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <span id="art-cat" class="text-[10px] font-bold uppercase tracking-wider bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full mb-3 inline-block">Categoría</span>
+            <h2 id="art-title" class="text-2xl font-bold text-slate-900 mb-4">Título del Artículo</h2>
+            <div id="art-content" class="text-xs sm:text-sm text-slate-600 space-y-4 leading-relaxed">
+                <!-- Dynamic Article Body -->
+            </div>
+            <div class="mt-8 pt-4 border-t border-slate-100 flex justify-end">
+                <button onclick="toggleArticleModal(false)" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-xl text-xs transition">
+                    Cerrar lectura
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT APPLICATION LOGIC -->
+    <script>
+        /* ==================== GLOBAL APP STATE ==================== */
+        const state = {
+            currentSection: 'home',
+            forumPosts: [
+                {
+                    id: 1,
+                    pseudonym: 'Esperanza_2026',
+                    category: 'Ansiedad',
+                    content: 'Llevo varias semanas sintiendo una presión constante en el pecho al iniciar mi jornada de trabajo. ¿Alguien ha probado la técnica de respiración o meditación guiada con buenos resultados?',
+                    timestamp: 'Hace 2 horas',
+                    likes: 12,
+                    comments: [
+                        { pseudonym: 'CalmaInterior', text: 'A mí me ha servido mucho el ejercicio de inhalar 4 segundos y exhalar despacio. ¡Mucho ánimo!' }
+                    ]
+                },
+                {
+                    id: 2,
+                    pseudonym: 'CaminanteBogota',
+                    category: 'Laboral',
+                    content: 'A veces siento que la carga universitaria sobrepasa mi capacidad. Me cuesta pedir ayuda por temor a parecer débil ante mis compañeros.',
+                    timestamp: 'Hace 5 horas',
+                    likes: 8,
+                    comments: []
+                }
+            ],
+            specialists: [
+                {
+                    id: 1,
+                    name: 'Dra. María Fernanda Gómez',
+                    title: 'Psicóloga Clínica & Terapeuta Cognitivo-Conductual',
+                    city: 'Bogotá',
+                    modality: 'Virtual',
+                    especialidad: 'Psicología Clínica',
+                    rethus: 'RM-54892 (Verificado)',
+                    fee: '$120.000 COP / sesión',
+                    bio: 'Especialista en manejo de trastornos de ansiedad, estrés agudo y apoyo en regulación emocional en jóvenes adultos.',
+                    avatar: 'https://images.unsplash.com/photo-1594824813572-c50352d43d1a?auto=format&fit=crop&w=250&q=80'
+                },
+                {
+                    id: 2,
+                    name: 'Dr. Alejandro Restrepo',
+                    title: 'Psiquiatra y Especialista en Salud Mental',
+                    city: 'Medellín',
+                    modality: 'Presencial',
+                    especialidad: 'Psiquiatria Adultos',
+                    rethus: 'RM-88210 (Verificado)',
+                    fee: '$180.000 COP / sesión',
+                    bio: 'Atención integral clínica, valoración médica y acompañamiento psicoeducativo.',
+                    avatar: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=250&q=80'
+                },
+                {
+                    id: 3,
+                    name: 'Dra. Camila Morales',
+                    title: 'Terapeuta de Pareja y Familia',
+                    city: 'Cali',
+                    modality: 'Virtual',
+                    especialidad: 'Terapia Cognitivo-Conductual',
+                    rethus: 'RM-30491 (Verificado)',
+                    fee: '$110.000 COP / sesión',
+                    bio: 'Acompañamiento en comunicación asertiva, duelos afectivos y proyectos de vida.',
+                    avatar: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=250&q=80'
+                }
+            ],
+            articles: [
+                {
+                    id: 1,
+                    title: '5 Pasos para Gestionar un Ataque de Ansiedad',
+                    category: 'Ansiedad',
+                    readTime: '4 min de lectura',
+                    summary: 'Aprende a reconocer la respuesta física de tu cuerpo y utiliza técnicas de anclaje para recuperar el control.',
+                    body: '<p>Los ataques de ansiedad pueden sentirse abrumadores, pero recordar que son una respuesta temporal de tu sistema nervioso es clave.</p><p><strong>1. Reconoce lo que sientes:</strong> Acepta la sensación sin juzgarla.</p><p><strong>2. Aplica la regla 5-4-3-2-1:</strong> Mira 5 objetos a tu alrededor, toca 4 texturas, escucha 3 sonidos, huele 2 aromas y saborea 1 elemento.</p><p><strong>3. Regula tu respiración:</strong> Inhala despacio sintiendo el diafragma.</p>'
+                },
+                {
+                    id: 2,
+                    title: 'Higiene del Sueño y Descanso Reparador',
+                    category: 'Sueño',
+                    readTime: '5 min de lectura',
+                    summary: 'Pautas prácticas para desconectar la mente de las pantallas y favorecer un sueño profundo.',
+                    body: '<p>El descanso inadecuado incrementa la vulnerabilidad al estrés y la irritabilidad.</p><p><strong>Consejos prácticos:</strong> Desconecta pantallas 45 minutos antes de dormir, mantén la habitación a temperatura fresca y evita estimulantes después de las 4 PM.</p>'
+                },
+                {
+                    id: 3,
+                    title: 'Autocuidado Diario sin Culpabilidad',
+                    category: 'Autocuidado',
+                    readTime: '3 min de lectura',
+                    summary: 'Cómo incorporar breves pausas de autocuidado mental en jornadas laborales exigentes.',
+                    body: '<p>El autocuidado no es un lujo, es una necesidad biológica y emocional. Tómate 10 minutos al día para hacer algo que alimente tu serenidad.</p>'
+                }
+            ],
+            chatMessages: [
+                { sender: 'bot', text: '¡Hola! Bienvenido a BienestarMental+. Soy tu asistente virtual de orientación emocional. ¿Cómo te sientes el día de hoy?' }
+            ],
+            chatCount: 1248
+        };
+
+        /* ==================== INITIALIZATION ==================== */
+        window.addEventListener('DOMContentLoaded', () => {
+            renderForumPosts();
+            renderDirectorio();
+            renderBiblioteca();
+            renderChatMessages();
+            updateForumCounts();
+        });
+
+        /* ==================== SPA NAVIGATION ==================== */
+        function navigateTo(sectionId) {
+            state.currentSection = sectionId;
+            document.querySelectorAll('.view-section').forEach(sec => sec.classList.add('hidden'));
+            const target = document.getElementById(`sec-${sectionId}`);
+            if (target) {
+                target.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        /* ==================== CHATBOT MODULE ==================== */
+        function renderChatMessages() {
+            const container = document.getElementById('chat-messages');
+            container.innerHTML = state.chatMessages.map(msg => {
+                if (msg.sender === 'user') {
+                    return `
+                        <div class="flex justify-end">
+                            <div class="bg-brand-turq text-white p-3.5 rounded-2xl rounded-tr-none max-w-xs sm:max-w-md text-xs sm:text-sm shadow-sm leading-relaxed">
+                                ${escapeHtml(msg.text)}
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    return `
+                        <div class="flex items-start gap-2.5">
+                            <div class="w-8 h-8 rounded-full bg-teal-600 text-white flex items-center justify-center text-xs flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+                            <div class="bg-white border border-slate-200 p-3.5 rounded-2xl rounded-tl-none max-w-xs sm:max-w-md text-xs sm:text-sm text-slate-700 shadow-sm leading-relaxed space-y-2">
+                                ${msg.text}
+                            </div>
+                        </div>
+                    `;
+                }
+            }).join('');
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function handleChatSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('chat-input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            processUserChatMessage(text);
+            input.value = '';
+        }
+
+        function sendQuickPrompt(promptText) {
+            processUserChatMessage(promptText);
+        }
+
+        function processUserChatMessage(text) {
+            // Push User Message
+            state.chatMessages.push({ sender: 'user', text });
+            renderChatMessages();
+
+            // Emergency Keyword Check
+            const lower = text.toLowerCase();
+            const crisisKeywords = ['suicid', 'matarm', 'quitarme la vida', 'no quiero vivir', 'hacerme daño', 'autolesi'];
+            const isCrisis = crisisKeywords.some(kw => lower.includes(kw));
+
+            state.chatCount++;
+            document.getElementById('metric-chats').innerText = state.chatCount.toLocaleString();
+
+            // Simulate Bot Processing Delay
+            setTimeout(() => {
+                if (isCrisis) {
+                    toggleCrisisModal(true);
+                    state.chatMessages.push({
+                        sender: 'bot',
+                        text: `⚠️ <strong>Hemos detectado una situación de alta prioridad.</strong> Tu vida y bienestar son lo más importante. Por favor, comunícate inmediatamente a la <strong>Línea 106</strong> o al <strong>123</strong> en Colombia. Estamos desplegando la ventana de emergencias con líneas gratuitas 24/7.`
+                    });
+                } else if (lower.includes('ansiedad') || lower.includes('abrumado')) {
+                    state.chatMessages.push({
+                        sender: 'bot',
+                        text: `Entiendo que estás experimentando un momento de mucha intensidad emocional. Recuerda que la ansiedad es una respuesta física de alerta que pasará.<br/><br/>Te sugiero probar nuestro <strong>ejercicio de respiración guiada 4-7-8</strong> para desacelerar tu ritmo cardiaco. <button onclick="openBreathingModal()" class="mt-2 text-brand-turq font-bold underline block">Iniciar Ejercicio de Respiración &rarr;</button>`
+                    });
+                } else if (lower.includes('psicolog') || lower.includes('profesional') || lower.includes('especialista')) {
+                    state.chatMessages.push({
+                        sender: 'bot',
+                        text: `Contamos con un <strong>Directorio de Especialistas Verificados</strong> en Colombia donde puedes solicitar teleorientación o agendar citas presenciales. <button onclick="navigateTo('directorio')" class="mt-2 text-indigo-600 font-bold underline block">Ver Directorio de Especialistas &rarr;</button>`
+                    });
+                } else {
+                    state.chatMessages.push({
+                        sender: 'bot',
+                        text: `Gracias por compartir esto conmigo. Es totalmente válido sentirte así. ¿Te gustaría realizar un breve ejercicio para enfocar el presente o prefieres explorar recursos en nuestra comunidad?`
+                    });
+                }
+                renderChatMessages();
+            }, 600);
+        }
+
+        function resetChat() {
+            state.chatMessages = [
+                { sender: 'bot', text: '¡Hola! Conversación reiniciada. ¿En qué te puedo acompañar el día de hoy?' }
+            ];
+            renderChatMessages();
+        }
+
+        /* ==================== FORUM MODULE ==================== */
+        function renderForumPosts(categoryFilter = 'Todas') {
+            const container = document.getElementById('forum-posts-container');
+            const filtered = categoryFilter === 'Todas' 
+                ? state.forumPosts 
+                : state.forumPosts.filter(p => p.category === categoryFilter);
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="bg-white p-8 rounded-2xl border text-center text-xs text-slate-500">No hay publicaciones en esta categoría aún. ¡Sé el primero en compartir!</div>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map(post => `
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex justify-between items-center text-xs">
+                        <div class="flex items-center gap-2">
+                            <div class="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center text-[10px]">
+                                ${post.pseudonym.substring(0, 2).toUpperCase()}
+                            </div>
+                            <span class="font-bold text-slate-800">${escapeHtml(post.pseudonym)}</span>
+                            <span class="text-slate-400">&bull; ${post.timestamp}</span>
+                        </div>
+                        <span class="bg-slate-100 text-slate-600 font-semibold px-2.5 py-0.5 rounded-full text-[10px]">${post.category}</span>
+                    </div>
+
+                    <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">${escapeHtml(post.content)}</p>
+
+                    <div class="flex items-center justify-between pt-3 border-t border-slate-100 text-xs">
+                        <div class="flex items-center gap-4">
+                            <button onclick="likePost(${post.id})" class="text-slate-500 hover:text-emerald-600 flex items-center gap-1 font-medium transition">
+                                <i class="fa-regular fa-heart"></i> <span>${post.likes}</span>
+                            </button>
+                            <span class="text-slate-400"><i class="fa-regular fa-comment"></i> ${post.comments.length} comentarios</span>
+                        </div>
+                        <button onclick="reportPost(${post.id})" class="text-slate-400 hover:text-red-500 text-[11px] transition">
+                            <i class="fa-regular fa-flag"></i> Reportar
+                        </button>
+                    </div>
+
+                    <!-- Comments Sub-section -->
+                    ${post.comments.length > 0 ? `
+                        <div class="bg-slate-50 p-3 rounded-xl space-y-2 mt-2">
+                            ${post.comments.map(c => `
+                                <div class="text-xs">
+                                    <strong class="text-slate-700">${escapeHtml(c.pseudonym)}:</strong> 
+                                    <span class="text-slate-600">${escapeHtml(c.text)}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
+
+                    <!-- Add Comment Form -->
+                    <form onsubmit="handleAddComment(event, ${post.id})" class="flex gap-2 pt-1">
+                        <input type="text" placeholder="Escribir un comentario empático..." required class="flex-grow bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500" />
+                        <button type="submit" class="bg-emerald-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-emerald-700 transition">Comentar</button>
+                    </form>
+                </div>
+            `).join('');
+
+            document.getElementById('metric-posts').innerText = state.forumPosts.length;
+        }
+
+        function filterForum(cat) {
+            renderForumPosts(cat);
+        }
+
+        function updateForumCounts() {
+            document.getElementById('count-cat-todas').innerText = state.forumPosts.length;
+            document.getElementById('count-cat-ansiedad').innerText = state.forumPosts.filter(p => p.category === 'Ansiedad').length;
+            document.getElementById('count-cat-duelo').innerText = state.forumPosts.filter(p => p.category === 'Duelo').length;
+            document.getElementById('count-cat-laboral').innerText = state.forumPosts.filter(p => p.category === 'Laboral').length;
+            document.getElementById('count-cat-relaciones').innerText = state.forumPosts.filter(p => p.category === 'Relaciones').length;
+        }
+
+        function handleCreatePost(e) {
+            e.preventDefault();
+            const pseudonym = document.getElementById('post-pseudonym').value.trim();
+            const category = document.getElementById('post-category').value;
+            const content = document.getElementById('post-content').value.trim();
+
+            if (!pseudonym || !content) return;
+
+            const newPost = {
+                id: Date.now(),
+                pseudonym,
+                category,
+                content,
+                timestamp: 'Hace un momento',
+                likes: 0,
+                comments: []
+            };
+
+            state.forumPosts.unshift(newPost);
+            renderForumPosts();
+            updateForumCounts();
+            toggleNewPostModal(false);
+            e.target.reset();
+        }
+
+        function likePost(id) {
+            const post = state.forumPosts.find(p => p.id === id);
+            if (post) {
+                post.likes++;
+                renderForumPosts();
+            }
+        }
+
+        function handleAddComment(e, postId) {
+            e.preventDefault();
+            const input = e.target.querySelector('input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const post = state.forumPosts.find(p => p.id === postId);
+            if (post) {
+                post.comments.push({ pseudonym: 'UsuarioApoyo', text });
+                renderForumPosts();
+            }
+        }
+
+        function reportPost(id) {
+            alert('Publicación reportada para revisión por el equipo de moderación.');
+        }
+
+        /* ==================== DIRECTORY MODULE ==================== */
+        function renderDirectorio() {
+            const specFilter = document.getElementById('filter-especialidad').value;
+            const cityFilter = document.getElementById('filter-ubicacion').value;
+            const modFilter = document.getElementById('filter-modalidad').value;
+
+            const grid = document.getElementById('specialists-grid');
+
+            const filtered = state.specialists.filter(s => {
+                const matchSpec = specFilter === 'Todas' || s.especialidad === specFilter;
+                const matchCity = cityFilter === 'Todas' || s.city === cityFilter;
+                const matchMod = modFilter === 'Todas' || s.modality === modFilter;
+                return matchSpec && matchCity && matchMod;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-full bg-white p-8 rounded-2xl border text-center text-xs text-slate-500">No se encontraron especialistas con los filtros seleccionados.</div>`;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(s => `
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="flex items-center gap-4 mb-4">
+                            <img src="${s.avatar}" alt="${s.name}" class="w-14 h-14 rounded-2xl object-cover border border-slate-200" />
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-sm leading-snug">${s.name}</h3>
+                                <p class="text-[11px] text-brand-turq font-medium">${s.title}</p>
+                                <span class="inline-block mt-1 bg-emerald-50 text-emerald-700 text-[10px] font-semibold px-2 py-0.5 rounded-full">
+                                    <i class="fa-solid fa-circle-check mr-1"></i> ReTHUS: ${s.rethus}
+                                </span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">${s.bio}</p>
+                    </div>
+
+                    <div class="pt-3 border-t border-slate-100 space-y-2">
+                        <div class="flex justify-between items-center text-xs text-slate-500">
+                            <span><i class="fa-solid fa-location-dot text-slate-400 mr-1"></i> ${s.city} (${s.modality})</span>
+                            <span class="font-bold text-slate-800">${s.fee}</span>
+                        </div>
+                        <button onclick="openAppointmentModal('${s.name}')" class="w-full py-2 bg-slate-900 hover:bg-brand-turq text-white rounded-xl text-xs font-bold transition">
+                            Agendar Cita / Contactar
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        /* ==================== BIBLIOTECA MODULE ==================== */
+        let currentBiblioTab = 'Todos';
+
+        function renderBiblioteca() {
+            const query = document.getElementById('biblio-search').value.toLowerCase();
+            const grid = document.getElementById('articles-grid');
+
+            const filtered = state.articles.filter(a => {
+                const matchTab = currentBiblioTab === 'Todos' || a.category === currentBiblioTab;
+                const matchQuery = a.title.toLowerCase().includes(query) || a.summary.toLowerCase().includes(query);
+                return matchTab && matchQuery;
+            });
+
+            grid.innerHTML = filtered.map(a => `
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between hover:border-amber-400 transition">
+                    <div>
+                        <div class="flex justify-between items-center mb-3 text-xs">
+                            <span class="bg-amber-50 text-amber-800 font-bold px-2.5 py-0.5 rounded-full text-[10px]">${a.category}</span>
+                            <span class="text-slate-400 text-[11px]"><i class="fa-regular fa-clock mr-1"></i>${a.readTime}</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base mb-2 leading-snug">${a.title}</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">${a.summary}</p>
+                    </div>
+                    <button onclick="openArticleModal(${a.id})" class="text-xs font-bold text-amber-700 hover:text-amber-900 flex items-center gap-1">
+                        Leer artículo completo <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function setBiblioTab(tab) {
+            currentBiblioTab = tab;
+            document.querySelectorAll('.biblio-tab-btn').forEach(btn => btn.classList.remove('active', 'bg-brand-darkNavy', 'text-white'));
+            renderBiblioteca();
+        }
+
+        function openArticleModal(id) {
+            const art = state.articles.find(a => a.id === id);
+            if (!art) return;
+
+            document.getElementById('art-cat').innerText = art.category;
+            document.getElementById('art-title').innerText = art.title;
+            document.getElementById('art-content').innerHTML = art.body;
+            toggleArticleModal(true);
+        }
+
+        /* ==================== MODALS TOGGLES ==================== */
+        function toggleCrisisModal(show) {
+            document.getElementById('modal-crisis').classList.toggle('hidden', !show);
+        }
+
+        function openBreathingModal() {
+            document.getElementById('modal-breathing').classList.remove('hidden');
+            const circle = document.getElementById('breathe-circle');
+            circle.classList.add('animate-breathe');
+        }
+
+        function closeBreathingModal() {
+            document.getElementById('modal-breathing').classList.add('hidden');
+            const circle = document.getElementById('breathe-circle');
+            circle.classList.remove('animate-breathe');
+        }
+
+        function toggleNewPostModal(show) {
+            document.getElementById('modal-new-post').classList.toggle('hidden', !show);
+        }
+
+        function openAppointmentModal(specName) {
+            document.getElementById('appoint-spec-name').innerText = `Especialista: ${specName}`;
+            toggleAppointmentModal(true);
+        }
+
+        function toggleAppointmentModal(show) {
+            document.getElementById('modal-appointment').classList.toggle('hidden', !show);
+        }
+
+        function handleAppointmentSubmit(e) {
+            e.preventDefault();
+            alert('Solicitud enviada correctamente. El especialista revisará tu mensaje.');
+            toggleAppointmentModal(false);
+        }
+
+        function toggleArticleModal(show) {
+            document.getElementById('modal-article').classList.toggle('hidden', !show);
+        }
+
+        /* ==================== USER PRIVACY & EXPORT ==================== */
+        function exportUserData() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", "mis_datos_bienestarmental.json");
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
+
+        function purgeUserData() {
+            if (confirm('¿Estás seguro de que deseas solicitar la eliminación total de tus registros locales conforme a la Ley 1581 de 2012?')) {
+                alert('Tus datos han sido purgados del almacenamiento local de demostración.');
+            }
+        }
+
+        function exportMetrics() {
+            const metrics = {
+                chatsAtendidos: state.chatCount,
+                publicacionesForo: state.forumPosts.length,
+                especialistasDisponibles: state.specialists.length,
+                fechaReporte: new Date().toISOString()
+            };
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(metrics, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", "metricas_plataforma_bienestarmental.json");
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
+
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+    </script>
+</body>
+</html>
