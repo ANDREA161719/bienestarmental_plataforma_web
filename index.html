@@ -1018,11 +1018,28 @@
                         sender: 'bot',
                         text: `Contamos con un <strong>Directorio de Especialistas Verificados</strong> en Colombia donde puedes solicitar teleorientación o agendar citas presenciales. <button onclick="navigateTo('directorio')" class="mt-2 text-indigo-600 font-bold underline block">Ver Directorio de Especialistas &rarr;</button>`
                     });
-                } else {
-                    state.chatMessages.push({
-                        sender: 'bot',
-                        text: `Gracias por compartir esto conmigo. Es totalmente válido sentirte así. ¿Te gustaría realizar un breve ejercicio para enfocar el presente o prefieres explorar recursos en nuestra comunidad?`
-                    });
+    
+} else {
+    let respuesta = '';
+
+    if (lower.includes('triste') || lower.includes('tristeza') || lower.includes('llorar') || lower.includes('solo') || lower.includes('sola')) {
+        respuesta = 'Siento que estés pasando por un momento difícil. 💚 No tienes que resolverlo todo ahora. Si quieres, puedes contarme qué es lo que más te está pesando en este momento.';
+    } else if (lower.includes('ansiedad') || lower.includes('ansioso') || lower.includes('ansiosa') || lower.includes('abrumado') || lower.includes('abrumada') || lower.includes('nervioso') || lower.includes('nerviosa')) {
+        respuesta = 'Parece que estás sintiendo mucha tensión. 💚 Podemos ir paso a paso. ¿Te gustaría probar el ejercicio de respiración guiada o contarme qué está provocando esa sensación?';
+    } else if (lower.includes('desahog') || lower.includes('hablar') || lower.includes('escuchar') || lower.includes('contar')) {
+        respuesta = 'Estoy aquí para escucharte sin juzgarte. 💚 Puedes contarme lo que quieras compartir, a tu ritmo. ¿Qué te gustaría sacar de tu mente hoy?';
+    } else if (lower.includes('hola') || lower.includes('buenos días') || lower.includes('buenas tardes') || lower.includes('buenas noches')) {
+        respuesta = '¡Hola! 💚 Me alegra que estés aquí. ¿Cómo te has sentido hoy?';
+    } else {
+        respuesta = 'Gracias por compartirlo conmigo. 💚 Quiero comprenderte mejor: ¿podrías contarme un poco más sobre lo que estás sintiendo o lo que ocurrió?';
+    }
+
+    state.chatMessages.push({
+        sender: 'bot',
+        text: respuesta
+    });
+}
+
                 }
                 renderChatMessages();
             }, 600);
