@@ -987,63 +987,91 @@
             processUserChatMessage(promptText);
         }
 
-        function processUserChatMessage(text) {
-            // Push User Message
-            state.chatMessages.push({ sender: 'user', text });
-            renderChatMessages();
 
-            // Emergency Keyword Check
-            const lower = text.toLowerCase();
-            const crisisKeywords = ['suicid', 'matarm', 'quitarme la vida', 'no quiero vivir', 'hacerme daño', 'autolesi'];
-            const isCrisis = crisisKeywords.some(kw => lower.includes(kw));
+function processUserChatMessage(text) {
+    state.chatMessages.push({ sender: 'user', text });
+    renderChatMessages();
 
-            state.chatCount++;
-            document.getElementById('metric-chats').innerText = state.chatCount.toLocaleString();
+    const lower = text.toLowerCase();
+    const crisisKeywords = [
+        'suicid',
+        'matarm',
+        'quitarme la vida',
+        'no quiero vivir',
+        'hacerme daño',
+        'autolesi'
+    ];
+    const isCrisis = crisisKeywords.some(kw => lower.includes(kw));
 
-            // Simulate Bot Processing Delay
-            setTimeout(() => {
-                if (isCrisis) {
-                    toggleCrisisModal(true);
-                    state.chatMessages.push({
-                        sender: 'bot',
-                        text: `⚠️ <strong>Hemos detectado una situación de alta prioridad.</strong> Tu vida y bienestar son lo más importante. Por favor, comunícate inmediatamente a la <strong>Línea 106</strong> o al <strong>123</strong> en Colombia. Estamos desplegando la ventana de emergencias con líneas gratuitas 24/7.`
-                    });
-                } else if (lower.includes('ansiedad') || lower.includes('abrumado')) {
-                    state.chatMessages.push({
-                        sender: 'bot',
-                        text: `Entiendo que estás experimentando un momento de mucha intensidad emocional. Recuerda que la ansiedad es una respuesta física de alerta que pasará.<br/><br/>Te sugiero probar nuestro <strong>ejercicio de respiración guiada 4-7-8</strong> para desacelerar tu ritmo cardiaco. <button onclick="openBreathingModal()" class="mt-2 text-brand-turq font-bold underline block">Iniciar Ejercicio de Respiración &rarr;</button>`
-                    });
-                } else if (lower.includes('psicolog') || lower.includes('profesional') || lower.includes('especialista')) {
-                    state.chatMessages.push({
-                        sender: 'bot',
-                        text: `Contamos con un <strong>Directorio de Especialistas Verificados</strong> en Colombia donde puedes solicitar teleorientación o agendar citas presenciales. <button onclick="navigateTo('directorio')" class="mt-2 text-indigo-600 font-bold underline block">Ver Directorio de Especialistas &rarr;</button>`
-                    });
-    
-} else {
-    let respuesta = '';
+    state.chatCount++;
 
-    if (lower.includes('triste') || lower.includes('tristeza') || lower.includes('llorar') || lower.includes('solo') || lower.includes('sola')) {
-        respuesta = 'Siento que estés pasando por un momento difícil. 💚 No tienes que resolverlo todo ahora. Si quieres, puedes contarme qué es lo que más te está pesando en este momento.';
-    } else if (lower.includes('ansiedad') || lower.includes('ansioso') || lower.includes('ansiosa') || lower.includes('abrumado') || lower.includes('abrumada') || lower.includes('nervioso') || lower.includes('nerviosa')) {
-        respuesta = 'Parece que estás sintiendo mucha tensión. 💚 Podemos ir paso a paso. ¿Te gustaría probar el ejercicio de respiración guiada o contarme qué está provocando esa sensación?';
-    } else if (lower.includes('desahog') || lower.includes('hablar') || lower.includes('escuchar') || lower.includes('contar')) {
-        respuesta = 'Estoy aquí para escucharte sin juzgarte. 💚 Puedes contarme lo que quieras compartir, a tu ritmo. ¿Qué te gustaría sacar de tu mente hoy?';
-    } else if (lower.includes('hola') || lower.includes('buenos días') || lower.includes('buenas tardes') || lower.includes('buenas noches')) {
-        respuesta = '¡Hola! 💚 Me alegra que estés aquí. ¿Cómo te has sentido hoy?';
-    } else {
-        respuesta = 'Gracias por compartirlo conmigo. 💚 Quiero comprenderte mejor: ¿podrías contarme un poco más sobre lo que estás sintiendo o lo que ocurrió?';
+    const metricChats = document.getElementById('metric-chats');
+    if (metricChats) {
+        metricChats.innerText = state.chatCount.toLocaleString('es-CO');
     }
 
-    state.chatMessages.push({
-        sender: 'bot',
-        text: respuesta
-    });
-}
+    setTimeout(() => {
+        let respuesta = '';
 
-                }
-                renderChatMessages();
-            }, 600);
+        if (isCrisis) {
+            toggleCrisisModal(true);
+            respuesta = '⚠️ <strong>Tu bienestar es importante.</strong> Si estás en peligro inmediato, llama al 123 en Colombia o acude a urgencias. Esta demostración no sustituye la atención profesional.';
+
+        } else if (
+            lower.includes('psicolog') ||
+            lower.includes('profesional') ||
+            lower.includes('especialista')
+        ) {
+            respuesta = 'Puedes explorar el directorio de esta plataforma. Los perfiles son ilustrativos; verifica la información profesional antes de contactar a un especialista. <button onclick="navigateTo(\'directorio\')" class="mt-2 text-indigo-600 font-bold underline block">Ver directorio &rarr;</button>';
+
+        } else if (
+            lower.includes('ansiedad') ||
+            lower.includes('ansioso') ||
+            lower.includes('ansiosa') ||
+            lower.includes('abrumado') ||
+            lower.includes('abrumada') ||
+            lower.includes('nervioso') ||
+            lower.includes('nerviosa')
+        ) {
+            respuesta = 'Entiendo que puedes estar pasando por un momento intenso. 💚 Podemos ir paso a paso. Puedes probar nuestro ejercicio de respiración guiada. <button onclick="openBreathingModal()" class="mt-2 text-brand-turq font-bold underline block">Iniciar ejercicio de respiración &rarr;</button>';
+
+        } else if (
+            lower.includes('triste') ||
+            lower.includes('tristeza') ||
+            lower.includes('llorar') ||
+            lower.includes('solo') ||
+            lower.includes('sola')
+        ) {
+            respuesta = 'Siento que estés pasando por un momento difícil. 💚 No tienes que resolverlo todo ahora. Si quieres, puedes contarme qué es lo que más te está pesando.';
+
+        } else if (
+            lower.includes('desahog') ||
+            lower.includes('hablar') ||
+            lower.includes('escuchar') ||
+            lower.includes('contar')
+        ) {
+            respuesta = 'Estoy aquí para escucharte sin juzgarte. 💚 Puedes compartir lo que quieras, a tu ritmo. ¿Qué te gustaría contarme hoy?';
+
+        } else if (
+            lower.includes('hola') ||
+            lower.includes('buenos días') ||
+            lower.includes('buenas tardes') ||
+            lower.includes('buenas noches')
+        ) {
+            respuesta = '¡Hola! 💚 Me alegra que estés aquí. ¿Cómo te has sentido hoy?';
+
+        } else {
+            respuesta = 'Gracias por compartirlo conmigo. 💚 Quiero comprenderte mejor: ¿podrías contarme un poco más sobre lo que estás sintiendo o lo que ocurrió?';
         }
+
+        state.chatMessages.push({
+            sender: 'bot',
+            text: respuesta
+        });
+
+        renderChatMessages();
+    }, 600);
+}
 
         function resetChat() {
             state.chatMessages = [
