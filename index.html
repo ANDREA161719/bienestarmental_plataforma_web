@@ -1259,17 +1259,94 @@
             document.getElementById('modal-crisis').classList.toggle('hidden', !show);
         }
 
-        function openBreathingModal() {
-            document.getElementById('modal-breathing').classList.remove('hidden');
-            const circle = document.getElementById('breathe-circle');
-            circle.classList.add('animate-breathe');
+        
+let breathingTimer = null;
+let breathingTimeouts = [];
+
+function openBreathingModal() {
+    const modal = document.getElementById('modal-breathing');
+    const circle = document.getElementById('breathe-circle');
+    const text = document.getElementById('breathe-text');
+    const instruction = document.getElementById('breathe-instruction');
+
+    closeBreathingModal();
+    modal.classList.remove('hidden');
+
+    let cycle = 0;
+    const totalCycles = 4;
+
+    function phase(label, seconds, scale, message) {
+        text.textContent = label;
+        instruction.textContent = message;
+
+        circle.style.transition = `transform ${seconds}s linear, opacity ${seconds}s linear`;
+        circle.style.transform = `scale(${scale})`;
+        circle.style.opacity = scale > 1 ? '0.95' : '0.65';
+
+        let remaining = seconds;
+        instruction.textContent = `${message} (${remaining} s)`;
+
+        breathingTimer = setInterval(() => {
+            remaining--;
+
+            if (remaining > 0) {
+                instruction.textContent = `${message} (${remaining} s)`;
+            }
+        }, 1000);
+
+        const timeout = setTimeout(() => {
+            clearInterval(breathingTimer);
+            breathingTimer = null;
+            next();
+        }, seconds * 1000);
+
+        breathingTimeouts.push(timeout);
+    }
+
+    function next() {
+        if (cycle >= totalCycles) {
+            text.textContent = '¡Muy bien!';
+            instruction.textContent = 'Has terminado los 4 ciclos. Respira con naturalidad.';
+            circle.style.transition = 'transform 1s ease';
+            circle.style.transform = 'scale(1)';
+            circle.style.opacity = '0.8';
+            return;
         }
 
-        function closeBreathingModal() {
-            document.getElementById('modal-breathing').classList.add('hidden');
-            const circle = document.getElementById('breathe-circle');
-            circle.classList.remove('animate-breathe');
-        }
+        cycle++;
+
+        phase('Inhala', 4, 1.25, `Ciclo ${cycle} de ${totalCycles}: inhala suavemente`);
+        breathingTimeouts.push(setTimeout(() => {
+            phase('Mantén', 7, 1.25, 'Mantén el aire solo si te resulta cómodo');
+            breathingTimeouts.push(setTimeout(() => {
+                phase('Exhala', 8, 0.9, 'Exhala lentamente, sin forzar');
+                breathingTimeouts.push(setTimeout(next, 8000));
+            }, 7000));
+        }, 4000));
+    }
+
+    next();
+}
+
+function closeBreathingModal() {
+    if (breathingTimer) {
+        clearInterval(breathingTimer);
+        breathingTimer = null;
+    }
+
+    breathingTimeouts.forEach(timeout => clearTimeout(timeout));
+    breathingTimeouts = [];
+
+    const modal = document.getElementById('modal-breathing');
+    const circle = document.getElementById('breathe-circle');
+
+    modal.classList.add('hidden');
+    circle.style.transition = '';
+    circle.style.transform = '';
+    circle.style.opacity = '';
+    circle.classList.remove('animate-breathe');
+}
+
 
         function toggleNewPostModal(show) {
             document.getElementById('modal-new-post').classList.toggle('hidden', !show);
