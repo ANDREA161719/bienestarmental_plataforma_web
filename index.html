@@ -156,28 +156,51 @@
         <!-- ==================== SECTION 1: HOME ==================== -->
         <section id="sec-home" class="view-section">
             <!-- Hero Banner -->
-            <div class="bg-gradient-to-b from-teal-900 via-brand-darkGreen to-slate-900 text-white py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-                <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]"></div>
-                <div class="max-w-5xl mx-auto text-center relative z-10">
-                    <span class="inline-block bg-teal-800/80 text-teal-200 text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full mb-6 border border-teal-500/30 shadow-sm">
-                        <i class="fa-solid fa-shield-heart mr-1.5"></i> Transformación Digital en Salud Mental Colombia
-                    </span>
-                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
-                        No estás solo. <br class="hidden sm:inline"/>Estamos aquí para acompañarte.
-                    </h1>
-                    <p class="text-base sm:text-xl text-teal-100 max-w-3xl mx-auto mb-10 leading-relaxed font-light">
-                        Una plataforma accesible, segura y confidencial diseñada para derribar barreras de acceso, estigmas y distancias en la atención del bienestar emocional en Colombia.
-                    </p>
-                    <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
-                        <button onclick="navigateTo('chatbot')" class="bg-brand-turq hover:bg-teal-500 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-teal-500/25 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-base">
-                            <i class="fa-solid fa-comment-dots text-xl"></i> Comenzar Acompañamiento
-                        </button>
-                        <button onclick="navigateTo('biblioteca')" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 font-semibold py-4 px-8 rounded-xl backdrop-blur-sm transition flex items-center justify-center gap-2 text-base">
-                            <i class="fa-solid fa-compass"></i> Explorar Recursos
-                        </button>
-                    </div>
-                </div>
+<!-- HERO BIENESTAR CONTIGO -->
+<div class="bg-gradient-to-r from-green-50 via-white to-teal-50 py-12 md:py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+        <div class="text-center md:text-left">
+            <span class="inline-block bg-green-100 text-green-800 text-xs font-bold px-4 py-2 rounded-full mb-5">
+                BIENESTAR CONTIGO
+            </span>
+
+            <h1 class="text-4xl md:text-5xl font-extrabold text-teal-900 leading-tight mb-6">
+                Tu bienestar emocional
+                <span class="block text-green-600">también importa</span>
+            </h1>
+
+            <p class="text-lg text-slate-600 leading-relaxed mb-8">
+                Un espacio digital para estudiantes y jóvenes.
+                Encuentra orientación, comparte experiencias y descubre
+                recursos para cuidar tu bienestar emocional.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <button onclick="navigateTo('chatbot')"
+                    class="bg-teal-800 hover:bg-teal-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition">
+                    <i class="fa-solid fa-comment-dots mr-2"></i>
+                    Habla con el Chatbot
+                </button>
+
+                <button onclick="navigateTo('biblioteca')"
+                    class="bg-white border-2 border-teal-800 text-teal-900 font-bold py-4 px-6 rounded-xl hover:bg-green-50 transition">
+                    <i class="fa-solid fa-book-open mr-2"></i>
+                    Explorar recursos
+                </button>
             </div>
+        </div>
+
+        <div class="relative">
+         <img
+    src="./estudiantes-latinos.jpg"
+    alt="Estudiantes universitarios latinoamericanos"
+    class="w-full h-[320px] md:h-[420px] object-cover rounded-3xl shadow-xl"
+>
+        </div>
+
+    </div>
+</div>
 
             <!-- Quick Access Modules Grid -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20 mb-16">
@@ -988,90 +1011,682 @@
         }
 
 
-function processUserChatMessage(text) {
-    state.chatMessages.push({ sender: 'user', text });
+
+
+
+
+
+async function processUserChatMessage(text) {
+    const mensaje = text.trim();
+    if (!mensaje) return;
+
+    const normalizar = (s) => s
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[¿?¡!.,;:…]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+    const lower = normalizar(mensaje);
+
+    const coincide = (...frases) =>
+        frases.some(frase => lower.includes(normalizar(frase)));
+
+    const elegir = (respuestas) =>
+        respuestas[Math.floor(Math.random() * respuestas.length)];
+
+    state.chatMessages.push({ sender: 'user', text: mensaje });
     renderChatMessages();
 
-    const lower = text.toLowerCase();
-    const crisisKeywords = [
-        'suicid',
-        'matarm',
-        'quitarme la vida',
-        'no quiero vivir',
-        'hacerme daño',
-        'autolesi'
-    ];
-    const isCrisis = crisisKeywords.some(kw => lower.includes(kw));
+    state.chatCount = (state.chatCount || 0) + 1;
 
-    state.chatCount++;
-
-    const metricChats = document.getElementById('metric-chats');
-    if (metricChats) {
-        metricChats.innerText = state.chatCount.toLocaleString('es-CO');
+    const metrica = document.getElementById('metric-chats');
+    if (metrica) {
+        metrica.innerText = state.chatCount.toLocaleString('es-CO');
     }
 
-    setTimeout(() => {
-        let respuesta = '';
+    let respuesta = '';
 
-        if (isCrisis) {
+    // 1. RIESGO PERSONAL: SIEMPRE TIENE PRIORIDAD.
+    const riesgoDirecto = [
+        'quiero suicidarme',
+        'quiero matarme',
+        'me quiero matar',
+        'quiero quitarme la vida',
+        'quitarme la vida',
+        'acabar con mi vida',
+        'no quiero seguir viviendo',
+        'no quiero vivir',
+        'me quiero morir',
+        'quiero morir',
+        'voy a suicidarme',
+        'planeo suicidarme',
+        'quiero hacerme daño',
+        'quiero hacerme dano',
+        'hacerme daño',
+        'hacerme dano',
+        'me estoy autolesionando',
+        'me autolesiono',
+        'me hice daño a propósito',
+        'me hice dano a proposito',
+        'los demas estarian mejor sin mi',
+        'estarian mejor sin mi',
+        'no quiero existir'
+    ];
+
+    if (coincide(...riesgoDirecto)) {
+        if (typeof toggleCrisisModal === 'function') {
             toggleCrisisModal(true);
-            respuesta = '⚠️ <strong>Tu bienestar es importante.</strong> Si estás en peligro inmediato, llama al 123 en Colombia o acude a urgencias. Esta demostración no sustituye la atención profesional.';
-
-        } else if (
-            lower.includes('psicolog') ||
-            lower.includes('profesional') ||
-            lower.includes('especialista')
-        ) {
-            respuesta = 'Puedes explorar el directorio de esta plataforma. Los perfiles son ilustrativos; verifica la información profesional antes de contactar a un especialista. <button onclick="navigateTo(\'directorio\')" class="mt-2 text-indigo-600 font-bold underline block">Ver directorio &rarr;</button>';
-
-        } else if (
-            lower.includes('ansiedad') ||
-            lower.includes('ansioso') ||
-            lower.includes('ansiosa') ||
-            lower.includes('abrumado') ||
-            lower.includes('abrumada') ||
-            lower.includes('nervioso') ||
-            lower.includes('nerviosa')
-        ) {
-            respuesta = 'Entiendo que puedes estar pasando por un momento intenso. 💚 Podemos ir paso a paso. Puedes probar nuestro ejercicio de respiración guiada. <button onclick="openBreathingModal()" class="mt-2 text-brand-turq font-bold underline block">Iniciar ejercicio de respiración &rarr;</button>';
-
-        } else if (
-            lower.includes('triste') ||
-            lower.includes('tristeza') ||
-            lower.includes('llorar') ||
-            lower.includes('solo') ||
-            lower.includes('sola')
-        ) {
-            respuesta = 'Siento que estés pasando por un momento difícil. 💚 No tienes que resolverlo todo ahora. Si quieres, puedes contarme qué es lo que más te está pesando.';
-
-        } else if (
-            lower.includes('desahog') ||
-            lower.includes('hablar') ||
-            lower.includes('escuchar') ||
-            lower.includes('contar')
-        ) {
-            respuesta = 'Estoy aquí para escucharte sin juzgarte. 💚 Puedes compartir lo que quieras, a tu ritmo. ¿Qué te gustaría contarme hoy?';
-
-        } else if (
-            lower.includes('hola') ||
-            lower.includes('buenos días') ||
-            lower.includes('buenas tardes') ||
-            lower.includes('buenas noches')
-        ) {
-            respuesta = '¡Hola! 💚 Me alegra que estés aquí. ¿Cómo te has sentido hoy?';
-
-        } else {
-            respuesta = 'Gracias por compartirlo conmigo. 💚 Quiero comprenderte mejor: ¿podrías contarme un poco más sobre lo que estás sintiendo o lo que ocurrió?';
         }
 
-        state.chatMessages.push({
-            sender: 'bot',
-            text: respuesta
-        });
+        respuesta =
+            '💚 Gracias por contármelo. Me importa que estés a salvo. ' +
+            'Si puedes hacerte daño ahora o estás en peligro inmediato, ' +
+            'llama al 123 en Colombia o acude a urgencias. Busca a alguien ' +
+            'de confianza que pueda acompañarte y aléjate de cualquier cosa ' +
+            'con la que pudieras lastimarte. ¿Estás en peligro inmediato ' +
+            'ahora mismo? Este asistente es una demostración académica y ' +
+            'no sustituye la atención profesional.';
 
-        renderChatMessages();
-    }, 600);
+    // 2. EJERCICIOS DE RESPIRACIÓN Y CALMA.
+    } else if (coincide(
+        'quiero hacer un ejercicio',
+        'ejercicio para calmarme',
+        'ejercicio de respiracion',
+        'respiracion guiada',
+        'quiero respirar',
+        'quiero relajarme',
+        'necesito relajarme',
+        'ayudame a calmarme',
+        'como puedo tranquilizarme',
+        'quiero controlar mis nervios',
+        'necesito un momento de calma',
+        'quiero hacer meditacion',
+        'ejercicio de relajacion',
+        'quiero bajar mi ansiedad'
+    )) {
+        respuesta =
+            '💚 Hagamos una pausa. Si te resulta cómodo, apoya los pies ' +
+            'en el suelo, relaja los hombros y respira suavemente, sin ' +
+            'forzar el aire. Puedes probar el ejercicio guiado de la página. ' +
+            '<button onclick="openBreathingModal()" ' +
+            'class="mt-2 text-brand-turq font-bold underline block">' +
+            'Iniciar ejercicio de respiración →</button>';
+
+    // 3. SALUDOS.
+    } else if (/^(hola|holi|hey|buenas|buenos dias|buenas tardes|buenas noches)$/.test(lower)) {
+        respuesta = elegir([
+            '¡Hola! 💚 Me alegra que estés aquí. ¿Cómo te has sentido hoy?',
+            '¡Hola! 💚 Puedes contarme lo que tengas en mente. ¿Cómo va tu día?',
+            'Hola, bienvenida o bienvenido. 💚 ¿Hay algo que te preocupe o que quieras conversar?'
+        ]);
+
+    // 4. DEPRESIÓN, DESÁNIMO Y PÉRDIDA DE INTERÉS.
+    } else if (coincide(
+        'creo que tengo depresion',
+        'creo que estoy deprimida',
+        'creo que estoy deprimido',
+        'tengo depresion',
+        'me siento deprimida',
+        'me siento deprimido',
+        'no tengo ganas de nada',
+        'no quiero hacer nada',
+        'nada me hace feliz',
+        'nada me alegra',
+        'ya nada me interesa',
+        'perdi el interes por todo',
+        'no disfruto nada',
+        'no le encuentro sentido a mi vida',
+        'siento un vacio enorme',
+        'me siento vacia',
+        'me siento vacio',
+        'no tengo motivacion',
+        'no tengo ilusion',
+        'no tengo esperanza',
+        'me cuesta levantarme cada dia',
+        'me cuesta levantarme de la cama',
+        'no quiero salir de mi cuarto',
+        'quiero aislarme de todos',
+        'siento que estoy apagada',
+        'siento que estoy apagado',
+        'siento que no avanzo en la vida',
+        'cada dia me siento peor',
+        'llevo semanas sintiendome mal',
+        'llevo mucho tiempo triste'
+    )) {
+        respuesta = elegir([
+            '💚 Siento que estés pasando por algo tan difícil. Perder las ganas ' +
+            'o dejar de disfrutar lo que antes importaba puede ser muy ' +
+            'desgastante. No puedo diagnosticarte por este chat, pero mereces ' +
+            'apoyo. ¿Desde cuándo te sientes así y cómo está afectando tu vida diaria?',
+
+            '💚 Gracias por expresarlo. No tienes que fingir que todo está bien. ' +
+            'Cuando la tristeza o la falta de interés persisten, hablar con un ' +
+            'profesional puede ayudar a entender qué ocurre. ¿Esto empezó ' +
+            'recientemente o llevas tiempo sintiéndote así?',
+
+            '💚 Debe ser difícil sentir que las cosas han perdido su sentido. ' +
+            'No quiero minimizar lo que estás viviendo. ¿Qué es lo que más ' +
+            'te está costando últimamente: levantarte, cumplir tus tareas, ' +
+            'relacionarte con otras personas o encontrar ganas de hacer cosas?'
+        ]);
+
+    // 5. TRISTEZA, LLANTO Y DOLOR EMOCIONAL.
+    } else if (coincide(
+        'me siento muy triste',
+        'estoy muy triste',
+        'siento una tristeza inmensa',
+        'tengo una tristeza enorme',
+        'me siento muy mal',
+        'me siento fatal',
+        'quiero llorar',
+        'tengo ganas de llorar',
+        'no puedo parar de llorar',
+        'lloro por todo',
+        'he llorado todo el dia',
+        'me siento destrozada',
+        'me siento destrozado',
+        'tengo el corazon roto',
+        'estoy pasando por un momento dificil',
+        'me duele mucho lo que paso',
+        'me siento herida',
+        'me siento herido',
+        'hoy ha sido un dia horrible',
+        'no puedo contener el llanto',
+        'me siento muy sensible',
+        'todo me afecta'
+    )) {
+        respuesta = elegir([
+            '💚 Siento mucho que estés sintiendo una tristeza tan grande. ' +
+            'No tienes que explicarlo todo de una vez. ¿Esta tristeza comenzó ' +
+            'por algo que ocurrió recientemente o llevas tiempo sintiéndote así?',
+
+            '💚 Parece que hoy está siendo especialmente difícil. Puedes ' +
+            'contarme lo que pasó, aunque tus ideas estén desordenadas. ' +
+            '¿Qué es lo que más te duele en este momento?',
+
+            '💚 No tienes que fingir fortaleza conmigo. Quiero comprender ' +
+            'lo que estás viviendo sin asumir que conozco tu situación. ' +
+            '¿Necesitas desahogarte o prefieres que pensemos juntas o juntos ' +
+            'en qué podría ayudarte ahora?'
+        ]);
+
+    // 6. SOBRECARGA, RUTINA Y AGOTAMIENTO.
+    } else if (coincide(
+        'estoy agotada',
+        'estoy agotado',
+        'estoy agotada de todo',
+        'estoy agotado de todo',
+        'estoy mamada de todo',
+        'estoy mamado de todo',
+        'estoy harta de todo',
+        'estoy harto de todo',
+        'no doy mas',
+        'no puedo con todo',
+        'no me da la vida',
+        'no me alcanza el dia',
+        'todo se me acumula',
+        'estoy saturada',
+        'estoy saturado',
+        'estoy al limite',
+        'siento que cargo con todo',
+        'siento que llevo el mundo encima',
+        'no tengo tiempo para mi',
+        'no tengo ni un minuto para mi',
+        'necesito un respiro',
+        'necesito un descanso de todo',
+        'estoy cansada de la rutina',
+        'estoy cansado de la rutina',
+        'estoy mentalmente agotada',
+        'estoy mentalmente agotado',
+        'no descanso nunca',
+        'siento que no paro nunca',
+        'estoy funcionando en automatico',
+        'hago todo por inercia',
+        'no puedo mas con las responsabilidades',
+        'tengo demasiadas cosas que hacer',
+        'estoy cansada de hacer todo',
+        'estoy cansado de hacer todo'
+    )) {
+        respuesta = elegir([
+            '💚 Suena a que llevas muchas cosas encima. Cuando todo se acumula, ' +
+            'hasta las tareas pequeñas pueden sentirse enormes. ¿Qué te está ' +
+            'pesando más: las responsabilidades, la falta de apoyo o no tener ' +
+            'tiempo para descansar?',
+
+            '💚 No tienes que resolverlo todo hoy. A veces ayuda separar lo ' +
+            'urgente de lo que puede esperar y pedir ayuda concreta con una tarea. ' +
+            '¿Qué podrías dejar para después o compartir con alguien?',
+
+            '💚 Parece que necesitas un poco de espacio para ti. No significa ' +
+            'que estés fallando. ¿Qué es lo que más te está agotando últimamente? ' +
+            'Podemos pensar en un pequeño cambio realista para aliviar la carga.'
+        ]);
+
+    // 7. CASA, OFICIOS, MATERNIDAD Y CRIANZA.
+    } else if (coincide(
+        'los oficios del hogar me estresan',
+        'los quehaceres me agotan',
+        'las tareas de la casa me estresan',
+        'los niños me estresan',
+        'los ninos me estresan',
+        'los niños me tienen agotada',
+        'los ninos me tienen agotada',
+        'los niños me tienen agotado',
+        'los ninos me tienen agotado',
+        'no me dejan ni un momento',
+        'no tengo ayuda con los niños',
+        'no tengo ayuda con los ninos',
+        'siento que crio sola',
+        'siento que crio solo',
+        'amo a mis hijos pero estoy agotada',
+        'amo a mis hijos pero estoy agotado',
+        'me da culpa querer estar sola',
+        'me da culpa querer estar solo',
+        'no puedo con la casa y los niños',
+        'no puedo con la casa y los ninos',
+        'nadie me ayuda en casa',
+        'nadie ve todo lo que hago',
+        'la casa nunca termina',
+        'no tengo tiempo para mis hijos',
+        'necesito un rato sin que me necesiten',
+        'me siento desbordada con mis hijos',
+        'me siento desbordado con mis hijos',
+        'estoy cansada de repetir lo mismo',
+        'estoy cansado de repetir lo mismo',
+        'la rutina me tiene agotada',
+        'la rutina me tiene agotado'
+    )) {
+        respuesta = elegir([
+            '💚 Llevar la casa, atender a los niños y cumplir con tantas ' +
+            'responsabilidades puede ser agotador, especialmente cuando ' +
+            'sientes que no tienes tiempo para ti. ¿Qué te pesa más: la cantidad ' +
+            'de tareas, la falta de apoyo o no tener tiempo para descansar?',
+
+            '💚 Puedes querer mucho a tu familia y, al mismo tiempo, sentirte ' +
+            'agotada o agotado. Una cosa no invalida la otra. ¿Hay alguien con ' +
+            'quien puedas repartir alguna tarea o pedir un descanso concreto?',
+
+            '💚 Parece que estás necesitando apoyo, no más exigencias. No tienes ' +
+            'que hacerlo todo perfectamente. ¿Qué tarea de hoy te gustaría poder ' +
+            'compartir con alguien para tener un momento de descanso?'
+        ]);
+
+    // 8. ANSIEDAD, MIEDO Y PREOCUPACIÓN.
+    } else if (coincide(
+        'tengo ansiedad',
+        'me da ansiedad',
+        'estoy ansiosa',
+        'estoy ansioso',
+        'me siento nerviosa',
+        'me siento nervioso',
+        'tengo muchos nervios',
+        'no puedo dejar de pensar',
+        'mi mente no para',
+        'pienso demasiado',
+        'le doy vueltas a todo',
+        'me preocupo por todo',
+        'siempre pienso lo peor',
+        'siento que algo malo va a pasar',
+        'tengo miedo sin razon',
+        'siento mucha angustia',
+        'me cuesta estar tranquila',
+        'me cuesta estar tranquilo',
+        'no puedo controlar mis pensamientos',
+        'me da miedo equivocarme',
+        'me da miedo el futuro',
+        'tengo miedo de salir',
+        'tengo miedo de hablar en publico',
+        'me asusta lo que pueda pasar',
+        'me bloqueo por los nervios',
+        'me cuesta tomar decisiones',
+        'me preocupa lo que piensen de mi',
+        'no puedo apagar mi mente',
+        'mi cabeza va a mil',
+        'siento una presion constante'
+    )) {
+        respuesta = elegir([
+            '💚 Vivir con tantas preocupaciones puede ser agotador. ¿Hay algo ' +
+            'concreto que te preocupa o sientes inquietud por muchas cosas ' +
+            'al mismo tiempo? Podemos ir una por una.',
+
+            '💚 Cuando la mente no para, puede ser difícil encontrar descanso. ' +
+            'Si te ayuda, mira a tu alrededor y nombra cinco cosas que ves, ' +
+            'cuatro que sientes con el tacto y tres que escuchas. ¿Qué pensamiento ' +
+            'se repite más en tu cabeza?',
+
+            '💚 Gracias por contármelo. No tienes que resolver todos los posibles ' +
+            'problemas antes de que ocurran. ¿Qué sabes con certeza de la situación ' +
+            'que te preocupa y qué parte es todavía una posibilidad?'
+        ]);
+
+    // 9. ESTRÉS LABORAL, UNIVERSIDAD Y ESTUDIOS.
+    } else if (coincide(
+        'tengo problemas en el trabajo',
+        'mi jefe me trata mal',
+        'no soporto mi trabajo',
+        'me siento presionada en el trabajo',
+        'me siento presionado en el trabajo',
+        'tengo demasiado trabajo',
+        'no me alcanza el tiempo para trabajar',
+        'me da miedo perder mi empleo',
+        'voy a perder mi trabajo',
+        'no valoran mi trabajo',
+        'me siento explotada en el trabajo',
+        'me siento explotado en el trabajo',
+        'mis compañeros me hacen sentir mal',
+        'tengo problemas con mis compañeros',
+        'tengo problemas con mis companeros',
+        'me fue mal en un examen',
+        'no puedo con la universidad',
+        'tengo demasiados trabajos de la universidad',
+        'voy a perder el semestre',
+        'me da miedo fracasar',
+        'no puedo concentrarme para estudiar',
+        'siento que no voy a graduarme',
+        'estoy atrasada con mis estudios',
+        'estoy atrasado con mis estudios',
+        'siento que no soy capaz',
+        'me siento incapaz',
+        'tengo miedo de decepcionar a mi familia'
+    )) {
+        respuesta = elegir([
+            '💚 La presión laboral o académica puede hacer que todo parezca ' +
+            'más difícil. ¿Qué ocurrió y qué es lo que más te preocupa ahora? ' +
+            'Podemos separar el problema en partes sin que tengas que resolverlo todo hoy.',
+
+            '💚 Parece que estás cargando con muchas expectativas. Un resultado ' +
+            'o un día difícil no define toda tu capacidad. ¿Lo que más te preocupa ' +
+            'es el tiempo, el trato de otras personas o el miedo a equivocarte?',
+
+            '💚 Debe ser desgastante sentir tanta presión. Si quieres, podemos ' +
+            'organizar lo que tienes pendiente y distinguir lo urgente de lo que ' +
+            'puede esperar. ¿Cuál es el problema más inmediato?'
+        ]);
+
+    // 10. FAMILIA, DISCUSIONES Y CONFLICTOS EN CASA.
+    } else if (coincide(
+        'tuve problemas en la casa',
+        'tengo problemas en casa',
+        'problemas con mi familia',
+        'discuto con mi familia',
+        'pelee con mi mama',
+        'pelee con mi papa',
+        'mi familia no me entiende',
+        'en mi casa no hay paz',
+        'hay muchas peleas en casa',
+        'mis padres me hacen sentir mal',
+        'siento que mi familia me rechaza',
+        'no me llevo bien con mi familia',
+        'mi familia me critica',
+        'siempre terminamos discutiendo',
+        'no puedo hablar con mi familia',
+        'siento que no me escuchan en casa',
+        'me siento juzgada por mi familia',
+        'me siento juzgado por mi familia',
+        'estoy cansada de las discusiones',
+        'estoy cansado de las discusiones'
+    )) {
+        respuesta =
+            '💚 Los conflictos familiares pueden afectar mucho la tranquilidad. ' +
+            'No tienes que justificar lo que sientes. ¿Qué ocurrió y qué fue lo ' +
+            'que más te dolió? Si no te sientes segura o seguro en casa, lo primero ' +
+            'es pensar en cómo buscar apoyo y protegerte.';
+
+    // 11. PAREJA, RUPTURAS Y RECHAZO.
+    } else if (coincide(
+        'mi pareja me ignora',
+        'mi esposo me trata mal',
+        'mi esposa me trata mal',
+        'termine con mi pareja',
+        'termino conmigo',
+        'me fueron infiel',
+        'me siento rechazada',
+        'me siento rechazado',
+        'mi pareja no me escucha',
+        'siempre discutimos',
+        'mi pareja no me apoya',
+        'siento que no me valoran',
+        'mi pareja me controla',
+        'tengo miedo de mi pareja',
+        'no se si seguir con mi pareja',
+        'me siento sola en mi relacion',
+        'me siento solo en mi relacion',
+        'estoy pasando por una ruptura',
+        'extrano a mi ex',
+        'mi pareja me humilla'
+    )) {
+        respuesta =
+            '💚 Las dificultades de pareja pueden despertar dolor, confusión ' +
+            'y muchas preguntas. Mereces respeto y poder expresar lo que sientes. ' +
+            '¿Quieres contarme qué pasó y cómo te está afectando? Si tienes miedo ' +
+            'de tu pareja o sientes peligro, prioricemos tu seguridad y busquemos apoyo.';
+
+    // 12. AUTOESTIMA, CULPA Y COMPARACIÓN.
+    } else if (coincide(
+        'no valgo nada',
+        'no soy suficiente',
+        'soy un fracaso',
+        'me siento inutil',
+        'no hago nada bien',
+        'me odio',
+        'me siento fea',
+        'me siento feo',
+        'me comparo con los demas',
+        'todo es culpa mia',
+        'no me perdono mis errores',
+        'no merezco descansar',
+        'siempre decepciono a todos',
+        'siento que soy una mala madre',
+        'siento que soy un mal padre',
+        'siento que soy mala persona',
+        'siento que soy una carga',
+        'me siento inferior a los demas',
+        'nunca estoy a la altura',
+        'me exijo demasiado',
+        'no me gusta quien soy',
+        'me da vergüenza ser como soy',
+        'me cuesta poner limites',
+        'siempre pongo a todos primero'
+    )) {
+        respuesta =
+            '💚 Siento que estés siendo tan dura o duro contigo. Un error, una ' +
+            'dificultad o un momento de inseguridad no resume quién eres. ¿Pasó ' +
+            'algo que te hizo sentir así o es una idea que vienes cargando desde hace tiempo?';
+
+    // 13. SOLEDAD Y FALTA DE APOYO.
+    } else if (coincide(
+        'me siento sola',
+        'me siento solo',
+        'nadie me entiende',
+        'nadie me escucha',
+        'no tengo a nadie',
+        'no tengo amigos',
+        'me siento invisible',
+        'me siento abandonada',
+        'me siento abandonado',
+        'no tengo con quien hablar',
+        'siento que no le importo a nadie',
+        'no encajo en ningun lugar',
+        'nadie pregunta como estoy',
+        'siempre soy yo quien busca a los demas',
+        'me siento sola aunque estoy acompañada',
+        'me siento solo aunque estoy acompañado',
+        'me da miedo molestar a los demas',
+        'siento que no tengo apoyo'
+    )) {
+        respuesta =
+            '💚 Sentirse sin apoyo puede doler mucho. Gracias por compartirlo. ' +
+            'No quiero asumir que sé exactamente cómo te sientes. ¿Qué es lo que ' +
+            'más te hace sentir desconectada o desconectado de los demás últimamente?';
+
+    // 14. SUEÑO, CANSANCIO Y ENERGÍA.
+    } else if (coincide(
+        'no puedo dormir',
+        'me cuesta dormir',
+        'me despierto en la noche',
+        'duermo demasiado',
+        'no tengo energia',
+        'me levanto cansada',
+        'me levanto cansado',
+        'no tengo fuerzas para nada',
+        'me cuesta hasta bañarme',
+        'me cuesta levantarme de la cama',
+        'estoy agotada todo el dia',
+        'estoy agotado todo el dia',
+        'no logro descansar',
+        'me despierto cansada',
+        'me despierto cansado',
+        'no tengo ganas ni de comer',
+        'me cuesta concentrarme'
+    )) {
+        respuesta =
+            '💚 Sentir que hasta las tareas básicas cuestan puede ser desgastante. ' +
+            'El sueño y la energía pueden verse afectados por muchas razones. ' +
+            '¿Desde cuándo te ocurre y cuánto está interfiriendo con tu rutina? ' +
+            'Si persiste, sería importante consultarlo con un profesional de salud.';
+
+    // 15. DUELO Y PÉRDIDAS.
+    } else if (coincide(
+        'fallecio alguien',
+        'murio alguien',
+        'perdi a un ser querido',
+        'extrano a mi mama',
+        'extrano a mi papa',
+        'no supero su muerte',
+        'estoy de duelo',
+        'desde que murio',
+        'me cuesta aceptar la perdida',
+        'no puedo dejar de pensar en esa persona',
+        'me hace mucha falta',
+        'no se como vivir sin esa persona'
+    )) {
+        respuesta =
+            '💚 Perder a alguien importante puede dejar un dolor profundo. ' +
+            'No existe una única manera de vivir el duelo ni tienes que apresurarte ' +
+            'a sentirte mejor. Si quieres, cuéntame qué es lo que más extrañas ' +
+            'de esa persona o qué ha sido lo más difícil.';
+
+    // 16. ENOJO Y FRUSTRACIÓN.
+    } else if (coincide(
+        'tengo mucha rabia',
+        'estoy furiosa',
+        'estoy furioso',
+        'estoy frustrada',
+        'estoy frustrado',
+        'todo me molesta',
+        'me dan ganas de gritar',
+        'exploto por cualquier cosa',
+        'no puedo controlar mi enojo',
+        'estoy cansada de aguantar',
+        'estoy cansado de aguantar',
+        'me desespero por todo',
+        'me irrito muy facilmente',
+        'me siento fuera de control'
+    )) {
+        respuesta =
+            '💚 Parece que la emoción está siendo muy intensa. Si puedes, toma ' +
+            'un poco de distancia de la situación antes de responder o actuar. ' +
+            'No tienes que resolverlo en este instante. ¿Qué ocurrió para que ' +
+            'la rabia o la frustración llegaran a este punto?';
+
+    // 17. DINERO E INCERTIDUMBRE ECONÓMICA.
+    } else if (coincide(
+        'tengo problemas de dinero',
+        'no me alcanza el dinero',
+        'estoy endeudada',
+        'estoy endeudado',
+        'perdi mi trabajo',
+        'no puedo pagar las cuentas',
+        'me preocupa el futuro economico',
+        'no se como mantener a mi familia',
+        'tengo muchas deudas',
+        'estoy preocupada por la plata',
+        'estoy preocupado por la plata',
+        'no se como voy a pagar el arriendo'
+    )) {
+        respuesta =
+            '💚 La incertidumbre económica puede sentirse como una carga constante. ' +
+            'No voy a decirte que es sencillo. Si te ayuda, podemos separar lo más ' +
+            'urgente de lo que puede esperar. ¿Qué es lo que más te preocupa en este momento?';
+
+    // 18. PEDIR UN PSICÓLOGO O AYUDA PROFESIONAL.
+    } else if (coincide(
+        'necesito un psicologo',
+        'quiero ir a terapia',
+        'necesito ayuda profesional',
+        'quiero hablar con un psicologo',
+        'busco un terapeuta',
+        'necesito un especialista',
+        'donde consigo ayuda psicologica',
+        'quiero que me vea un profesional',
+        'necesito tratamiento psicologico'
+    )) {
+        respuesta =
+            '💚 Buscar apoyo profesional puede ser un paso importante. Puedes ' +
+            'consultar el directorio de esta plataforma y verificar las credenciales ' +
+            'y los datos de contacto de cada profesional. ' +
+            '<button onclick="navigateTo(\'directorio\')" ' +
+            'class="mt-2 text-indigo-600 font-bold underline block">' +
+            'Consultar directorio →</button>';
+
+    // 19. QUIERE HABLAR O DESAHOGARSE.
+    } else if (coincide(
+        'necesito desahogarme',
+        'quiero desahogarme',
+        'necesito hablar',
+        'quiero que me escuches',
+        'solo quiero que me escuchen',
+        'quiero contar lo que me pasa',
+        'necesito sacar esto de mi pecho',
+        'no se por donde empezar',
+        'puedo contarte algo',
+        'necesito hablar con alguien',
+        'quiero hablar de mis problemas',
+        'necesito que alguien me escuche'
+    )) {
+        respuesta =
+            '💚 Claro, puedes empezar por donde te resulte más fácil. No necesitas ' +
+            'ordenar tus ideas ni encontrar las palabras perfectas. ¿Qué es lo que ' +
+            'más necesitas expresar en este momento?';
+
+    // 20. AGRADECIMIENTOS.
+    } else if (coincide(
+        'gracias',
+        'muchas gracias',
+        'me ayudaste',
+        'gracias por escucharme'
+    )) {
+        respuesta =
+            '💚 Gracias a ti por compartirlo. Puedes seguir explorando tus ideas ' +
+            'a tu ritmo. ¿Hay algo más que quieras contar o prefieres pensar en ' +
+            'un pequeño paso que pueda ayudarte hoy?';
+
+    // 21. RESPUESTA ABIERTA PARA FRASES NUEVAS.
+    } else {
+        respuesta = elegir([
+            '💚 Gracias por contármelo. No quiero asumir que sé lo que significa ' +
+            'para ti. ¿Podrías contarme un poco más sobre lo que ocurrió o cómo te hizo sentir?',
+
+            '💚 Te leo. A veces cuesta encontrar las palabras para explicar lo que ' +
+            'pasa. ¿Qué parte de esta situación te está afectando más?',
+
+            '💚 Podemos ir paso a paso. ¿Te ayudaría más desahogarte, ordenar tus ' +
+            'ideas o pensar en una acción pequeña y realista para este momento?'
+        ]);
+    }
+
+    state.chatMessages.push({
+        sender: 'bot',
+        text: respuesta
+    });
+
+    renderChatMessages();
 }
+
+
+
 
         function resetChat() {
             state.chatMessages = [
