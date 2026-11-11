@@ -64,91 +64,653 @@
         .animate-breathe {
             animation: breatheAnimation 8s ease-in-out infinite;
         }
+        
+/* ======================================
+   BIENESTAR CONTIGO - IDENTIDAD VISUAL
+====================================== */
+
+:root {
+    --bc-cream: #FFF8F0;
+    --bc-sage: #DDEBDD;
+    --bc-green: #285D50;
+    --bc-peach: #F6D8C9;
+    --bc-lavender: #E9E2F7;
+    --bc-yellow: #F8EBC5;
+    --bc-text: #29483F;
+}
+
+body {
+    background: #FFF9F3;
+    color: var(--bc-text);
+}
+
+.home-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 75px 6%;
+    background:
+        radial-gradient(circle at 10% 15%, #F6D8C9 0%, transparent 28%),
+        radial-gradient(circle at 90% 80%, #DDEBDD 0%, transparent 35%),
+        linear-gradient(120deg, #FFF8F0, #F1F7EE);
+}
+
+.home-hero-inner {
+    max-width: 1250px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 65px;
+    position: relative;
+    z-index: 2;
+}
+
+.home-decoration {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.home-decoration-one {
+    width: 220px;
+    height: 220px;
+    background: #F6D8C9;
+    opacity: .35;
+    top: -100px;
+    right: 35%;
+}
+
+.home-decoration-two {
+    width: 180px;
+    height: 180px;
+    background: #DDEBDD;
+    opacity: .65;
+    bottom: -80px;
+    left: 10%;
+}
+
+.home-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: #E5F0E3;
+    color: #285D50;
+    padding: 11px 18px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    margin-bottom: 24px;
+}
+
+.home-hero-content h1 {
+    font-size: clamp(38px, 4.5vw, 62px);
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -2px;
+    color: #285D50;
+    margin-bottom: 24px;
+}
+
+.home-hero-content h1 span {
+    display: block;
+    color: #C77D65;
+}
+
+.home-description {
+    max-width: 520px;
+    color: #63756C;
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.home-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.home-btn-primary,
+.home-btn-secondary {
+    padding: 16px 23px;
+    border-radius: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.home-btn-primary {
+    color: white;
+    background: #285D50;
+    box-shadow: 0 8px 20px #285D5030;
+}
+
+.home-btn-primary:hover {
+    background: #397967;
+    transform: translateY(-3px);
+}
+
+.home-btn-secondary {
+    color: #285D50;
+    background: white;
+    border: 1px solid #D6E4D6;
+}
+
+.home-btn-secondary:hover {
+    background: #E5F0E3;
+    transform: translateY(-3px);
+}
+
+.home-note {
+    margin-top: 27px;
+    color: #789184;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.home-note i {
+    color: #C77D65;
+    margin-right: 7px;
+}
+
+.home-hero-visual {
+    position: relative;
+    padding: 15px;
+}
+
+.home-photo-frame {
+    height: 430px;
+    border-radius: 38px 38px 90px 38px;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 25px 50px #285D5025;
+    border: 9px solid white;
+}
+
+.home-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.home-photo-decoration {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: #F6D8C9;
+    right: -5px;
+    bottom: -10px;
+    z-index: 1;
+}
+
+.home-floating-card {
+    position: absolute;
+    left: -35px;
+    bottom: 35px;
+    z-index: 3;
+    background: white;
+    padding: 17px 20px;
+    border-radius: 18px;
+    box-shadow: 0 12px 35px #285D5020;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.home-floating-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F6D8C9;
+    color: #B96F58;
+    font-size: 20px;
+}
+
+.home-floating-card strong {
+    display: block;
+    color: #285D50;
+    font-size: 13px;
+}
+
+.home-floating-card span {
+    display: block;
+    color: #87958C;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+.home-cards {
+    margin-top: -35px;
+    position: relative;
+    z-index: 5;
+}
+
+.home-cards .grid > div {
+    border: 1px solid transparent;
+    border-radius: 24px;
+    padding: 27px 23px;
+    box-shadow: 0 12px 28px #405C4D12;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.home-cards .grid > div:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 35px #405C4D20;
+}
+
+.home-cards .grid > div:nth-child(1) {
+    background: #E5F1E5;
+}
+
+.home-cards .grid > div:nth-child(2) {
+    background: #FCE9DF;
+}
+
+.home-cards .grid > div:nth-child(3) {
+    background: #EDE8F8;
+}
+
+.home-cards .grid > div:nth-child(4) {
+    background: #FFF1D5;
+}
+
+.home-cards .grid > div h3 {
+    color: #285D50;
+}
+
+.home-cards .grid > div p {
+    color: #66776E;
+    line-height: 1.7;
+}
+
+@media (max-width: 850px) {
+    .home-hero {
+        padding: 55px 6%;
+    }
+
+    .home-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .home-hero-content {
+        text-align: center;
+    }
+
+    .home-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .home-hero-actions {
+        justify-content: center;
+    }
+
+    .home-photo-frame {
+        height: 350px;
+    }
+
+    .home-floating-card {
+        left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-hero-content h1 {
+        font-size: 39px;
+    }
+
+    .home-photo-frame {
+        height: 280px;
+        border-radius: 25px;
+    }
+
+    .home-floating-card {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        margin: -25px 10px 0;
+    }
+
+    .home-btn-primary,
+    .home-btn-secondary {
+        width: 100%;
+    }
+}
+
+/* ENCABEZADO BIENESTAR CONTIGO */
+
+.bc-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: rgba(255, 250, 245, .97);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid #E6EDE5;
+}
+
+.bc-header-inner {
+    max-width: 1400px;
+    min-height: 88px;
+    padding: 12px 35px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.bc-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.bc-logo {
+    width: 49px;
+    height: 49px;
+    border-radius: 17px;
+    background: linear-gradient(145deg, #397967, #285D50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 22px;
+    box-shadow: 0 6px 15px #285D5025;
+}
+
+.bc-brand-text span {
+    display: block;
+    color: #285D50;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -.7px;
+}
+
+.bc-brand-text strong {
+    color: #C77D65;
+}
+
+.bc-brand-text small {
+    display: block;
+    font-size: 9px;
+    color: #87958C;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-top: 3px;
+}
+
+.bc-nav {
+    align-items: center;
+    gap: 5px;
+}
+
+.bc-nav button {
+    padding: 11px 12px;
+    border-radius: 12px;
+    color: #61756A;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: all .25s ease;
+}
+
+.bc-nav button i {
+    margin-right: 5px;
+    color: #C77D65;
+}
+
+.bc-nav button:hover {
+    background: #E5F0E3;
+    color: #285D50;
+}
+
+.bc-actions {
+    align-items: center;
+    gap: 9px;
+}
+
+.bc-profile,
+.bc-admin {
+    padding: 12px 16px;
+    border-radius: 13px;
+    font-size: 12px;
+    font-weight: 700;
+    transition: all .25s ease;
+    white-space: nowrap;
+}
+
+.bc-profile {
+    background: #285D50;
+    color: white;
+}
+
+.bc-profile:hover {
+    background: #397967;
+    transform: translateY(-2px);
+}
+
+.bc-admin {
+    background: #F6E7DF;
+    color: #A96852;
+}
+
+.bc-admin:hover {
+    background: #F1D7C9;
+}
+
+.bc-mobile-button {
+    width: 45px;
+    height: 45px;
+    border-radius: 14px;
+    background: #E5F0E3;
+    color: #285D50;
+    font-size: 19px;
+}
+
+.bc-mobile-menu {
+    padding: 12px 22px 22px;
+    background: #FFFAF5;
+    border-top: 1px solid #E6EDE5;
+}
+
+.bc-mobile-menu button {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    width: 100%;
+    padding: 14px 12px;
+    color: #49675A;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 12px;
+}
+
+.bc-mobile-menu button:hover {
+    background: #E5F0E3;
+    color: #285D50;
+}
+
+.bc-mobile-menu button i {
+    width: 20px;
+    color: #C77D65;
+}
+
+.bc-mobile-divider {
+    height: 1px;
+    background: #E6EDE5;
+    margin: 10px 0;
+}
+
+@media (max-width: 1100px) {
+    .bc-header-inner {
+        padding-left: 20px;
+        padding-right: 20px;
+        gap: 12px;
+    }
+
+    .bc-brand-text span {
+        font-size: 18px;
+    }
+
+    .bc-nav button {
+        padding: 10px 8px;
+        font-size: 12px;
+    }
+}
+
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased">
 
-    <!-- TOP NOTICE / MEDICAL DISCLAIMER BANNER -->
-    <div class="bg-brand-darkNavy text-white text-xs sm:text-sm py-2 px-4 text-center font-medium shadow-inner flex justify-between items-center flex-wrap gap-2">
-        <div class="flex-1 text-center">
-            <i class="fa-solid fa-triangle-exclamation text-yellow-400 mr-2"></i>
-            <span><strong>Aviso Importante:</strong> Esta plataforma ofrece orientación emocional inicial y no sustituye la consulta médica o psicológica profesional. En caso de emergencia en Colombia, marca inmediatamente al <strong>123</strong> o <strong>106</strong>.</span>
-        </div>
-        <button onclick="toggleCrisisModal(true)" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-full text-xs font-bold transition flex items-center gap-1 mx-auto sm:mx-0">
-            <i class="fa-solid fa-phone-volume animate-pulse"></i> Líneas de Crisis Colombia
-        </button>
+   <!-- TOP NOTICE / MEDICAL DISCLAIMER BANNER -->
+<div class="bg-[#52796F] text-white text-xs sm:text-sm py-3 px-4 text-center font-medium shadow-sm flex justify-between items-center flex-wrap gap-2">
+    <div class="flex-1 text-center">
+        <i class="fa-solid fa-heart text-[#F6D7C3] mr-2"></i>
+        <span>
+            <strong>Aviso importante:</strong>
+            Esta plataforma ofrece orientación emocional inicial y no sustituye la consulta médica o psicológica profesional. En caso de emergencia en Colombia, marca inmediatamente al <strong>123</strong> o <strong>106</strong>.
+        </span>
     </div>
 
+    <button onclick="toggleCrisisModal(true)"
+        class="bg-[#C96F59] hover:bg-[#B85D49] text-white px-4 py-2 rounded-full text-xs font-bold transition flex items-center gap-2 mx-auto sm:mx-0">
+        <i class="fa-solid fa-phone-volume"></i>
+        Líneas de Crisis Colombia
+    </button>
+</div>
+
     <!-- MAIN HEADER NAVIGATION -->
-    <header class="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex items-center cursor-pointer" onclick="navigateTo('home')">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-darkGreen to-brand-turq flex items-center justify-center text-white shadow-md mr-3">
-                        <i class="fa-solid fa-brain text-xl"></i>
-                    </div>
-                    <div>
-                        <span class="text-2xl font-bold tracking-tight text-brand-darkNavy">BienestarMental<span class="text-brand-turq">+</span></span>
-                        <span class="block text-[10px] text-slate-500 font-semibold tracking-wider uppercase">Colombia</span>
-                    </div>
-                </div>
 
-                <!-- Desktop Navigation Links -->
-                <nav class="hidden lg:flex items-center space-x-1 font-medium text-sm text-slate-700">
-                    <button onclick="navigateTo('home')" id="nav-home" class="px-3 py-2 rounded-lg hover:text-brand-turq hover:bg-slate-100 transition">Inicio</button>
-                    <button onclick="navigateTo('chatbot')" id="nav-chatbot" class="px-3 py-2 rounded-lg hover:text-brand-turq hover:bg-slate-100 transition flex items-center gap-1.5">
-                        <i class="fa-solid fa-robot text-brand-turq"></i> Chatbot IA
-                    </button>
-                    <button onclick="navigateTo('foro')" id="nav-foro" class="px-3 py-2 rounded-lg hover:text-brand-turq hover:bg-slate-100 transition flex items-center gap-1.5">
-                        <i class="fa-solid fa-comments text-emerald-600"></i> Foro Anónimo
-                    </button>
-                    <button onclick="navigateTo('directorio')" id="nav-directorio" class="px-3 py-2 rounded-lg hover:text-brand-turq hover:bg-slate-100 transition flex items-center gap-1.5">
-                        <i class="fa-solid fa-user-doctor text-indigo-600"></i> Especialistas
-                    </button>
-                    <button onclick="navigateTo('biblioteca')" id="nav-biblioteca" class="px-3 py-2 rounded-lg hover:text-brand-turq hover:bg-slate-100 transition flex items-center gap-1.5">
-                        <i class="fa-solid fa-book-open text-amber-600"></i> Biblioteca
-                    </button>
-                    <button onclick="navigateTo('metodologia')" id="nav-metodologia" class="px-3 py-2 rounded-lg hover:text-brand-turq hover:bg-slate-100 transition">Academia</button>
-                </nav>
+<!-- HEADER BIENESTAR CONTIGO -->
+<header class="bc-header">
+    <div class="bc-header-inner">
 
-                <!-- Actions / Auth / Admin -->
-                <div class="hidden lg:flex items-center space-x-3">
-                    <button onclick="navigateTo('perfil')" class="p-2 text-slate-600 hover:text-brand-turq hover:bg-slate-100 rounded-full transition" title="Mi Perfil y Privacidad">
-                        <i class="fa-solid fa-user-gear text-lg"></i>
-                    </button>
-                    <button onclick="navigateTo('admin')" class="px-3 py-1.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg transition flex items-center gap-1.5">
-                        <i class="fa-solid fa-shield-halved text-slate-500"></i> Admin Panel
-                    </button>
-                </div>
+        <!-- LOGO -->
+        <div class="bc-brand" onclick="navigateTo('home')">
+            <div class="bc-logo">
+                <i class="fa-solid fa-heart"></i>
+            </div>
 
-                <!-- Mobile Menu Button -->
-                <div class="flex lg:hidden items-center gap-2">
-                    <button onclick="toggleMobileMenu()" class="p-2 text-slate-700 rounded-lg hover:bg-slate-100 focus:outline-none">
-                        <i class="fa-solid fa-bars text-2xl"></i>
-                    </button>
-                </div>
+            <div class="bc-brand-text">
+                <span>Bienestar <strong>Contigo</strong></span>
+                <small>BIENESTAR EMOCIONAL PARA ESTUDIANTES</small>
             </div>
         </div>
 
-        <!-- Mobile Menu Drawer -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-2">
-            <button onclick="navigateTo('home'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-slate-100 font-medium">Inicio</button>
-            <button onclick="navigateTo('chatbot'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-slate-100 font-medium text-brand-turq">Asistente IA Chatbot</button>
-            <button onclick="navigateTo('foro'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-slate-100 font-medium">Foro Comunitario Anónimo</button>
-            <button onclick="navigateTo('directorio'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-slate-100 font-medium">Directorio de Especialistas</button>
-            <button onclick="navigateTo('biblioteca'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-slate-100 font-medium">Biblioteca de Recursos</button>
-            <button onclick="navigateTo('metodologia'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-slate-100 font-medium">Metodología Académica</button>
-            <div class="pt-3 border-t border-slate-200 flex justify-between items-center">
-                <button onclick="navigateTo('perfil'); toggleMobileMenu()" class="text-sm font-medium text-slate-600 flex items-center gap-2">
-                    <i class="fa-solid fa-user-gear"></i> Perfil & Privacidad
-                </button>
-                <button onclick="navigateTo('admin'); toggleMobileMenu()" class="text-xs font-semibold px-3 py-1.5 bg-slate-100 rounded-lg text-slate-700">
-                    <i class="fa-solid fa-shield-halved"></i> Admin
-                </button>
-            </div>
+        <!-- NAVEGACIÓN DE ESCRITORIO -->
+        <nav class="bc-nav hidden lg:flex">
+
+            <button onclick="navigateTo('home')" id="nav-home">
+                Inicio
+            </button>
+
+            <button onclick="navigateTo('chatbot')" id="nav-chatbot">
+                <i class="fa-solid fa-comments"></i>
+                Chatbot
+            </button>
+
+            <button onclick="navigateTo('foro')" id="nav-foro">
+                <i class="fa-solid fa-users"></i>
+                Comunidad
+            </button>
+
+            <button onclick="navigateTo('directorio')" id="nav-directorio">
+                <i class="fa-solid fa-user-doctor"></i>
+                Especialistas
+            </button>
+
+            <button onclick="navigateTo('biblioteca')" id="nav-biblioteca">
+                <i class="fa-solid fa-book-open"></i>
+                Biblioteca
+            </button>
+
+            <button onclick="navigateTo('metodologia')" id="nav-metodologia">
+                Academia
+            </button>
+
+        </nav>
+
+        <!-- ACCIONES -->
+        <div class="bc-actions hidden lg:flex">
+
+            <button onclick="navigateTo('perfil')" class="bc-profile">
+                <i class="fa-regular fa-user"></i>
+                Mi espacio
+            </button>
+
+            <button onclick="navigateTo('admin')" class="bc-admin">
+                <i class="fa-solid fa-shield-halved"></i>
+                Admin
+            </button>
+
         </div>
-    </header>
+
+        <!-- BOTÓN MENÚ MÓVIL -->
+        <div class="lg:hidden">
+            <button onclick="toggleMobileMenu()"
+                    class="bc-mobile-button"
+                    aria-label="Abrir menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- MENÚ MÓVIL -->
+    <div id="mobile-menu" class="bc-mobile-menu hidden lg:hidden">
+
+        <button onclick="navigateTo('home'); toggleMobileMenu()">
+            <i class="fa-solid fa-house"></i> Inicio
+        </button>
+
+        <button onclick="navigateTo('chatbot'); toggleMobileMenu()">
+            <i class="fa-solid fa-comments"></i> Chatbot
+        </button>
+
+        <button onclick="navigateTo('foro'); toggleMobileMenu()">
+            <i class="fa-solid fa-users"></i> Comunidad
+        </button>
+
+        <button onclick="navigateTo('directorio'); toggleMobileMenu()">
+            <i class="fa-solid fa-user-doctor"></i> Especialistas
+        </button>
+
+        <button onclick="navigateTo('biblioteca'); toggleMobileMenu()">
+            <i class="fa-solid fa-book-open"></i> Biblioteca
+        </button>
+
+        <button onclick="navigateTo('metodologia'); toggleMobileMenu()">
+            <i class="fa-solid fa-graduation-cap"></i> Academia
+        </button>
+
+        <div class="bc-mobile-divider"></div>
+
+        <button onclick="navigateTo('perfil'); toggleMobileMenu()">
+            <i class="fa-regular fa-user"></i> Mi espacio
+        </button>
+
+        <button onclick="navigateTo('admin'); toggleMobileMenu()">
+            <i class="fa-solid fa-shield-halved"></i> Administración
+        </button>
+
+    </div>
+</header>
+
 
     <!-- CONTENT WRAPPER (DYNAMIC SECTIONS) -->
     <main class="flex-grow">
@@ -156,54 +718,76 @@
         <!-- ==================== SECTION 1: HOME ==================== -->
         <section id="sec-home" class="view-section">
             <!-- Hero Banner -->
-<!-- HERO BIENESTAR CONTIGO -->
-<div class="bg-gradient-to-r from-green-50 via-white to-teal-50 py-12 md:py-16 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
-        <div class="text-center md:text-left">
-            <span class="inline-block bg-green-100 text-green-800 text-xs font-bold px-4 py-2 rounded-full mb-5">
-                BIENESTAR CONTIGO
+<!-- HERO BIENESTAR CONTIGO - NUEVO DISEÑO -->
+<div class="home-hero">
+    <div class="home-decoration home-decoration-one"></div>
+    <div class="home-decoration home-decoration-two"></div>
+
+    <div class="home-hero-inner">
+
+        <div class="home-hero-content">
+            <span class="home-eyebrow">
+                <i class="fa-solid fa-heart"></i>
+                UN ESPACIO PARA TI
             </span>
 
-            <h1 class="text-4xl md:text-5xl font-extrabold text-teal-900 leading-tight mb-6">
-                Tu bienestar emocional
-                <span class="block text-green-600">también importa</span>
+            <h1>
+                Está bien no tener
+                <span>todo resuelto.</span>
             </h1>
 
-            <p class="text-lg text-slate-600 leading-relaxed mb-8">
-                Un espacio digital para estudiantes y jóvenes.
-                Encuentra orientación, comparte experiencias y descubre
-                recursos para cuidar tu bienestar emocional.
+            <p class="home-description">
+                Tu bienestar emocional merece un espacio.
+                Encuentra recursos, orientación inicial y una comunidad
+                donde puedas sentirte acompañado.
             </p>
 
-            <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <button onclick="navigateTo('chatbot')"
-                    class="bg-teal-800 hover:bg-teal-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition">
-                    <i class="fa-solid fa-comment-dots mr-2"></i>
-                    Habla con el Chatbot
+            <div class="home-hero-actions">
+                <button onclick="navigateTo('chatbot')" class="home-btn-primary">
+                    <i class="fa-solid fa-comments"></i>
+                    Explorar el chatbot
                 </button>
 
-                <button onclick="navigateTo('biblioteca')"
-                    class="bg-white border-2 border-teal-800 text-teal-900 font-bold py-4 px-6 rounded-xl hover:bg-green-50 transition">
-                    <i class="fa-solid fa-book-open mr-2"></i>
-                    Explorar recursos
+                <button onclick="navigateTo('biblioteca')" class="home-btn-secondary">
+                    Descubrir recursos
+                    <i class="fa-solid fa-arrow-right"></i>
                 </button>
+            </div>
+
+            <div class="home-note">
+                <i class="fa-solid fa-seedling"></i>
+                Pequeños pasos también son avances.
             </div>
         </div>
 
-        <div class="relative">
-         <img
-    src="./estudiantes-latinos.jpg"
-    alt="Estudiantes universitarios latinoamericanos"
-    class="w-full h-[320px] md:h-[420px] object-cover rounded-3xl shadow-xl"
->
+        <div class="home-hero-visual">
+            <div class="home-photo-frame">
+                <img
+                    src="./estudiantes-latinos.jpeg"
+                    alt="Estudiantes universitarios latinoamericanos"
+                >
+            </div>
+
+            <div class="home-floating-card">
+                <div class="home-floating-icon">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <div>
+                    <strong>Tu espacio de bienestar</strong>
+                    <span>Conoce, explora y comparte</span>
+                </div>
+            </div>
+
+            <div class="home-photo-decoration"></div>
         </div>
 
     </div>
 </div>
 
+
             <!-- Quick Access Modules Grid -->
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20 mb-16">
+           <div class="home-cards max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20 mb-16">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <!-- Card 1 -->
                     <div onclick="navigateTo('chatbot')" class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover:shadow-xl hover:border-brand-turq/40 transition cursor-pointer group">
