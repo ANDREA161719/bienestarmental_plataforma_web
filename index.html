@@ -1196,101 +1196,344 @@
         /* CHATBOT CON RESPUESTAS PREDEFINIDAS */
         let chatCount = 0;
 
-        const chatbotResponses = [
-            {
-                keywords: [
-                    'ansiedad', 'ansioso', 'ansiosa', 'angustia',
-                    'nervioso', 'nerviosa', 'estresado', 'estresada',
-                    'abrumado', 'abrumada', 'mucho estrés', 'mucho estres'
-                ],
-                response: 'Siento que estés pasando por un momento de tanta tensión. A veces, cuando se acumulan muchas preocupaciones, puede ser difícil encontrar por dónde empezar. ¿Qué situación es la que más te está preocupando en este momento? Si te resulta cómodo, podemos revisar un paso pequeño para atenderla.'
-            },
-            {
-                keywords: [
-                    'universidad', 'estudio', 'estudios', 'examen',
-                    'materia', 'semestre', 'profesor', 'profesora',
-                    'tarea', 'trabajo académico', 'trabajo academico',
-                    'carrera', 'notas', 'perder el semestre',
-                    'tengo problemas con la universidad',
-                    'tengo problemas en la universidad',
-                    'problemas con mis estudios',
-                    'estoy mal en la universidad',
-                    'me siento mal en la universidad',
-                    'estoy triste por la universidad',
-                    'no me siento bien en la universidad',
-                    'tengo problemas con la carrera',
-                    'me está yendo mal en la universidad',
-                    'me esta yendo mal en la universidad',
-                    'no puedo con la universidad'
-                ],
-                response: 'Lamento que estés teniendo dificultades con la universidad. La carga académica, las evaluaciones y las responsabilidades pueden sentirse abrumadoras. No tienes que resolverlo todo de una vez. ¿Qué te preocupa más: una materia, las notas, los trabajos pendientes o sentir que no estás avanzando? Podemos pensar en un primer paso realista.'
-            },
-            {
-                keywords: [
-                    'trabajo', 'jefe', 'jefa', 'compañero',
-                    'compañera', 'oficina', 'laboral', 'empleo',
-                    'despedido', 'despedida', 'sobrecarga',
-                    'tengo problemas en el trabajo',
-                    'tengo problemas con el trabajo',
-                    'problemas con mi trabajo',
-                    'estoy mal en el trabajo',
-                    'me siento mal en el trabajo',
-                    'estoy triste por el trabajo',
-                    'no me siento bien en el trabajo'
-                ],
-                response: 'Siento que el trabajo esté siendo una fuente de preocupación. Las responsabilidades, el ambiente laboral o las relaciones con otras personas pueden afectar cómo nos sentimos. ¿Qué está ocurriendo en tu trabajo y qué es lo que más te está pesando? Podemos organizar las ideas y pensar en una acción pequeña.'
-            },
-            {
-                keywords: [
-                    'triste', 'tristeza', 'llorar', 'lloro',
-                    'solo', 'sola', 'soledad', 'vacío', 'vacio',
-                    'desanimado', 'desanimada', 'sin ganas',
-                    'me siento muy mal', 'me siento mal',
-                    'estoy mal', 'me siento fatal'
-                ],
-                response: 'Gracias por compartir cómo te sientes. Lamento que estés pasando por un momento difícil. No tienes que encontrar todas las respuestas ahora mismo. Si quieres, cuéntame qué ocurrió o desde cuándo te has sentido así. Puedo ofrecerte orientación inicial y recursos para que explores opciones de apoyo.'
-            },
-            {
-                keywords: [
-                    'desahogarme', 'escuchar', 'hablar',
-                    'necesito hablar', 'quiero hablar',
-                    'necesito que alguien me escuche',
-                    'ayudame por favor', 'por favor ayudame',
-                    'necesito ayuda por favor',
-                    'estoy mal y necesito ayuda',
-                    'no se que hacer', 'no sé qué hacer'
-                ],
-                response: 'Claro, puedes contarme lo que estás viviendo. Este espacio utiliza respuestas predefinidas para ofrecer orientación inicial, no es una persona ni reemplaza el acompañamiento profesional. ¿Qué es lo que te gustaría expresar primero?'
-            },
-            {
-                keywords: [
-                    'respiración', 'respiracion', 'respirar',
-                    'calmarme', 'relajarme', 'relajación', 'relajacion'
-                ],
-                response: 'Podemos hacer una pausa. En la parte superior del chat encontrarás el botón “Ejercicio Respiración”. Allí puedes probar una guía de respiración. Hazla solo si te resulta cómoda y detente si sientes mareo o incomodidad.'
-            },
-            {
-                keywords: [
-                    'psicólogo', 'psicologa', 'psicóloga',
-                    'psiquiatra', 'terapia', 'profesional',
-                    'especialista', 'ayuda profesional'
-                ],
-                response: 'Buscar apoyo profesional puede ser un paso importante. En el menú de Bienestar Contigo encontrarás el Directorio de Especialistas, pensado como una sección de orientación. Verifica siempre la información y las credenciales del profesional antes de iniciar una atención.'
-            },
-            {
-                keywords: [
-                    'hola', 'buenos días', 'buenos dias',
-                    'buenas tardes', 'buenas noches', 'buenas'
-                ],
-                response: '¡Hola! Bienvenido a Bienestar Contigo. Este es un espacio de orientación emocional inicial. Puedes contarme qué te gustaría explorar o seleccionar uno de los temas sugeridos.'
-            },
-            {
-                keywords: [
-                    'gracias', 'muchas gracias', 'te agradezco'
-                ],
-                response: 'Con gusto. Gracias por darte este espacio. Recuerda que pedir apoyo cuando lo necesitas es válido. Puedes explorar la biblioteca de recursos o buscar acompañamiento profesional si lo consideras necesario.'
-            }
-        ];
+
+const chatbotResponses = [
+
+    // 1. MENSAJES DE CRISIS Y RIESGO
+    {
+        keywords: [
+            'quiero suicidarme', 'me quiero suicidar',
+            'quiero quitarme la vida', 'no quiero vivir',
+            'quiero morirme', 'me quiero morir',
+            'quiero hacerme daño', 'voy a hacerme daño',
+            'hacerme daño', 'no puedo mantenerme a salvo',
+            'quiero desaparecer para siempre'
+        ],
+        response: '💚 Gracias por confiarme algo tan importante. Me preocupa que estés pasando por tanto dolor. Tu seguridad es lo primero. Si estás en peligro inmediato o puedes hacerte daño, llama al 123 en Colombia o acude a urgencias. Si puedes, busca ahora mismo a una persona de confianza y procura no quedarte a solas. ¿Estás en peligro inmediato en este momento?'
+    },
+
+    // 2. ANSIEDAD
+    {
+        keywords: [
+            'ansiedad', 'ansioso', 'ansiosa', 'angustia',
+            'tengo ansiedad', 'siento ansiedad',
+            'ataque de ansiedad', 'crisis de ansiedad',
+            'estoy nervioso', 'estoy nerviosa',
+            'no puedo tranquilizarme', 'siento miedo',
+            'me siento inquieto', 'me siento inquieta',
+            'tengo pensamientos acelerados',
+            'no dejo de preocuparme'
+        ],
+        response: '💚 Gracias por contarme cómo te sientes. La ansiedad puede generar preocupación intensa y hacer que todo parezca más difícil. Podemos comenzar con algo sencillo: apoya los pies en el suelo, respira suavemente y observa lo que tienes a tu alrededor. También puedes utilizar nuestro ejercicio de respiración. ¿Hay alguna situación específica que esté provocando esta ansiedad?'
+    },
+
+    // 3. ESTRÉS Y PRESIÓN
+    {
+        keywords: [
+            'estres', 'estoy estresado', 'estoy estresada',
+            'mucho estres', 'demasiado estres',
+            'me siento abrumado', 'me siento abrumada',
+            'estoy bajo presion', 'no soporto la presion',
+            'todo se me acumula', 'tengo demasiadas cosas',
+            'no puedo con tantas cosas',
+            'estoy saturado', 'estoy saturada',
+            'me siento sobrecargado', 'me siento sobrecargada'
+        ],
+        response: 'Entiendo que estás atravesando un momento de mucha presión. Cuando se acumulan las responsabilidades, podemos sentir que no tenemos tiempo para respirar. Te propongo identificar qué es lo más urgente, dividirlo en pequeños pasos y reservar unos minutos para descansar. ¿Qué situación te está generando más estrés actualmente?'
+    },
+
+    // 4. TRISTEZA
+    {
+        keywords: [
+            'estoy triste', 'me siento triste', 'tristeza',
+            'tengo ganas de llorar', 'quiero llorar',
+            'me siento desanimado', 'me siento desanimada',
+            'estoy deprimido', 'estoy deprimida',
+            'nada me alegra', 'me siento vacio',
+            'me siento vacia', 'no tengo animos',
+            'estoy pasando por un mal momento',
+            'me siento fatal', 'me siento muy mal',
+            'hoy no estoy bien'
+        ],
+        response: 'Lamento que estés sintiendo tristeza. 💚 No tienes que fingir que todo está bien ni resolverlo todo ahora mismo. A veces expresar lo que nos ocurre puede ayudarnos a comprender mejor nuestras emociones. ¿Ha sucedido algo recientemente que te haya hecho sentir así o llevas varios días sintiéndote de esta manera?'
+    },
+
+    // 5. SOLEDAD
+    {
+        keywords: [
+            'me siento solo', 'me siento sola',
+            'estoy solo', 'estoy sola',
+            'nadie me escucha', 'nadie me entiende',
+            'no tengo amigos', 'no tengo con quien hablar',
+            'me siento abandonado', 'me siento abandonada',
+            'me siento aislado', 'me siento aislada',
+            'no tengo a nadie', 'me siento incomprendido',
+            'me siento incomprendida'
+        ],
+        response: 'Sentirse solo puede ser muy difícil, especialmente cuando parece que nadie comprende lo que estamos viviendo. 💚 Mereces contar con personas que te escuchen y te acompañen. ¿Hay alguien de confianza con quien te gustaría hablar, aunque sea para compartir cómo ha sido tu día?'
+    },
+
+    // 6. UNIVERSIDAD Y ESTUDIOS
+    {
+        keywords: [
+            'universidad', 'estudio', 'estudios',
+            'estudiar', 'examen', 'examenes',
+            'parciales', 'materias', 'profesor',
+            'profesora', 'trabajo academico',
+            'carga academica', 'carrera',
+            'notas', 'perder el semestre',
+            'voy perdiendo materias', 'perdi una materia',
+            'problemas con mis estudios',
+            'problemas con la universidad',
+            'me va mal en la universidad',
+            'no puedo concentrarme para estudiar',
+            'tengo muchos trabajos pendientes',
+            'miedo de perder el semestre',
+            'no puedo con la universidad',
+            'me siento presionado por estudiar',
+            'me siento presionada por estudiar'
+        ],
+        response: 'Sé que las responsabilidades académicas pueden generar mucha presión. 💚 Cuando hay exámenes, trabajos y fechas de entrega, es fácil sentir que no alcanzamos a cumplir con todo. Podemos organizar tus actividades por prioridad y dividir los trabajos en tareas pequeñas. ¿Qué te preocupa más en este momento: las notas, los exámenes, las entregas o el miedo a perder el semestre?'
+    },
+
+    // 7. TRABAJO Y EMPLEO
+    {
+        keywords: [
+            'mi empleo', 'mi jefe', 'mi jefa',
+            'compañeros de trabajo', 'ambiente laboral',
+            'mucho trabajo', 'demasiado trabajo',
+            'carga laboral', 'presion laboral',
+            'problemas laborales', 'sobrecarga laboral',
+            'me siento agotado por el trabajo',
+            'me siento agotada por el trabajo',
+            'no me valoran en el trabajo',
+            'no me gusta mi trabajo',
+            'quiero renunciar', 'estoy cansado de trabajar',
+            'estoy cansada de trabajar',
+            'me tratan mal en el trabajo',
+            'tengo conflictos con mi jefe'
+        ],
+        response: 'Entiendo que tu situación laboral puede estar afectando tu bienestar. Las exigencias, las relaciones con compañeros y la cantidad de tareas pueden generar agotamiento. Mereces espacios de descanso y un ambiente de respeto. ¿Qué es lo que más te está afectando: la cantidad de trabajo, el trato de otras personas o la presión por cumplir resultados?'
+    },
+
+    // 8. FAMILIA
+    {
+        keywords: [
+            'problemas familiares', 'mi familia',
+            'problemas con mis padres',
+            'problemas con mi mama', 'problemas con mi papa',
+            'discuto con mi familia', 'peleas familiares',
+            'no me entienden en casa',
+            'conflictos en mi hogar', 'problemas en casa',
+            'me siento rechazado por mi familia',
+            'me siento rechazada por mi familia',
+            'mi familia no me apoya',
+            'discuto con mis hermanos'
+        ],
+        response: 'Las situaciones familiares pueden afectar profundamente nuestras emociones. Es comprensible que te sientas preocupado cuando existen conflictos con personas importantes para ti. A veces ayuda identificar qué nos está lastimando y expresar lo que necesitamos con calma. ¿Quieres contarme qué está ocurriendo en tu familia?'
+    },
+
+    // 9. PAREJA Y RELACIONES
+    {
+        keywords: [
+            'problemas con mi pareja', 'mi novio',
+            'mi novia', 'mi esposo', 'mi esposa',
+            'termine con mi pareja', 'me dejaron',
+            'me terminaron', 'infidelidad',
+            'me engañaron', 'relacion toxica',
+            'discuto con mi pareja', 'problemas amorosos',
+            'estoy pasando por una ruptura',
+            'me siento rechazado por mi pareja',
+            'me siento rechazada por mi pareja',
+            'mi pareja no me entiende',
+            'mi pareja me ignora'
+        ],
+        response: 'Las dificultades en una relación pueden generar tristeza, confusión y muchas preguntas. Es importante reconocer cómo te sientes y recordar que mereces respeto y tranquilidad. ¿Qué es lo que más te está afectando de esta situación: una discusión, una ruptura, la falta de comunicación o algo que sucedió?'
+    },
+
+    // 10. AUTOESTIMA
+    {
+        keywords: [
+            'no me quiero', 'no me gusto',
+            'no me siento suficiente', 'baja autoestima',
+            'me siento inferior', 'me comparo con otros',
+            'me comparo con los demas',
+            'no tengo confianza en mi',
+            'no creo en mi', 'me siento incapaz',
+            'no valgo nada', 'no soy suficiente',
+            'no me siento capaz', 'me critico mucho',
+            'odio mi apariencia', 'no me acepto'
+        ],
+        response: 'Quiero recordarte algo importante: tu valor no depende de tus resultados, de tu apariencia ni de la opinión de otras personas. 💚 Aprender a tratarnos con amabilidad también es parte del bienestar emocional. ¿Hay alguna situación o comentario que haya afectado la manera en que te estás viendo a ti mismo?'
+    },
+
+    // 11. DESMOTIVACIÓN
+    {
+        keywords: [
+            'no tengo motivacion', 'estoy desmotivado',
+            'estoy desmotivada', 'no tengo ganas de nada',
+            'perdi las ganas', 'no quiero hacer nada',
+            'me cuesta empezar', 'todo me da pereza',
+            'me siento estancado', 'me siento estancada',
+            'no encuentro mi proposito',
+            'no se que hacer con mi vida',
+            'no tengo objetivos', 'perdi el interes'
+        ],
+        response: 'A veces atravesamos etapas en las que nos cuesta encontrar motivación. No significa que estés fracasando. Podemos comenzar con una meta pequeña y realista para hoy, sin exigirte demasiado. ¿En qué aspecto de tu vida sientes que has perdido más la motivación: estudios, trabajo, relaciones o proyectos personales?'
+    },
+
+    // 12. SUEÑO Y DESCANSO
+    {
+        keywords: [
+            'no puedo dormir', 'no duermo bien',
+            'tengo insomnio', 'me despierto mucho',
+            'duermo poco', 'tengo pesadillas',
+            'me levanto cansado', 'me levanto cansada',
+            'no puedo descansar', 'tengo sueño todo el dia',
+            'me cuesta dormir', 'paso la noche despierto',
+            'paso la noche despierta',
+            'me despierto en la madrugada'
+        ],
+        response: 'Dormir y descansar es importante para nuestro bienestar. Puedes intentar mantener horarios regulares, reducir el uso de pantallas antes de acostarte y realizar una actividad tranquila que te ayude a desconectarte. ¿Lo que te impide dormir son las preocupaciones, los horarios o la dificultad para conciliar el sueño?'
+    },
+
+    // 13. ORGANIZACIÓN Y PROCRASTINACIÓN
+    {
+        keywords: [
+            'no se organizar mi tiempo', 'no tengo tiempo',
+            'procrastino', 'dejo todo para despues',
+            'tengo muchas tareas', 'no se por donde empezar',
+            'soy desorganizado', 'soy desorganizada',
+            'no cumplo mis horarios', 'me distraigo mucho',
+            'no puedo organizarme', 'tengo muchas responsabilidades',
+            'no me alcanza el tiempo',
+            'no logro concentrarme', 'pospongo todo'
+        ],
+        response: 'Podemos trabajar en una organización más sencilla. 🌱 Te propongo escribir tus pendientes, identificar cuáles son urgentes y elegir solo una actividad para comenzar. No necesitas resolver todo de inmediato. ¿Quieres organizar tus actividades de estudio, trabajo o ambas?'
+    },
+
+    // 14. FRUSTRACIÓN Y FRACASO
+    {
+        keywords: [
+            'siento que fracase', 'soy un fracaso',
+            'todo me sale mal', 'nada me sale bien',
+            'estoy frustrado', 'estoy frustrada',
+            'me equivoque', 'cometi un error',
+            'tengo miedo de fracasar', 'no logre mi objetivo',
+            'me fue mal', 'decepcione a todos',
+            'no cumpli mis metas', 'me siento frustrado'
+        ],
+        response: 'Cometer errores o no alcanzar un objetivo puede ser frustrante. Pero una dificultad no define quién eres ni determina todo tu futuro. Podemos revisar qué ocurrió, qué aprendiste y cuál podría ser el siguiente paso. ¿Qué situación te hizo sentir que fracasaste?'
+    },
+
+    // 15. MIEDO Y PREOCUPACIÓN
+    {
+        keywords: [
+            'tengo miedo', 'siento mucho miedo',
+            'estoy preocupado', 'estoy preocupada',
+            'me preocupa el futuro', 'tengo incertidumbre',
+            'no se que va a pasar', 'pienso demasiado',
+            'no dejo de pensar', 'tengo pensamientos negativos',
+            'me da miedo equivocarme',
+            'tengo miedo al futuro',
+            'me preocupa lo que viene'
+        ],
+        response: 'Es comprensible sentir miedo cuando enfrentamos situaciones inciertas. A veces nuestra mente intenta anticipar todos los escenarios posibles. Podemos concentrarnos en aquello que sí está bajo tu control y avanzar paso a paso. ¿Qué es lo que más temor te genera en este momento?'
+    },
+
+    // 16. RESPIRACIÓN Y RELAJACIÓN
+    {
+        keywords: [
+            'ejercicio de respiracion', 'quiero respirar',
+            'necesito calmarme', 'quiero relajarme',
+            'ejercicio de calma', 'como me tranquilizo',
+            'tecnica 478', 'respiracion 4 7 8',
+            'quiero hacer el ejercicio de respiracion',
+            'me siento muy agitado', 'estoy muy agitada',
+            'necesito tranquilidad'
+        ],
+        response: 'Podemos intentar una pausa de bienestar. 💚 En Bienestar Contigo tienes disponible el ejercicio guiado de respiración 4-7-8. Si te resulta cómodo, úsalo suavemente, sin forzar el aire ni mantener la respiración si sientes molestias. También puedes respirar de forma natural y tranquila. ¿Quieres realizar el ejercicio ahora?'
+    },
+
+    // 17. NECESIDAD DE HABLAR
+    {
+        keywords: [
+            'necesito hablar', 'quiero hablar con alguien',
+            'necesito desahogarme', 'quiero desahogarme',
+            'puedo contarte algo', 'quiero contarte algo',
+            'necesito que me escuches', 'quiero ser escuchado',
+            'quiero ser escuchada', 'tengo algo que contar',
+            'no tengo a quien contarle',
+            'necesito expresar lo que siento'
+        ],
+        response: 'Claro, puedes contarme lo que estás viviendo. 💚 No tienes que organizar tus ideas ni encontrar las palabras perfectas. Puedes comenzar por lo que más te preocupa. Soy Lía, un asistente virtual que ofrece orientación inicial mediante respuestas programadas. ¿Qué quisieras compartir conmigo?'
+    },
+
+    // 18. AYUDA PROFESIONAL
+    {
+        keywords: [
+            'necesito un psicologo', 'quiero un psicologo',
+            'necesito ayuda profesional', 'ayuda psicologica',
+            'quiero ir a terapia', 'necesito terapia',
+            'quiero hablar con un profesional',
+            'necesito ayuda emocional',
+            'donde encuentro un psicologo',
+            'buscar profesional', 'necesito un especialista',
+            'quiero recibir orientacion profesional'
+        ],
+        response: 'Buscar apoyo profesional puede ser un paso muy valioso para cuidar tu bienestar. 💚 Puedes consultar los servicios de orientación psicológica de tu universidad, tu EPS o un profesional de psicología habilitado. Si estás atravesando una situación urgente o no puedes mantenerte a salvo, busca atención inmediata. ¿Te gustaría recibir orientación sobre cómo dar ese primer paso?'
+    },
+
+    // 19. BIENESTAR Y HÁBITOS SALUDABLES
+    {
+        keywords: [
+            'quiero estar mejor', 'quiero sentirme bien',
+            'quiero mejorar mi bienestar',
+            'quiero cambiar', 'quiero cuidar mi salud emocional',
+            'como puedo sentirme mejor',
+            'quiero aprender a manejar mis emociones',
+            'como controlo mis emociones',
+            'quiero tener habitos saludables',
+            'necesito tranquilidad',
+            'quiero cuidar de mi'
+        ],
+        response: 'Me alegra que quieras cuidar de ti. 💚 El bienestar emocional se construye con pequeños hábitos: descansar, expresar lo que sientes, mantener vínculos de apoyo, realizar actividades agradables y pedir ayuda cuando la necesitas. ¿Qué aspecto de tu bienestar te gustaría comenzar a fortalecer?'
+    },
+
+    // 20. AGRADECIMIENTO
+    {
+        keywords: [
+            'gracias', 'muchas gracias',
+            'te agradezco', 'gracias por escucharme',
+            'me ayudaste', 'fuiste de ayuda',
+            'gracias lia', 'gracias por responder'
+        ],
+        response: 'Con mucho gusto. 💚 Gracias por darte este espacio y compartir lo que estás viviendo. Recuerda que cuidar de tu bienestar es importante. Puedes seguir explorando los recursos de Bienestar Contigo y buscar apoyo de personas de confianza o profesionales cuando lo necesites.'
+    },
+
+    // 21. SALUDOS
+    {
+        keywords: [
+            'hola', 'buenos dias', 'buenas tardes',
+            'buenas noches', 'buenas',
+            'como estas', 'que tal'
+        ],
+        response: '¡Hola! 💚 Soy Lía, tu asistente virtual de Bienestar Contigo. Este es un espacio para explorar tus emociones y conocer recursos de orientación inicial. ¿Cómo te sientes hoy?'
+    },
+
+    // 22. RESPUESTA GENERAL
+    {
+        keywords: [
+            'estoy mal', 'me siento mal',
+            'necesito ayuda', 'ayudame por favor',
+            'no estoy bien', 'tengo problemas',
+            'me siento raro', 'me siento rara',
+            'no se que hacer', 'no sé qué hacer'
+        ],
+        response: 'Gracias por compartirlo conmigo. 💚 Lamento que no estés pasando por un buen momento. No tienes que explicar todo de una vez. Podemos ir paso a paso. ¿Lo que estás viviendo está relacionado con tus emociones, tus estudios, el trabajo, tu familia o alguna situación personal?'
+    }
+
+];
 
         function normalizeText(value) {
             return value
