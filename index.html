@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <script>
         tailwind.config = {
             theme: {
@@ -64,742 +64,656 @@
         .animate-breathe {
             animation: breatheAnimation 8s ease-in-out infinite;
         }
-        
-/* ======================================
-   BIENESTAR CONTIGO - IDENTIDAD VISUAL
-====================================== */
-
-:root {
-    --bc-cream: #FFF8F0;
-    --bc-sage: #DDEBDD;
-    --bc-green: #285D50;
-    --bc-peach: #F6D8C9;
-    --bc-lavender: #E9E2F7;
-    --bc-yellow: #F8EBC5;
-    --bc-text: #29483F;
-}
-
-body {
-    background: #FFF9F3;
-    color: var(--bc-text);
-}
-
-.home-hero {
-    position: relative;
-    overflow: hidden;
-    padding: 75px 6%;
-    background:
-        radial-gradient(circle at 10% 15%, #F6D8C9 0%, transparent 28%),
-        radial-gradient(circle at 90% 80%, #DDEBDD 0%, transparent 35%),
-        linear-gradient(120deg, #FFF8F0, #F1F7EE);
-}
-
-.home-hero-inner {
-    max-width: 1250px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 65px;
-    position: relative;
-    z-index: 2;
-}
-
-.home-decoration {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-}
-
-.home-decoration-one {
-    width: 220px;
-    height: 220px;
-    background: #F6D8C9;
-    opacity: .35;
-    top: -100px;
-    right: 35%;
-}
-
-.home-decoration-two {
-    width: 180px;
-    height: 180px;
-    background: #DDEBDD;
-    opacity: .65;
-    bottom: -80px;
-    left: 10%;
-}
-
-.home-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    background: #E5F0E3;
-    color: #285D50;
-    padding: 11px 18px;
-    border-radius: 30px;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 1.2px;
-    margin-bottom: 24px;
-}
-
-.home-hero-content h1 {
-    font-size: clamp(38px, 4.5vw, 62px);
-    line-height: 1.08;
-    font-weight: 800;
-    letter-spacing: -2px;
-    color: #285D50;
-    margin-bottom: 24px;
-}
-
-.home-hero-content h1 span {
-    display: block;
-    color: #C77D65;
-}
-
-.home-description {
-    max-width: 520px;
-    color: #63756C;
-    font-size: 17px;
-    line-height: 1.8;
-    margin-bottom: 30px;
-}
-
-.home-hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-}
-
-.home-btn-primary,
-.home-btn-secondary {
-    padding: 16px 23px;
-    border-radius: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all .3s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.home-btn-primary {
-    color: white;
-    background: #285D50;
-    box-shadow: 0 8px 20px #285D5030;
-}
-
-.home-btn-primary:hover {
-    background: #397967;
-    transform: translateY(-3px);
-}
-
-.home-btn-secondary {
-    color: #285D50;
-    background: white;
-    border: 1px solid #D6E4D6;
-}
-
-.home-btn-secondary:hover {
-    background: #E5F0E3;
-    transform: translateY(-3px);
-}
-
-.home-note {
-    margin-top: 27px;
-    color: #789184;
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.home-note i {
-    color: #C77D65;
-    margin-right: 7px;
-}
-
-.home-hero-visual {
-    position: relative;
-    padding: 15px;
-}
-
-.home-photo-frame {
-    height: 430px;
-    border-radius: 38px 38px 90px 38px;
-    overflow: hidden;
-    position: relative;
-    z-index: 2;
-    box-shadow: 0 25px 50px #285D5025;
-    border: 9px solid white;
-}
-
-.home-photo-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.home-photo-decoration {
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    background: #F6D8C9;
-    right: -5px;
-    bottom: -10px;
-    z-index: 1;
-}
-
-.home-floating-card {
-    position: absolute;
-    left: -35px;
-    bottom: 35px;
-    z-index: 3;
-    background: white;
-    padding: 17px 20px;
-    border-radius: 18px;
-    box-shadow: 0 12px 35px #285D5020;
-    display: flex;
-    align-items: center;
-    gap: 13px;
-}
-
-.home-floating-icon {
-    width: 45px;
-    height: 45px;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #F6D8C9;
-    color: #B96F58;
-    font-size: 20px;
-}
-
-.home-floating-card strong {
-    display: block;
-    color: #285D50;
-    font-size: 13px;
-}
-
-.home-floating-card span {
-    display: block;
-    color: #87958C;
-    font-size: 11px;
-    margin-top: 4px;
-}
-
-.home-cards {
-    margin-top: -35px;
-    position: relative;
-    z-index: 5;
-}
-
-.home-cards .grid > div {
-    border: 1px solid transparent;
-    border-radius: 24px;
-    padding: 27px 23px;
-    box-shadow: 0 12px 28px #405C4D12;
-    transition: transform .3s ease, box-shadow .3s ease;
-}
-
-.home-cards .grid > div:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 18px 35px #405C4D20;
-}
-
-.home-cards .grid > div:nth-child(1) {
-    background: #E5F1E5;
-}
-
-.home-cards .grid > div:nth-child(2) {
-    background: #FCE9DF;
-}
-
-.home-cards .grid > div:nth-child(3) {
-    background: #EDE8F8;
-}
-
-.home-cards .grid > div:nth-child(4) {
-    background: #FFF1D5;
-}
-
-.home-cards .grid > div h3 {
-    color: #285D50;
-}
-
-.home-cards .grid > div p {
-    color: #66776E;
-    line-height: 1.7;
-}
-
-@media (max-width: 850px) {
-    .home-hero {
-        padding: 55px 6%;
-    }
-
-    .home-hero-inner {
-        grid-template-columns: 1fr;
-        gap: 35px;
-    }
-
-    .home-hero-content {
-        text-align: center;
-    }
-
-    .home-description {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .home-hero-actions {
-        justify-content: center;
-    }
-
-    .home-photo-frame {
-        height: 350px;
-    }
-
-    .home-floating-card {
-        left: 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .home-hero-content h1 {
-        font-size: 39px;
-    }
-
-    .home-photo-frame {
-        height: 280px;
-        border-radius: 25px;
-    }
-
-    .home-floating-card {
-        position: relative;
-        left: auto;
-        bottom: auto;
-        margin: -25px 10px 0;
-    }
-
-    .home-btn-primary,
-    .home-btn-secondary {
-        width: 100%;
-    }
-}
-
-/* ENCABEZADO BIENESTAR CONTIGO */
-
-.bc-header {
-    position: sticky;
-    top: 0;
-    z-index: 40;
-    background: rgba(255, 250, 245, .97);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid #E6EDE5;
-}
-
-.bc-header-inner {
-    max-width: 1400px;
-    min-height: 88px;
-    padding: 12px 35px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.bc-brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    flex-shrink: 0;
-}
-
-.bc-logo {
-    width: 49px;
-    height: 49px;
-    border-radius: 17px;
-    background: linear-gradient(145deg, #397967, #285D50);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 22px;
-    box-shadow: 0 6px 15px #285D5025;
-}
-
-.bc-brand-text span {
-    display: block;
-    color: #285D50;
-    font-size: 21px;
-    font-weight: 800;
-    letter-spacing: -.7px;
-}
-
-.bc-brand-text strong {
-    color: #C77D65;
-}
-
-.bc-brand-text small {
-    display: block;
-    font-size: 9px;
-    color: #87958C;
-    letter-spacing: 1px;
-    font-weight: 700;
-    margin-top: 3px;
-}
-
-.bc-nav {
-    align-items: center;
-    gap: 5px;
-}
-
-.bc-nav button {
-    padding: 11px 12px;
-    border-radius: 12px;
-    color: #61756A;
-    font-size: 13px;
-    font-weight: 600;
-    white-space: nowrap;
-    transition: all .25s ease;
-}
-
-.bc-nav button i {
-    margin-right: 5px;
-    color: #C77D65;
-}
-
-.bc-nav button:hover {
-    background: #E5F0E3;
-    color: #285D50;
-}
-
-.bc-actions {
-    align-items: center;
-    gap: 9px;
-}
-
-.bc-profile,
-.bc-admin {
-    padding: 12px 16px;
-    border-radius: 13px;
-    font-size: 12px;
-    font-weight: 700;
-    transition: all .25s ease;
-    white-space: nowrap;
-}
-
-.bc-profile {
-    background: #285D50;
-    color: white;
-}
-
-.bc-profile:hover {
-    background: #397967;
-    transform: translateY(-2px);
-}
-
-.bc-admin {
-    background: #F6E7DF;
-    color: #A96852;
-}
-
-.bc-admin:hover {
-    background: #F1D7C9;
-}
-
-.bc-mobile-button {
-    width: 45px;
-    height: 45px;
-    border-radius: 14px;
-    background: #E5F0E3;
-    color: #285D50;
-    font-size: 19px;
-}
-
-.bc-mobile-menu {
-    padding: 12px 22px 22px;
-    background: #FFFAF5;
-    border-top: 1px solid #E6EDE5;
-}
-
-.bc-mobile-menu button {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    width: 100%;
-    padding: 14px 12px;
-    color: #49675A;
-    text-align: left;
-    font-size: 14px;
-    font-weight: 600;
-    border-radius: 12px;
-}
-
-.bc-mobile-menu button:hover {
-    background: #E5F0E3;
-    color: #285D50;
-}
-
-.bc-mobile-menu button i {
-    width: 20px;
-    color: #C77D65;
-}
-
-.bc-mobile-divider {
-    height: 1px;
-    background: #E6EDE5;
-    margin: 10px 0;
-}
-
-@media (max-width: 1100px) {
-    .bc-header-inner {
-        padding-left: 20px;
-        padding-right: 20px;
-        gap: 12px;
-    }
-
-    .bc-brand-text span {
-        font-size: 18px;
-    }
-
-    .bc-nav button {
-        padding: 10px 8px;
-        font-size: 12px;
-    }
-}
 
+        /* ======================================
+           BIENESTAR CONTIGO - IDENTIDAD VISUAL
+        ====================================== */
+
+        :root {
+            --bc-cream: #FFF8F0;
+            --bc-sage: #DDEBDD;
+            --bc-green: #285D50;
+            --bc-peach: #F6D8C9;
+            --bc-lavender: #E9E2F7;
+            --bc-yellow: #F8EBC5;
+            --bc-text: #29483F;
+        }
+
+        body {
+            background: #FFF9F3;
+            color: var(--bc-text);
+        }
+
+        .home-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 75px 6%;
+            background:
+                radial-gradient(circle at 10% 15%, #F6D8C9 0%, transparent 28%),
+                radial-gradient(circle at 90% 80%, #DDEBDD 0%, transparent 35%),
+                linear-gradient(120deg, #FFF8F0, #F1F7EE);
+        }
+
+        .home-hero-inner {
+            max-width: 1250px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 65px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .home-decoration {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .home-decoration-one {
+            width: 220px;
+            height: 220px;
+            background: #F6D8C9;
+            opacity: .35;
+            top: -100px;
+            right: 35%;
+        }
+
+        .home-decoration-two {
+            width: 180px;
+            height: 180px;
+            background: #DDEBDD;
+            opacity: .65;
+            bottom: -80px;
+            left: 10%;
+        }
+
+        .home-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            background: #E5F0E3;
+            color: #285D50;
+            padding: 11px 18px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            margin-bottom: 24px;
+        }
+
+        .home-hero-content h1 {
+            font-size: clamp(38px, 4.5vw, 62px);
+            line-height: 1.08;
+            font-weight: 800;
+            letter-spacing: -2px;
+            color: #285D50;
+            margin-bottom: 24px;
+        }
+
+        .home-hero-content h1 span {
+            display: block;
+            color: #C77D65;
+        }
+
+        .home-description {
+            max-width: 520px;
+            color: #63756C;
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .home-hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .home-btn-primary,
+        .home-btn-secondary {
+            padding: 16px 23px;
+            border-radius: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all .3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .home-btn-primary {
+            color: white;
+            background: #285D50;
+            box-shadow: 0 8px 20px #285D5030;
+        }
+
+        .home-btn-primary:hover {
+            background: #397967;
+            transform: translateY(-3px);
+        }
+
+        .home-btn-secondary {
+            color: #285D50;
+            background: white;
+            border: 1px solid #D6E4D6;
+        }
+
+        .home-btn-secondary:hover {
+            background: #E5F0E3;
+            transform: translateY(-3px);
+        }
+
+        .home-note {
+            margin-top: 27px;
+            color: #789184;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .home-note i {
+            color: #C77D65;
+            margin-right: 7px;
+        }
+
+        .home-hero-visual {
+            position: relative;
+            padding: 15px;
+        }
+
+        .home-photo-frame {
+            height: 430px;
+            border-radius: 38px 38px 90px 38px;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 25px 50px #285D5025;
+            border: 9px solid white;
+        }
+
+        .home-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .home-photo-decoration {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: #F6D8C9;
+            right: -5px;
+            bottom: -10px;
+            z-index: 1;
+        }
+
+        .home-floating-card {
+            position: absolute;
+            left: -35px;
+            bottom: 35px;
+            z-index: 3;
+            background: white;
+            padding: 17px 20px;
+            border-radius: 18px;
+            box-shadow: 0 12px 35px #285D5020;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .home-floating-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #F6D8C9;
+            color: #B96F58;
+            font-size: 20px;
+        }
+
+        .home-floating-card strong {
+            display: block;
+            color: #285D50;
+            font-size: 13px;
+        }
+
+        .home-floating-card span {
+            display: block;
+            color: #87958C;
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        .home-cards {
+            margin-top: -35px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .home-cards .grid > div {
+            border: 1px solid transparent;
+            border-radius: 24px;
+            padding: 27px 23px;
+            box-shadow: 0 12px 28px #405C4D12;
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        .home-cards .grid > div:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 35px #405C4D20;
+        }
+
+        .home-cards .grid > div:nth-child(1) {
+            background: #E5F1E5;
+        }
+
+        .home-cards .grid > div:nth-child(2) {
+            background: #FCE9DF;
+        }
+
+        .home-cards .grid > div:nth-child(3) {
+            background: #EDE8F8;
+        }
+
+        .home-cards .grid > div:nth-child(4) {
+            background: #FFF1D5;
+        }
+
+        .home-cards .grid > div h3 {
+            color: #285D50;
+        }
+
+        .home-cards .grid > div p {
+            color: #66776E;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 850px) {
+            .home-hero {
+                padding: 55px 6%;
+            }
+
+            .home-hero-inner {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .home-hero-content {
+                text-align: center;
+            }
+
+            .home-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .home-hero-actions {
+                justify-content: center;
+            }
+
+            .home-photo-frame {
+                height: 350px;
+            }
+
+            .home-floating-card {
+                left: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .home-hero-content h1 {
+                font-size: 39px;
+            }
+
+            .home-photo-frame {
+                height: 280px;
+                border-radius: 25px;
+            }
+
+            .home-floating-card {
+                position: relative;
+                left: auto;
+                bottom: auto;
+                margin: -25px 10px 0;
+            }
+
+            .home-btn-primary,
+            .home-btn-secondary {
+                width: 100%;
+            }
+        }
+
+        /* ENCABEZADO BIENESTAR CONTIGO */
+
+        .bc-header {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background: rgba(255, 250, 245, .97);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid #E6EDE5;
+        }
+
+        .bc-header-inner {
+            max-width: 1400px;
+            min-height: 88px;
+            padding: 12px 35px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .bc-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .bc-logo {
+            width: 49px;
+            height: 49px;
+            border-radius: 17px;
+            background: linear-gradient(145deg, #397967, #285D50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+            box-shadow: 0 6px 15px #285D5025;
+        }
+
+        .bc-brand-text span {
+            display: block;
+            color: #285D50;
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: -.7px;
+        }
+
+        .bc-brand-text strong {
+            color: #C77D65;
+        }
+
+        .bc-brand-text small {
+            display: block;
+            font-size: 9px;
+            color: #87958C;
+            letter-spacing: 1px;
+            font-weight: 700;
+            margin-top: 3px;
+        }
+
+        .bc-nav {
+            align-items: center;
+            gap: 5px;
+        }
+
+        .bc-nav button {
+            padding: 11px 12px;
+            border-radius: 12px;
+            color: #61756A;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: all .25s ease;
+        }
+
+        .bc-nav button i {
+            margin-right: 5px;
+            color: #C77D65;
+        }
+
+        .bc-nav button:hover {
+            background: #E5F0E3;
+            color: #285D50;
+        }
+
+        .bc-actions {
+            align-items: center;
+            gap: 9px;
+        }
+
+        .bc-profile,
+        .bc-admin {
+            padding: 12px 16px;
+            border-radius: 13px;
+            font-size: 12px;
+            font-weight: 700;
+            transition: all .25s ease;
+            white-space: nowrap;
+        }
+
+        .bc-profile {
+            background: #285D50;
+            color: white;
+        }
+
+        .bc-profile:hover {
+            background: #397967;
+            transform: translateY(-2px);
+        }
+
+        .bc-admin {
+            background: #F6E7DF;
+            color: #A96852;
+        }
+
+        .bc-admin:hover {
+            background: #F1D7C9;
+        }
+
+        .bc-mobile-button {
+            width: 45px;
+            height: 45px;
+            border-radius: 14px;
+            background: #E5F0E3;
+            color: #285D50;
+            font-size: 19px;
+        }
+
+        .bc-mobile-menu {
+            padding: 12px 22px 22px;
+            background: #FFFAF5;
+            border-top: 1px solid #E6EDE5;
+        }
+
+        .bc-mobile-menu button {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            width: 100%;
+            padding: 14px 12px;
+            color: #49675A;
+            text-align: left;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 12px;
+        }
+
+        .bc-mobile-menu button:hover {
+            background: #E5F0E3;
+            color: #285D50;
+        }
+
+        .bc-mobile-menu button i {
+            width: 20px;
+            color: #C77D65;
+        }
+
+        .bc-mobile-divider {
+            height: 1px;
+            background: #E6EDE5;
+            margin: 10px 0;
+        }
+
+        @media (max-width: 1100px) {
+            .bc-header-inner {
+                padding-left: 20px;
+                padding-right: 20px;
+                gap: 12px;
+            }
+
+            .bc-brand-text span {
+                font-size: 18px;
+            }
+
+            .bc-nav button {
+                padding: 10px 8px;
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased">
 
-   <!-- TOP NOTICE / MEDICAL DISCLAIMER BANNER -->
-<div class="bg-[#52796F] text-white text-xs sm:text-sm py-3 px-4 text-center font-medium shadow-sm flex justify-between items-center flex-wrap gap-2">
-    <div class="flex-1 text-center">
-        <i class="fa-solid fa-heart text-[#F6D7C3] mr-2"></i>
-        <span>
-            <strong>Aviso importante:</strong>
-            Esta plataforma ofrece orientación emocional inicial y no sustituye la consulta médica o psicológica profesional. En caso de emergencia en Colombia, marca inmediatamente al <strong>123</strong> o <strong>106</strong>.
-        </span>
-    </div>
-
-    <button onclick="toggleCrisisModal(true)"
-        class="bg-[#C96F59] hover:bg-[#B85D49] text-white px-4 py-2 rounded-full text-xs font-bold transition flex items-center gap-2 mx-auto sm:mx-0">
-        <i class="fa-solid fa-phone-volume"></i>
-        Líneas de Crisis Colombia
-    </button>
-</div>
-
-    <!-- MAIN HEADER NAVIGATION -->
-
-<!-- HEADER BIENESTAR CONTIGO -->
-<header class="bc-header">
-    <div class="bc-header-inner">
-
-        <!-- LOGO -->
-        <div class="bc-brand" onclick="navigateTo('home')">
-            <div class="bc-logo">
-                <i class="fa-solid fa-heart"></i>
-            </div>
-
-            <div class="bc-brand-text">
-                <span>Bienestar <strong>Contigo</strong></span>
-                <small>BIENESTAR EMOCIONAL PARA ESTUDIANTES</small>
-            </div>
-        </div>
-
-        <!-- NAVEGACIÓN DE ESCRITORIO -->
-        <nav class="bc-nav hidden lg:flex">
-
-            <button onclick="navigateTo('home')" id="nav-home">
-                Inicio
-            </button>
-
-            <button onclick="navigateTo('chatbot')" id="nav-chatbot">
-                <i class="fa-solid fa-comments"></i>
-                Chatbot
-            </button>
-
-            <button onclick="navigateTo('foro')" id="nav-foro">
-                <i class="fa-solid fa-users"></i>
-                Comunidad
-            </button>
-
-            <button onclick="navigateTo('directorio')" id="nav-directorio">
-                <i class="fa-solid fa-user-doctor"></i>
-                Especialistas
-            </button>
-
-            <button onclick="navigateTo('biblioteca')" id="nav-biblioteca">
-                <i class="fa-solid fa-book-open"></i>
-                Biblioteca
-            </button>
-
-            <button onclick="navigateTo('metodologia')" id="nav-metodologia">
-                Academia
-            </button>
-
-        </nav>
-
-        <!-- ACCIONES -->
-        <div class="bc-actions hidden lg:flex">
-
-            <button onclick="navigateTo('perfil')" class="bc-profile">
-                <i class="fa-regular fa-user"></i>
-                Mi espacio
-            </button>
-
-            <button onclick="navigateTo('admin')" class="bc-admin">
-                <i class="fa-solid fa-shield-halved"></i>
-                Admin
-            </button>
-
-        </div>
-
-        <!-- BOTÓN MENÚ MÓVIL -->
-        <div class="lg:hidden">
-            <button onclick="toggleMobileMenu()"
-                    class="bc-mobile-button"
-                    aria-label="Abrir menú">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </div>
-
-    </div>
-
-    <!-- MENÚ MÓVIL -->
-    <div id="mobile-menu" class="bc-mobile-menu hidden lg:hidden">
-
-        <button onclick="navigateTo('home'); toggleMobileMenu()">
-            <i class="fa-solid fa-house"></i> Inicio
-        </button>
-
-        <button onclick="navigateTo('chatbot'); toggleMobileMenu()">
-            <i class="fa-solid fa-comments"></i> Chatbot
-        </button>
-
-        <button onclick="navigateTo('foro'); toggleMobileMenu()">
-            <i class="fa-solid fa-users"></i> Comunidad
-        </button>
-
-        <button onclick="navigateTo('directorio'); toggleMobileMenu()">
-            <i class="fa-solid fa-user-doctor"></i> Especialistas
-        </button>
-
-        <button onclick="navigateTo('biblioteca'); toggleMobileMenu()">
-            <i class="fa-solid fa-book-open"></i> Biblioteca
-        </button>
-
-        <button onclick="navigateTo('metodologia'); toggleMobileMenu()">
-            <i class="fa-solid fa-graduation-cap"></i> Academia
-        </button>
-
-        <div class="bc-mobile-divider"></div>
-
-        <button onclick="navigateTo('perfil'); toggleMobileMenu()">
-            <i class="fa-regular fa-user"></i> Mi espacio
-        </button>
-
-        <button onclick="navigateTo('admin'); toggleMobileMenu()">
-            <i class="fa-solid fa-shield-halved"></i> Administración
-        </button>
-
-    </div>
-</header>
-
-
-    <!-- CONTENT WRAPPER (DYNAMIC SECTIONS) -->
-    <main class="flex-grow">
-        
-        <!-- ==================== SECTION 1: HOME ==================== -->
-        <section id="sec-home" class="view-section">
-            <!-- Hero Banner -->
-
-<!-- HERO BIENESTAR CONTIGO - NUEVO DISEÑO -->
-<div class="home-hero">
-    <div class="home-decoration home-decoration-one"></div>
-    <div class="home-decoration home-decoration-two"></div>
-
-    <div class="home-hero-inner">
-
-        <div class="home-hero-content">
-            <span class="home-eyebrow">
-                <i class="fa-solid fa-heart"></i>
-                UN ESPACIO PARA TI
+    <!-- TOP NOTICE / MEDICAL DISCLAIMER BANNER -->
+    <div class="bg-[#52796F] text-white text-xs sm:text-sm py-3 px-4 text-center font-medium shadow-sm flex justify-between items-center flex-wrap gap-2">
+        <div class="flex-1 text-center">
+            <i class="fa-solid fa-heart text-[#F6D7C3] mr-2"></i>
+            <span>
+                <strong>Aviso importante:</strong>
+                Esta plataforma ofrece orientación emocional inicial y no sustituye la consulta médica o psicológica profesional. En caso de emergencia en Colombia, marca inmediatamente al <strong>123</strong> o <strong>106</strong>.
             </span>
-
-            <h1>
-                Está bien no tener
-                <span>todo resuelto.</span>
-            </h1>
-
-            <p class="home-description">
-                Tu bienestar emocional merece un espacio.
-                Encuentra recursos, orientación inicial y una comunidad
-                donde puedas sentirte acompañado.
-            </p>
-
-            <div class="home-hero-actions">
-                <button onclick="navigateTo('chatbot')" class="home-btn-primary">
-                    <i class="fa-solid fa-comments"></i>
-                    Explorar el chatbot
-                </button>
-
-                <button onclick="navigateTo('biblioteca')" class="home-btn-secondary">
-                    Descubrir recursos
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
-
-            <div class="home-note">
-                <i class="fa-solid fa-seedling"></i>
-                Pequeños pasos también son avances.
-            </div>
         </div>
 
-        <div class="home-hero-visual">
-            <div class="home-photo-frame">
-                <img
-                    src="./estudiantes-latinos.jpeg"
-                    alt="Estudiantes universitarios latinoamericanos"
-                >
-            </div>
+        <button onclick="toggleCrisisModal(true)"
+            class="bg-[#C96F59] hover:bg-[#B85D49] text-white px-4 py-2 rounded-full text-xs font-bold transition flex items-center gap-2 mx-auto sm:mx-0">
+            <i class="fa-solid fa-phone-volume"></i>
+            Líneas de Crisis Colombia
+        </button>
+    </div>
 
-            <div class="home-floating-card">
-                <div class="home-floating-icon">
+    <!-- HEADER BIENESTAR CONTIGO -->
+    <header class="bc-header">
+        <div class="bc-header-inner">
+            <div class="bc-brand" onclick="navigateTo('home')">
+                <div class="bc-logo">
                     <i class="fa-solid fa-heart"></i>
                 </div>
-                <div>
-                    <strong>Tu espacio de bienestar</strong>
-                    <span>Conoce, explora y comparte</span>
+                <div class="bc-brand-text">
+                    <span>Bienestar <strong>Contigo</strong></span>
+                    <small>BIENESTAR EMOCIONAL PARA ESTUDIANTES</small>
                 </div>
             </div>
 
-            <div class="home-photo-decoration"></div>
+            <nav class="bc-nav hidden lg:flex">
+                <button onclick="navigateTo('home')" id="nav-home">Inicio</button>
+                <button onclick="navigateTo('chatbot')" id="nav-chatbot">
+                    <i class="fa-solid fa-comments"></i>Chatbot
+                </button>
+                <button onclick="navigateTo('foro')" id="nav-foro">
+                    <i class="fa-solid fa-users"></i>Comunidad
+                </button>
+                <button onclick="navigateTo('directorio')" id="nav-directorio">
+                    <i class="fa-solid fa-user-doctor"></i>Especialistas
+                </button>
+                <button onclick="navigateTo('biblioteca')" id="nav-biblioteca">
+                    <i class="fa-solid fa-book-open"></i>Biblioteca
+                </button>
+                <button onclick="navigateTo('metodologia')" id="nav-metodologia">Academia</button>
+            </nav>
+
+            <div class="bc-actions hidden lg:flex">
+                <button onclick="navigateTo('perfil')" class="bc-profile">
+                    <i class="fa-regular fa-user"></i> Mi espacio
+                </button>
+                <button onclick="navigateTo('admin')" class="bc-admin">
+                    <i class="fa-solid fa-shield-halved"></i> Admin
+                </button>
+            </div>
+
+            <div class="lg:hidden">
+                <button onclick="toggleMobileMenu()" class="bc-mobile-button" aria-label="Abrir menú">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
         </div>
 
-    </div>
-</div>
+        <div id="mobile-menu" class="bc-mobile-menu hidden lg:hidden">
+            <button onclick="navigateTo('home'); toggleMobileMenu()"><i class="fa-solid fa-house"></i> Inicio</button>
+            <button onclick="navigateTo('chatbot'); toggleMobileMenu()"><i class="fa-solid fa-comments"></i> Chatbot</button>
+            <button onclick="navigateTo('foro'); toggleMobileMenu()"><i class="fa-solid fa-users"></i> Comunidad</button>
+            <button onclick="navigateTo('directorio'); toggleMobileMenu()"><i class="fa-solid fa-user-doctor"></i> Especialistas</button>
+            <button onclick="navigateTo('biblioteca'); toggleMobileMenu()"><i class="fa-solid fa-book-open"></i> Biblioteca</button>
+            <button onclick="navigateTo('metodologia'); toggleMobileMenu()"><i class="fa-solid fa-graduation-cap"></i> Academia</button>
+            <div class="bc-mobile-divider"></div>
+            <button onclick="navigateTo('perfil'); toggleMobileMenu()"><i class="fa-regular fa-user"></i> Mi espacio</button>
+            <button onclick="navigateTo('admin'); toggleMobileMenu()"><i class="fa-solid fa-shield-halved"></i> Administración</button>
+        </div>
+    </header>
 
+    <!-- CONTENT WRAPPER -->
+    <main class="flex-grow">
+        <section id="sec-home" class="view-section">
+            <div class="home-hero">
+                <div class="home-decoration home-decoration-one"></div>
+                <div class="home-decoration home-decoration-two"></div>
 
-            <!-- Quick Access Modules Grid -->
-           <div class="home-cards max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20 mb-16">
+                <div class="home-hero-inner">
+                    <div class="home-hero-content">
+                        <span class="home-eyebrow">
+                            <i class="fa-solid fa-heart"></i> UN ESPACIO PARA TI
+                        </span>
+
+                        <h1>Está bien no tener <span>todo resuelto.</span></h1>
+
+                        <p class="home-description">
+                            Tu bienestar emocional merece un espacio.
+                            Encuentra recursos, orientación inicial y una comunidad
+                            donde puedas sentirte acompañado.
+                        </p>
+
+                        <div class="home-hero-actions">
+                            <button onclick="navigateTo('chatbot')" class="home-btn-primary">
+                                <i class="fa-solid fa-comments"></i> Explorar el chatbot
+                            </button>
+                            <button onclick="navigateTo('biblioteca')" class="home-btn-secondary">
+                                Descubrir recursos <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <div class="home-note">
+                            <i class="fa-solid fa-seedling"></i> Pequeños pasos también son avances.
+                        </div>
+                    </div>
+
+                    <div class="home-hero-visual">
+                        <div class="home-photo-frame">
+                            <img src="./estudiantes-latinos.jpeg" alt="Estudiantes universitarios latinoamericanos">
+                        </div>
+                        <div class="home-floating-card">
+                            <div class="home-floating-icon"><i class="fa-solid fa-heart"></i></div>
+                            <div>
+                                <strong>Tu espacio de bienestar</strong>
+                                <span>Conoce, explora y comparte</span>
+                            </div>
+                        </div>
+                        <div class="home-photo-decoration"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="home-cards max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20 mb-16">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Card 1 -->
                     <div onclick="navigateTo('chatbot')" class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover:shadow-xl hover:border-brand-turq/40 transition cursor-pointer group">
                         <div class="w-12 h-12 rounded-xl bg-teal-50 text-brand-turq flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
                             <i class="fa-solid fa-robot"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-brand-turq transition">Chatbot IA Empático</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-4">Orientación emocional 24/7, desahogo guiado y ejercicios interactivos de respiración.</p>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-brand-turq transition">Chatbot de orientación</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">Orientación emocional inicial, desahogo guiado y ejercicios interactivos de respiración.</p>
                         <span class="text-xs font-bold text-brand-turq flex items-center gap-1">Hablar ahora <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
 
-                    <!-- Card 2 -->
                     <div onclick="navigateTo('foro')" class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover:shadow-xl hover:border-emerald-500/40 transition cursor-pointer group">
                         <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
                             <i class="fa-solid fa-users text-2xl"></i>
@@ -809,7 +723,6 @@ body {
                         <span class="text-xs font-bold text-emerald-600 flex items-center gap-1">Entrar al foro <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
 
-                    <!-- Card 3 -->
                     <div onclick="navigateTo('directorio')" class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover:shadow-xl hover:border-indigo-500/40 transition cursor-pointer group">
                         <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
                             <i class="fa-solid fa-user-doctor"></i>
@@ -819,7 +732,6 @@ body {
                         <span class="text-xs font-bold text-indigo-600 flex items-center gap-1">Buscar especialista <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
 
-                    <!-- Card 4 -->
                     <div onclick="navigateTo('biblioteca')" class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 hover:shadow-xl hover:border-amber-500/40 transition cursor-pointer group">
                         <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
                             <i class="fa-solid fa-book-open"></i>
@@ -831,46 +743,39 @@ body {
                 </div>
             </div>
 
-            <!-- Problem Context & Digital Solution -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
                 <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-slate-200/80 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div>
                         <span class="text-brand-turq font-bold text-xs uppercase tracking-widest">Enfoque Social Colombia</span>
                         <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2 mb-6">Transformando el acceso a la salud mental</h2>
                         <p class="text-slate-600 mb-6 leading-relaxed">
-                            En Colombia, la dispersión geográfica, los costos de consulta y el estigma social impiden que millones de personas reciban apoyo psicoemocional a tiempo. <strong>BienestarMental+</strong> nace como una iniciativa tecnológica que complementa la labor humana, no para reemplazar a los profesionales, sino para acercar el apoyo a quien más lo necesita.
+                            En Colombia, la dispersión geográfica, los costos de consulta y el estigma social impiden que millones de personas reciban apoyo psicoemocional a tiempo. <strong>Bienestar Contigo</strong> nace como una iniciativa tecnológica que complementa la labor humana, no para reemplazar a los profesionales, sino para acercar el apoyo a quien más lo necesita.
                         </p>
                         <div class="space-y-4">
                             <div class="flex items-start gap-3">
-                                <div class="w-6 h-6 rounded-full bg-teal-100 text-brand-turq flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <i class="fa-solid fa-check text-xs"></i>
-                                </div>
+                                <div class="w-6 h-6 rounded-full bg-teal-100 text-brand-turq flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fa-solid fa-check text-xs"></i></div>
                                 <p class="text-sm text-slate-700"><strong>Inclusivo y Gratuito:</strong> Herramientas públicas sin costos ocultos.</p>
                             </div>
                             <div class="flex items-start gap-3">
-                                <div class="w-6 h-6 rounded-full bg-teal-100 text-brand-turq flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <i class="fa-solid fa-check text-xs"></i>
-                                </div>
+                                <div class="w-6 h-6 rounded-full bg-teal-100 text-brand-turq flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fa-solid fa-check text-xs"></i></div>
                                 <p class="text-sm text-slate-700"><strong>Privacidad por Diseño:</strong> Cumplimiento estricto con la Ley 1581 de 2012 de Colombia.</p>
                             </div>
                             <div class="flex items-start gap-3">
-                                <div class="w-6 h-6 rounded-full bg-teal-100 text-brand-turq flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <i class="fa-solid fa-check text-xs"></i>
-                                </div>
+                                <div class="w-6 h-6 rounded-full bg-teal-100 text-brand-turq flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fa-solid fa-check text-xs"></i></div>
                                 <p class="text-sm text-slate-700"><strong>Detección de Crisis:</strong> Protocolos activos para direccionar a líneas de atención de emergencia.</p>
                             </div>
                         </div>
                     </div>
                     <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
                         <h3 class="font-bold text-slate-800 text-base mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-shield-halved text-brand-darkGreen"></i> Seguridad y Uso Responsable de IA
+                            <i class="fa-solid fa-shield-halved text-brand-darkGreen"></i> Seguridad y Uso Responsable
                         </h3>
                         <p class="text-xs text-slate-600 leading-relaxed mb-4">
-                            Nuestros asistentes de inteligencia artificial están entrenados bajo reglas éticas de no emisión de diagnósticos clínicos ni formulación de medicamentos.
+                            El asistente utiliza respuestas predefinidas y no emite diagnósticos clínicos ni formula medicamentos.
                         </p>
                         <div class="bg-white p-4 rounded-xl border border-slate-200/80 mb-4">
                             <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Protección de Datos Sensibles</h4>
-                            <p class="text-xs text-slate-500">No registramos nombres reales en foros ni conservamos registros identificables sin tu consentimiento explícito.</p>
+                            <p class="text-xs text-slate-500">No compartas información personal sensible en espacios públicos.</p>
                         </div>
                         <button onclick="navigateTo('perfil')" class="text-xs font-semibold text-brand-turq hover:underline">Ver Políticas de Datos y Consentimiento Informado &rarr;</button>
                     </div>
@@ -878,11 +783,9 @@ body {
             </div>
         </section>
 
-        <!-- ==================== SECTION 2: CHATBOT IA ==================== -->
+        <!-- CHATBOT -->
         <section id="sec-chatbot" class="view-section hidden max-w-6xl mx-auto px-4 py-8">
             <div class="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden flex flex-col h-[780px]">
-                
-                <!-- Chat Header -->
                 <div class="bg-gradient-to-r from-brand-deepTeal to-brand-darkNavy p-4 sm:p-6 text-white flex justify-between items-center">
                     <div class="flex items-center gap-3">
                         <div class="relative">
@@ -893,10 +796,10 @@ body {
                         </div>
                         <div>
                             <h2 class="font-bold text-lg flex items-center gap-2">
-                                Asistente BienestarMental+ 
-                                <span class="bg-teal-800/80 text-teal-200 text-[10px] uppercase font-semibold px-2 py-0.5 rounded-full border border-teal-500/30">Demostración IA</span>
+                                Asistente Bienestar Contigo
+                                <span class="bg-teal-800/80 text-teal-200 text-[10px] uppercase font-semibold px-2 py-0.5 rounded-full border border-teal-500/30">Respuestas predefinidas</span>
                             </h2>
-                            <p class="text-xs text-teal-200">Acompañamiento empático inicial &bull; Confidencial</p>
+                            <p class="text-xs text-teal-200">Orientación inicial &bull; No sustituye apoyo profesional</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
@@ -909,34 +812,24 @@ body {
                     </div>
                 </div>
 
-                <!-- Emergency Banner inside Chat -->
                 <div class="bg-amber-50 border-b border-amber-200 px-4 py-2 flex justify-between items-center text-xs text-amber-900">
-                    <span><i class="fa-solid fa-heart-pulse text-amber-600 mr-1.5"></i> Si te encuentras en un momento de crisis severa o riesgo personal, por favor solicita ayuda inmediata.</span>
+                    <span><i class="fa-solid fa-heart-pulse text-amber-600 mr-1.5"></i> Si te encuentras en un momento de crisis severa o riesgo personal, solicita ayuda inmediata.</span>
                     <button onclick="toggleCrisisModal(true)" class="font-bold text-amber-800 underline ml-2 whitespace-nowrap">Ver Líneas Colombia</button>
                 </div>
 
-                <!-- Chat Messages Scroll Container -->
-                <div id="chat-messages" class="flex-grow p-4 sm:p-6 overflow-y-auto space-y-4 bg-slate-50/50">
-                    <!-- Messages will be dynamically rendered here -->
-                </div>
+                <div id="chat-messages" class="flex-grow p-4 sm:p-6 overflow-y-auto space-y-4 bg-slate-50/50"></div>
 
-                <!-- Quick Prompts / Chips -->
                 <div class="px-4 py-2 bg-white border-t border-slate-100 flex gap-2 overflow-x-auto text-xs whitespace-nowrap">
-                    <button onclick="sendQuickPrompt('Me siento muy abrumado y con ansiedad')" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-brand-turq border border-slate-200 text-slate-700 transition">
-                        😰 Siento mucha ansiedad
-                    </button>
-                    <button onclick="sendQuickPrompt('Necesito desahogarme un momento')" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-brand-turq border border-slate-200 text-slate-700 transition">
-                        💬 Necesito desahogarme
-                    </button>
-                    <button onclick="sendQuickPrompt('Quiero hacer un ejercicio para calmarme')" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-brand-turq border border-slate-200 text-slate-700 transition">
-                        🧘 Ejercicio de calma
-                    </button>
-                    <button onclick="sendQuickPrompt('¿Dónde encuentro un psicólogo en Colombia?')" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-brand-turq border border-slate-200 text-slate-700 transition">
-                        👨‍⚕️ Buscar profesional
-                    </button>
+                    <button onclick="sendQuickPrompt('Me siento muy abrumado y con ansiedad')" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-brand-turq border border-slate-200 text-slate-700 transition">😰 Siento mucha ansiedad</button>
+                    <button onclick="sendQuickPrompt('Necesito desahogarme un momento')" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-brand-turq border border-slate-200 text-slate-700 transition">💬 Necesito desahogarme</button>
+                    <button onclick="sendQuickPrompt('Quiero hacer un ejercicio para calmarme')" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-brand-turq border border-slate-200 text-slate-700 transition">🧘 Ejercicio de calma</button>
+                    <button onclick="sendQuickPrompt('¿Dónde encuentro un psicólogo en Colombia?')" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-brand-turq border border-slate-200 text-slate-700 transition">👨‍⚕️ Buscar profesional</button>
+                    <button onclick="sendQuickPrompt('Estoy mal y necesito ayuda por favor')" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-brand-turq border border-slate-200 text-slate-700 transition">💚 Estoy mal</button>
+                    <button onclick="sendQuickPrompt('Tengo problemas con la universidad')" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-brand-turq border border-slate-200 text-slate-700 transition">🎓 Problemas con la universidad</button>
+                    <button onclick="sendQuickPrompt('Tengo problemas con el trabajo')" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-brand-turq border border-slate-200 text-slate-700 transition">💼 Problemas con el trabajo</button>
+                    <button onclick="sendQuickPrompt('Estoy triste y quiero hablar')" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-brand-turq border border-slate-200 text-slate-700 transition">💧 Estoy triste</button>
                 </div>
 
-                <!-- Chat Input Bar -->
                 <form onsubmit="handleChatSubmit(event)" class="p-3 sm:p-4 bg-white border-t border-slate-200 flex gap-2 items-center">
                     <input type="text" id="chat-input" placeholder="Escribe cómo te sientes hoy..." class="flex-grow px-4 py-3 bg-slate-100 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-turq/50 focus:bg-white transition" />
                     <button type="submit" class="bg-brand-turq hover:bg-teal-600 text-white font-semibold px-5 py-3 rounded-xl transition flex items-center gap-1">
@@ -947,7 +840,7 @@ body {
             </div>
         </section>
 
-        <!-- ==================== SECTION 3: FORO ANÓNIMO ==================== -->
+        <!-- FORO ANÓNIMO -->
         <section id="sec-foro" class="view-section hidden max-w-7xl mx-auto px-4 py-8">
             <div class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
@@ -960,9 +853,7 @@ body {
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-                <!-- Sidebar Categories & Guidelines -->
                 <div class="lg:col-span-1 space-y-6">
-                    <!-- Rules Box -->
                     <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                         <h3 class="font-bold text-slate-800 text-sm mb-3 flex items-center gap-2">
                             <i class="fa-solid fa-shield-cat text-emerald-600"></i> Reglas del Foro
@@ -975,49 +866,39 @@ body {
                         </ul>
                     </div>
 
-                    <!-- Filter Categories -->
                     <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                         <h3 class="font-bold text-slate-800 text-sm mb-3">Filtrar por Tema</h3>
                         <div class="space-y-1" id="forum-categories-list">
                             <button onclick="filterForum('Todas')" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-700 flex justify-between items-center">
-                                <span>Todas las categorías</span>
-                                <span id="count-cat-todas" class="bg-emerald-200/60 px-2 py-0.5 rounded-full text-[10px]">0</span>
+                                <span>Todas las categorías</span><span id="count-cat-todas" class="bg-emerald-200/60 px-2 py-0.5 rounded-full text-[10px]">0</span>
                             </button>
                             <button onclick="filterForum('Ansiedad')" class="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100 flex justify-between items-center">
-                                <span>Ansiedad y Estrés</span>
-                                <span id="count-cat-ansiedad" class="bg-slate-200 px-2 py-0.5 rounded-full text-[10px]">0</span>
+                                <span>Ansiedad y Estrés</span><span id="count-cat-ansiedad" class="bg-slate-200 px-2 py-0.5 rounded-full text-[10px]">0</span>
                             </button>
                             <button onclick="filterForum('Duelo')" class="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100 flex justify-between items-center">
-                                <span>Duelo y Pérdida</span>
-                                <span id="count-cat-duelo" class="bg-slate-200 px-2 py-0.5 rounded-full text-[10px]">0</span>
+                                <span>Duelo y Pérdida</span><span id="count-cat-duelo" class="bg-slate-200 px-2 py-0.5 rounded-full text-[10px]">0</span>
                             </button>
                             <button onclick="filterForum('Laboral')" class="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100 flex justify-between items-center">
-                                <span>Estrés Académico/Laboral</span>
-                                <span id="count-cat-laboral" class="bg-slate-200 px-2 py-0.5 rounded-full text-[10px]">0</span>
+                                <span>Estrés Académico/Laboral</span><span id="count-cat-laboral" class="bg-slate-200 px-2 py-0.5 rounded-full text-[10px]">0</span>
                             </button>
                             <button onclick="filterForum('Relaciones')" class="w-full text-left px-3 py-2 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100 flex justify-between items-center">
-                                <span>Relaciones Interpersonales</span>
-                                <span id="count-cat-relaciones" class="bg-slate-200 px-2 py-0.5 rounded-full text-[10px]">0</span>
+                                <span>Relaciones Interpersonales</span><span id="count-cat-relaciones" class="bg-slate-200 px-2 py-0.5 rounded-full text-[10px]">0</span>
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Forum Posts List -->
-                <div class="lg:col-span-3 space-y-4" id="forum-posts-container">
-                    <!-- Posts will be dynamically generated -->
-                </div>
+                <div class="lg:col-span-3 space-y-4" id="forum-posts-container"></div>
             </div>
         </section>
 
-        <!-- ==================== SECTION 4: DIRECTORIO DE ESPECIALISTAS ==================== -->
+        <!-- DIRECTORIO DE ESPECIALISTAS -->
         <section id="sec-directorio" class="view-section hidden max-w-7xl mx-auto px-4 py-8">
             <div class="mb-8">
                 <h1 class="text-3xl font-extrabold text-slate-900">Directorio de Especialistas Verificados</h1>
                 <p class="text-slate-600 text-sm mt-1">Conecta con psicólogos y psiquiatras registrados en Colombia. Perfiles verificados de demostración.</p>
             </div>
 
-            <!-- Search & Filters Bar -->
             <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-slate-200 mb-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
                     <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Especialidad</label>
@@ -1049,13 +930,10 @@ body {
                 </div>
             </div>
 
-            <!-- Specialists Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="specialists-grid">
-                <!-- Dynamically populated specialist cards -->
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="specialists-grid"></div>
         </section>
 
-        <!-- ==================== SECTION 5: BIBLIOTECA EDUCACIONAL ==================== -->
+        <!-- BIBLIOTECA -->
         <section id="sec-biblioteca" class="view-section hidden max-w-7xl mx-auto px-4 py-8">
             <div class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
@@ -1068,7 +946,6 @@ body {
                 </div>
             </div>
 
-            <!-- Categories Tabs -->
             <div class="flex gap-2 overflow-x-auto pb-4 mb-6 text-xs font-semibold" id="biblio-tabs">
                 <button onclick="setBiblioTab('Todos')" class="biblio-tab-btn active bg-brand-darkNavy text-white px-4 py-2 rounded-xl whitespace-nowrap">Todos los Recursos</button>
                 <button onclick="setBiblioTab('Ansiedad')" class="biblio-tab-btn bg-white text-slate-700 border border-slate-200 px-4 py-2 rounded-xl whitespace-nowrap hover:bg-slate-50">Ansiedad y Estrés</button>
@@ -1077,13 +954,10 @@ body {
                 <button onclick="setBiblioTab('Regulacion')" class="biblio-tab-btn bg-white text-slate-700 border border-slate-200 px-4 py-2 rounded-xl whitespace-nowrap hover:bg-slate-50">Regulación Emocional</button>
             </div>
 
-            <!-- Articles Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="articles-grid">
-                <!-- Dynamically populated articles -->
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="articles-grid"></div>
         </section>
 
-        <!-- ==================== SECTION 6: PERFIL & PRIVACIDAD ==================== -->
+        <!-- PERFIL Y PRIVACIDAD -->
         <section id="sec-perfil" class="view-section hidden max-w-4xl mx-auto px-4 py-8">
             <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
                 <div class="flex items-center gap-4 mb-6 pb-6 border-b border-slate-100">
@@ -1097,23 +971,20 @@ body {
                 </div>
 
                 <div class="space-y-6">
-                    <!-- Session / Demo Account Status -->
                     <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
                         <h3 class="font-bold text-slate-800 text-sm mb-1">Estado de Sesión Anónima</h3>
                         <p class="text-xs text-slate-600 mb-3">Te encuentras navegando en modo seguro de demostración. No se han recopilado datos identificables de tu navegador.</p>
                         <div class="flex items-center gap-2 text-xs">
                             <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                            <span class="font-semibold text-slate-700">Sesión Encriptada en Cliente (HTTPS Simulado)</span>
+                            <span class="font-semibold text-slate-700">Sesión de demostración</span>
                         </div>
                     </div>
 
-                    <!-- ARCO Rights (Ley 1581) -->
                     <div>
                         <h3 class="font-bold text-slate-800 text-base mb-3">Derechos ARCO (Acceso, Rectificación, Cancelación y Oposición)</h3>
                         <p class="text-xs text-slate-600 mb-4 leading-relaxed">
                             Conforme al Habeas Data colombiano, tienes derecho a conocer, actualizar y solicitar la supresión de tus registros almacenados en cualquier momento.
                         </p>
-                        
                         <div class="space-y-3">
                             <button onclick="exportUserData()" class="w-full sm:w-auto px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2">
                                 <i class="fa-solid fa-download"></i> Descargar mis datos locales (JSON)
@@ -1124,12 +995,11 @@ body {
                         </div>
                     </div>
 
-                    <!-- Consent Informado -->
                     <div class="pt-6 border-t border-slate-100">
                         <h3 class="font-bold text-slate-800 text-base mb-2">Consentimiento Informado</h3>
                         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-2">
-                            <p>1. Entiendo que BienestarMental+ no reemplaza psicoterapia clínica continuada.</p>
-                            <p>2. Acepto que en caso de detectar riesgos inminentes a mi integridad o la de terceros, el sistema desplegará información de servicios de emergencia oficiales.</p>
+                            <p>1. Entiendo que Bienestar Contigo no reemplaza psicoterapia clínica continuada.</p>
+                            <p>2. En caso de riesgo inmediato, debo buscar ayuda de los servicios de emergencia.</p>
                             <p>3. Doy mi consentimiento libre y voluntario para el uso de herramientas psicoeducativas.</p>
                         </div>
                     </div>
@@ -1137,45 +1007,43 @@ body {
             </div>
         </section>
 
-        <!-- ==================== SECTION 7: PANEL ADMINISTRATIVO ==================== -->
+        <!-- ADMINISTRACIÓN -->
         <section id="sec-admin" class="view-section hidden max-w-7xl mx-auto px-4 py-8">
             <div class="mb-8 flex justify-between items-center">
                 <div>
                     <h1 class="text-3xl font-extrabold text-slate-900 flex items-center gap-2">
-                        Panel de Administración y Métricas <span class="text-xs bg-slate-200 text-slate-700 px-2 py-1 rounded-md">Protegido</span>
+                        Panel de Administración y Métricas <span class="text-xs bg-slate-200 text-slate-700 px-2 py-1 rounded-md">Demostración</span>
                     </h1>
-                    <p class="text-slate-600 text-sm mt-1">Supervisión agregada de la plataforma, moderación del foro e indicadores de impacto.</p>
+                    <p class="text-slate-600 text-sm mt-1">Supervisión de demostración, moderación del foro e indicadores.</p>
                 </div>
                 <button onclick="exportMetrics()" class="bg-brand-darkNavy hover:bg-slate-800 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition flex items-center gap-2">
                     <i class="fa-solid fa-file-export"></i> Exportar Métricas
                 </button>
             </div>
 
-            <!-- Aggregated KPI Cards -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                     <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Interacciones Chatbot</div>
-                    <div class="text-3xl font-extrabold text-brand-turq" id="metric-chats">1,248</div>
-                    <span class="text-[10px] text-emerald-600 font-semibold">+18% esta semana</span>
+                    <div class="text-3xl font-extrabold text-brand-turq" id="metric-chats">0</div>
+                    <span class="text-[10px] text-slate-500 font-semibold">Contador de demostración</span>
                 </div>
                 <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                     <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Publicaciones Foro</div>
                     <div class="text-3xl font-extrabold text-emerald-600" id="metric-posts">0</div>
-                    <span class="text-[10px] text-slate-500 font-semibold">Moderación activa</span>
+                    <span class="text-[10px] text-slate-500 font-semibold">Publicaciones locales</span>
                 </div>
                 <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                     <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Consultas Directorio</div>
-                    <div class="text-3xl font-extrabold text-indigo-600">382</div>
-                    <span class="text-[10px] text-slate-500 font-semibold">Derivación efectiva</span>
+                    <div class="text-3xl font-extrabold text-indigo-600" id="metric-directory">0</div>
+                    <span class="text-[10px] text-slate-500 font-semibold">Consultas de demostración</span>
                 </div>
                 <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                    <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Satisfacción (CSAT)</div>
-                    <div class="text-3xl font-extrabold text-amber-500">4.8 / 5</div>
-                    <span class="text-[10px] text-slate-500 font-semibold">Basado en encuestas</span>
+                    <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Ejercicios Respiración</div>
+                    <div class="text-3xl font-extrabold text-amber-500" id="metric-breathing">0</div>
+                    <span class="text-[10px] text-slate-500 font-semibold">Inicios de ejercicio</span>
                 </div>
             </div>
 
-            <!-- Moderation Table -->
             <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden mb-8">
                 <div class="p-4 bg-slate-50 border-b border-slate-200 font-bold text-slate-800 text-sm flex justify-between items-center">
                     <span><i class="fa-solid fa-list-check text-brand-turq mr-2"></i> Cola de Moderación de Publicaciones</span>
@@ -1187,16 +1055,15 @@ body {
             </div>
         </section>
 
-        <!-- ==================== SECTION 8: METODOLOGÍA Y ACADEMIA ==================== -->
+        <!-- METODOLOGÍA -->
         <section id="sec-metodologia" class="view-section hidden max-w-7xl mx-auto px-4 py-8">
             <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200 mb-8">
                 <span class="text-brand-turq font-bold text-xs uppercase tracking-widest">Proyecto Académico Colombia</span>
                 <h1 class="text-3xl font-extrabold text-slate-900 mt-2 mb-4">Modelo de Transformación Digital en Salud Mental</h1>
                 <p class="text-slate-600 leading-relaxed text-sm max-w-4xl mb-8">
-                    Este desarrollo responde al proyecto marco de investigación aplicada para validar el impacto de las tecnologías digitales emergentes en la reducción de barreras de acceso al acompañamiento emocional en regiones urbanas y rurales de Colombia.
+                    Este desarrollo responde a un proyecto académico para explorar el uso de tecnologías digitales como apoyo al acceso a orientación emocional inicial.
                 </p>
 
-                <!-- Framework Cards -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
                         <div class="w-10 h-10 rounded-xl bg-teal-100 text-brand-darkGreen flex items-center justify-center font-bold mb-3">1</div>
@@ -1206,17 +1073,16 @@ body {
                     <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
                         <div class="w-10 h-10 rounded-xl bg-teal-100 text-brand-darkGreen flex items-center justify-center font-bold mb-3">2</div>
                         <h3 class="font-bold text-slate-800 mb-2">Diseño Centrado en el Usuario</h3>
-                        <p class="text-xs text-slate-600 leading-relaxed">Interfaces accesibles para estudiantes, adultos mayores e individuos con diversidad de alfabetización digital.</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">Interfaces accesibles para estudiantes y personas con distintos niveles de alfabetización digital.</p>
                     </div>
                     <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
                         <div class="w-10 h-10 rounded-xl bg-teal-100 text-brand-darkGreen flex items-center justify-center font-bold mb-3">3</div>
                         <h3 class="font-bold text-slate-800 mb-2">Metodología Scrum</h3>
-                        <p class="text-xs text-slate-600 leading-relaxed">Desarrollo incremental organizado por Sprints con priorización de módulos críticos de atención e integración.</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">Desarrollo incremental organizado por etapas y priorización de módulos principales.</p>
                     </div>
                 </div>
             </div>
         </section>
-
     </main>
 
     <!-- FOOTER -->
@@ -1226,1436 +1092,726 @@ body {
                 <div class="space-y-3">
                     <div class="flex items-center gap-2">
                         <div class="w-8 h-8 rounded-lg bg-brand-turq flex items-center justify-center text-white">
-                            <i class="fa-solid fa-brain"></i>
+                            <i class="fa-solid fa-heart"></i>
                         </div>
-                        <span class="text-xl font-bold">BienestarMental+</span>
+                        <span class="text-xl font-bold">Bienestar Contigo</span>
                     </div>
                     <p class="text-xs text-slate-400 leading-relaxed">
-                        Plataforma digital de acompañamiento emocional para Colombia. Tecnología con propósito social y empatía.
+                        Plataforma digital de orientación emocional inicial. Tecnología con propósito social y empatía.
                     </p>
-                </div>
-                <div>
-                    <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">Navegación</h4>
-                    <ul class="text-xs text-slate-400 space-y-2">
-                        <li><button onclick="navigateTo('chatbot')" class="hover:text-white">Chatbot IA Empático</button></li>
-                        <li><button onclick="navigateTo('foro')" class="hover:text-white">Foro Anónimo</button></li>
-                        <li><button onclick="navigateTo('directorio')" class="hover:text-white">Directorio Profesional</button></li>
-                        <li><button onclick="navigateTo('biblioteca')" class="hover:text-white">Biblioteca de Recursos</button></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">Líneas de Crisis Colombia</h4>
-                    <ul class="text-xs text-slate-400 space-y-2">
-                        <li><strong>Bogotá:</strong> Línea 106 / WhatsApp 300 754 8933</li>
-                        <li><strong>Medellín:</strong> Línea 106 / (604) 444 4448</li>
-                        <li><strong>Cali:</strong> Línea 106 / 106 Opción 1</li>
-                        <li><strong>Nacional Mujer:</strong> Línea 155</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">Seguridad & Legal</h4>
-                    <p class="text-xs text-slate-400 leading-relaxed mb-2">
-                        Cumplimiento de la Ley 1581 de 2012 de Protección de Datos Personales en Colombia.
-                    </p>
-                    <button onclick="navigateTo('perfil')" class="text-xs text-brand-turq hover:underline">Ver políticas de datos</button>
                 </div>
             </div>
-            <div class="pt-6 border-t border-slate-800 text-center text-xs text-slate-500">
-                &copy; 2026 BienestarMental+ Colombia. Proyecto Académico de Transformación Digital en Salud Mental.
+            <div class="border-t border-slate-700 pt-6 text-center text-xs text-slate-400">
+                © 2026 Bienestar Contigo. Proyecto académico.
             </div>
         </div>
     </footer>
 
-    <!-- ==================== MODALS & OVERLAYS ==================== -->
-
-    <!-- EMERGENCY CRISIS MODAL -->
-    <div id="modal-crisis" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative border-2 border-red-500">
-            <button onclick="toggleCrisisModal(false)" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl">
+    <!-- MODAL RESPIRACIÓN -->
+    <div id="modal-breathing" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl w-full max-w-md p-8 text-center relative shadow-2xl">
+            <button onclick="closeBreathingModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 text-2xl" aria-label="Cerrar ejercicio">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div class="w-12 h-12 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center text-2xl mb-4">
-                <i class="fa-solid fa-phone-volume"></i>
-            </div>
-            <h2 class="text-xl font-bold text-slate-900 mb-2">Líneas de Atención de Emergencia en Colombia</h2>
-            <p class="text-xs text-slate-600 mb-6 leading-relaxed">
-                Si tú o alguien que conoces está atravesando por una crisis severa o riesgo personal, por favor comunícate de inmediato a los siguientes números gratuitos disponibles 24/7:
-            </p>
+            <h2 class="text-xl font-bold text-slate-800">Ejercicio Guiado de Respiración</h2>
+            <p class="text-sm text-slate-500 mt-1">Técnica 4-7-8 para hacer una pausa consciente</p>
 
-            <div class="space-y-3 mb-6">
-                <a href="tel:106" class="block bg-red-50 hover:bg-red-100 p-3 rounded-xl border border-red-200 transition">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <div class="font-bold text-red-900 text-sm">Línea 106 (Salud Mental)</div>
-                            <div class="text-[11px] text-red-700">Atención gratuita, confidencial 24 horas</div>
-                        </div>
-                        <span class="bg-red-600 text-white font-bold px-3 py-1 rounded-lg text-xs"><i class="fa-solid fa-phone mr-1"></i> Marcación 106</span>
-                    </div>
-                </a>
-                <a href="tel:123" class="block bg-slate-50 hover:bg-slate-100 p-3 rounded-xl border border-slate-200 transition">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <div class="font-bold text-slate-900 text-sm">Línea Unificada de Emergencias</div>
-                            <div class="text-[11px] text-slate-600">Policía y servicios de ambulancia</div>
-                        </div>
-                        <span class="bg-slate-800 text-white font-bold px-3 py-1 rounded-lg text-xs"><i class="fa-solid fa-phone mr-1"></i> Marcación 123</span>
-                    </div>
-                </a>
-                <a href="tel:155" class="block bg-purple-50 hover:bg-purple-100 p-3 rounded-xl border border-purple-200 transition">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <div class="font-bold text-purple-900 text-sm">Línea 155 (Orientación a Mujeres)</div>
-                            <div class="text-[11px] text-purple-700">Atención a violencia de género</div>
-                        </div>
-                        <span class="bg-purple-700 text-white font-bold px-3 py-1 rounded-lg text-xs"><i class="fa-solid fa-phone mr-1"></i> Marcación 155</span>
-                    </div>
-                </a>
+            <div id="breathe-circle" class="w-44 h-44 rounded-full bg-gradient-to-br from-teal-300 to-teal-600 flex items-center justify-center mx-auto my-10 text-white shadow-xl">
+                <span id="breathe-text" class="text-2xl font-bold">Prepárate</span>
             </div>
 
-            <button onclick="toggleCrisisModal(false)" class="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-xl text-xs transition">
-                Entendido, regresar a la plataforma
-            </button>
-        </div>
-    </div>
-
-    <!-- BREATHING EXERCISE MODAL -->
-    <div id="modal-breathing" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl text-center relative">
-            <button onclick="closeBreathingModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <h3 class="text-xl font-bold text-slate-900 mb-1">Ejercicio Guiado de Respiración</h3>
-            <p class="text-xs text-slate-500 mb-6">Técnica 4-7-8 para calmar el sistema nervioso</p>
-
-            <div class="relative w-48 h-48 mx-auto mb-6 flex items-center justify-center">
-                <div id="breathe-circle" class="w-36 h-36 rounded-full bg-gradient-to-tr from-brand-turq to-teal-300 opacity-80 flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                    <span id="breathe-text">Inhala...</span>
-                </div>
-            </div>
-
-            <div class="text-xs text-slate-600 mb-6 h-8 flex items-center justify-center" id="breathe-instruction">
-                Sigue el ritmo de expansión para inhalar y contraerte al exhalar.
-            </div>
-
-            <button onclick="closeBreathingModal()" class="w-full py-3 bg-brand-turq hover:bg-teal-600 text-white font-bold rounded-xl text-xs transition">
+            <p id="breathe-instruction" class="text-sm text-slate-500 mb-7">Cuando estés listo, comenzará el ejercicio.</p>
+            <button onclick="closeBreathingModal()" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 rounded-xl transition">
                 Finalizar ejercicio
             </button>
+            <p class="text-xs text-slate-400 mt-4">Si sientes mareo o incomodidad, detente y respira normalmente. No fuerces la respiración.</p>
         </div>
     </div>
 
-    <!-- NEW FORUM POST MODAL -->
-    <div id="modal-new-post" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative">
-            <button onclick="toggleNewPostModal(false)" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <h3 class="text-xl font-bold text-slate-900 mb-2">Crear Publicación Anónima</h3>
-            <p class="text-xs text-slate-500 mb-6">Expresa tus pensamientos en un entorno protegido sin revelar tus nombres reales.</p>
-
-            <form onsubmit="handleCreatePost(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Seudónimo Protegido</label>
-                    <input type="text" id="post-pseudonym" required placeholder="Ej. MenteEnPaz_88" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand-turq/50" />
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Categoría</label>
-                    <select id="post-category" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand-turq/50">
-                        <option value="Ansiedad">Ansiedad y Estrés</option>
-                        <option value="Duelo">Duelo y Pérdida</option>
-                        <option value="Laboral">Estrés Académico/Laboral</option>
-                        <option value="Relaciones">Relaciones Interpersonales</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Mensaje / Vivencia</label>
-                    <textarea id="post-content" rows="4" required placeholder="Escribe lo que sientes hoy..." class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs focus:outline-none focus:ring-2 focus:ring-brand-turq/50"></textarea>
-                </div>
-                <div class="pt-2">
-                    <button type="submit" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs transition">
-                        Publicar en el Foro
-                    </button>
-                </div>
+    <!-- MODAL NUEVA PUBLICACIÓN -->
+    <div id="modal-new-post" class="hidden fixed inset-0 z-50 bg-slate-900/70 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl w-full max-w-lg p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold">Crear publicación</h2>
+                <button onclick="toggleNewPostModal(false)" class="text-slate-400 text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form onsubmit="createForumPost(event)" class="space-y-4">
+                <input id="post-alias" required maxlength="30" placeholder="Tu seudónimo" class="w-full border rounded-xl p-3 text-sm">
+                <select id="post-category" class="w-full border rounded-xl p-3 text-sm">
+                    <option value="Ansiedad">Ansiedad y Estrés</option>
+                    <option value="Duelo">Duelo y Pérdida</option>
+                    <option value="Laboral">Estrés Académico/Laboral</option>
+                    <option value="Relaciones">Relaciones Interpersonales</option>
+                </select>
+                <textarea id="post-content" required maxlength="1000" rows="4" placeholder="Comparte tu experiencia sin incluir datos personales..." class="w-full border rounded-xl p-3 text-sm"></textarea>
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl">Publicar</button>
             </form>
         </div>
     </div>
 
-    <!-- BOOK SPECIALIST APPOINTMENT MODAL -->
-    <div id="modal-appointment" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative">
-            <button onclick="toggleAppointmentModal(false)" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <h3 class="text-xl font-bold text-slate-900 mb-1">Solicitar Orientación / Cita</h3>
-            <p class="text-xs text-slate-500 mb-4" id="appoint-spec-name">Contacto Profesional</p>
-
-            <form onsubmit="handleAppointmentSubmit(event)" class="space-y-3">
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Tu Nombre o Seudónimo</label>
-                    <input type="text" required placeholder="Nombre para contacto" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand-turq/50" />
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Correo Electrónico o Teléfono</label>
-                    <input type="text" required placeholder="contacto@ejemplo.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand-turq/50" />
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Modalidad Preferida</label>
-                    <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand-turq/50">
-                        <option>Consulta Virtual (Teleorientación)</option>
-                        <option>Consulta Presencial</option>
-                    </select>
-                </div>
-                <button type="submit" class="w-full py-3 bg-brand-turq hover:bg-teal-600 text-white font-bold rounded-xl text-xs transition mt-2">
-                    Enviar Solicitud
-                </button>
-            </form>
+    <!-- MODAL LÍNEAS DE AYUDA -->
+    <div id="modal-crisis" class="hidden fixed inset-0 z-50 bg-slate-900/70 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl w-full max-w-md p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-slate-800">Líneas de ayuda en Colombia</h2>
+                <button onclick="toggleCrisisModal(false)" class="text-slate-400 text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <p class="text-sm text-slate-600 mb-4">Si estás en peligro inmediato o necesitas atención urgente, comunícate con los servicios de emergencia de tu localidad.</p>
+            <div class="space-y-3 text-sm">
+                <div class="p-3 rounded-xl bg-rose-50"><strong>Línea de emergencias:</strong> 123</div>
+                <div class="p-3 rounded-xl bg-teal-50"><strong>Línea 106:</strong> orientación en salud mental donde esté disponible.</div>
+            </div>
+            <button onclick="toggleCrisisModal(false)" class="mt-5 w-full bg-teal-600 text-white rounded-xl py-3 font-bold">Cerrar</button>
         </div>
     </div>
 
-    <!-- ARTICLE DETAIL MODAL -->
-    <div id="modal-article" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative max-h-[85vh] overflow-y-auto">
-            <button onclick="toggleArticleModal(false)" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <span id="art-cat" class="text-[10px] font-bold uppercase tracking-wider bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full mb-3 inline-block">Categoría</span>
-            <h2 id="art-title" class="text-2xl font-bold text-slate-900 mb-4">Título del Artículo</h2>
-            <div id="art-content" class="text-xs sm:text-sm text-slate-600 space-y-4 leading-relaxed">
-                <!-- Dynamic Article Body -->
-            </div>
-            <div class="mt-8 pt-4 border-t border-slate-100 flex justify-end">
-                <button onclick="toggleArticleModal(false)" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-xl text-xs transition">
-                    Cerrar lectura
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- JAVASCRIPT APPLICATION LOGIC -->
     <script>
-        /* ==================== GLOBAL APP STATE ==================== */
-        const state = {
-            currentSection: 'home',
-            forumPosts: [
-                {
-                    id: 1,
-                    pseudonym: 'Esperanza_2026',
-                    category: 'Ansiedad',
-                    content: 'Llevo varias semanas sintiendo una presión constante en el pecho al iniciar mi jornada de trabajo. ¿Alguien ha probado la técnica de respiración o meditación guiada con buenos resultados?',
-                    timestamp: 'Hace 2 horas',
-                    likes: 12,
-                    comments: [
-                        { pseudonym: 'CalmaInterior', text: 'A mí me ha servido mucho el ejercicio de inhalar 4 segundos y exhalar despacio. ¡Mucho ánimo!' }
-                    ]
-                },
-                {
-                    id: 2,
-                    pseudonym: 'CaminanteBogota',
-                    category: 'Laboral',
-                    content: 'A veces siento que la carga universitaria sobrepasa mi capacidad. Me cuesta pedir ayuda por temor a parecer débil ante mis compañeros.',
-                    timestamp: 'Hace 5 horas',
-                    likes: 8,
-                    comments: []
-                }
-            ],
-            specialists: [
-                {
-                    id: 1,
-                    name: 'Dra. María Fernanda Gómez',
-                    title: 'Psicóloga Clínica & Terapeuta Cognitivo-Conductual',
-                    city: 'Bogotá',
-                    modality: 'Virtual',
-                    especialidad: 'Psicología Clínica',
-                    rethus: 'RM-54892 (Verificado)',
-                    fee: '$120.000 COP / sesión',
-                    bio: 'Especialista en manejo de trastornos de ansiedad, estrés agudo y apoyo en regulación emocional en jóvenes adultos.',
-                    avatar: 'https://images.unsplash.com/photo-1594824813572-c50352d43d1a?auto=format&fit=crop&w=250&q=80'
-                },
-                {
-                    id: 2,
-                    name: 'Dr. Alejandro Restrepo',
-                    title: 'Psiquiatra y Especialista en Salud Mental',
-                    city: 'Medellín',
-                    modality: 'Presencial',
-                    especialidad: 'Psiquiatria Adultos',
-                    rethus: 'RM-88210 (Verificado)',
-                    fee: '$180.000 COP / sesión',
-                    bio: 'Atención integral clínica, valoración médica y acompañamiento psicoeducativo.',
-                    avatar: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=250&q=80'
-                },
-                {
-                    id: 3,
-                    name: 'Dra. Camila Morales',
-                    title: 'Terapeuta de Pareja y Familia',
-                    city: 'Cali',
-                    modality: 'Virtual',
-                    especialidad: 'Terapia Cognitivo-Conductual',
-                    rethus: 'RM-30491 (Verificado)',
-                    fee: '$110.000 COP / sesión',
-                    bio: 'Acompañamiento en comunicación asertiva, duelos afectivos y proyectos de vida.',
-                    avatar: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=250&q=80'
-                }
-            ],
-            articles: [
-                {
-                    id: 1,
-                    title: '5 Pasos para Gestionar un Ataque de Ansiedad',
-                    category: 'Ansiedad',
-                    readTime: '4 min de lectura',
-                    summary: 'Aprende a reconocer la respuesta física de tu cuerpo y utiliza técnicas de anclaje para recuperar el control.',
-                    body: '<p>Los ataques de ansiedad pueden sentirse abrumadores, pero recordar que son una respuesta temporal de tu sistema nervioso es clave.</p><p><strong>1. Reconoce lo que sientes:</strong> Acepta la sensación sin juzgarla.</p><p><strong>2. Aplica la regla 5-4-3-2-1:</strong> Mira 5 objetos a tu alrededor, toca 4 texturas, escucha 3 sonidos, huele 2 aromas y saborea 1 elemento.</p><p><strong>3. Regula tu respiración:</strong> Inhala despacio sintiendo el diafragma.</p>'
-                },
-                {
-                    id: 2,
-                    title: 'Higiene del Sueño y Descanso Reparador',
-                    category: 'Sueño',
-                    readTime: '5 min de lectura',
-                    summary: 'Pautas prácticas para desconectar la mente de las pantallas y favorecer un sueño profundo.',
-                    body: '<p>El descanso inadecuado incrementa la vulnerabilidad al estrés y la irritabilidad.</p><p><strong>Consejos prácticos:</strong> Desconecta pantallas 45 minutos antes de dormir, mantén la habitación a temperatura fresca y evita estimulantes después de las 4 PM.</p>'
-                },
-                {
-                    id: 3,
-                    title: 'Autocuidado Diario sin Culpabilidad',
-                    category: 'Autocuidado',
-                    readTime: '3 min de lectura',
-                    summary: 'Cómo incorporar breves pausas de autocuidado mental en jornadas laborales exigentes.',
-                    body: '<p>El autocuidado no es un lujo, es una necesidad biológica y emocional. Tómate 10 minutos al día para hacer algo que alimente tu serenidad.</p>'
-                }
-            ],
-            chatMessages: [
-                { sender: 'bot', text: '¡Hola! Bienvenido a BienestarMental+. Soy tu asistente virtual de orientación emocional. ¿Cómo te sientes el día de hoy?' }
-            ],
-            chatCount: 1248
-        };
+        /* NAVEGACIÓN */
+        function navigateTo(section) {
+            document.querySelectorAll('.view-section').forEach(view => view.classList.add('hidden'));
+            const target = document.getElementById(`sec-${section}`);
+            if (target) target.classList.remove('hidden');
 
-        /* ==================== INITIALIZATION ==================== */
-        window.addEventListener('DOMContentLoaded', () => {
-            renderForumPosts();
-            renderDirectorio();
-            renderBiblioteca();
-            renderChatMessages();
-            updateForumCounts();
-        });
+            document.querySelectorAll('.bc-nav button').forEach(button => {
+                button.classList.remove('bg-emerald-50', 'text-emerald-700');
+            });
 
-        /* ==================== SPA NAVIGATION ==================== */
-        function navigateTo(sectionId) {
-            state.currentSection = sectionId;
-            document.querySelectorAll('.view-section').forEach(sec => sec.classList.add('hidden'));
-            const target = document.getElementById(`sec-${sectionId}`);
-            if (target) {
-                target.classList.remove('hidden');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
+            const active = document.getElementById(`nav-${section}`);
+            if (active) active.classList.add('bg-emerald-50', 'text-emerald-700');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         }
 
-        /* ==================== CHATBOT MODULE ==================== */
-        function renderChatMessages() {
-            const container = document.getElementById('chat-messages');
-            container.innerHTML = state.chatMessages.map(msg => {
-                if (msg.sender === 'user') {
-                    return `
-                        <div class="flex justify-end">
-                            <div class="bg-brand-turq text-white p-3.5 rounded-2xl rounded-tr-none max-w-xs sm:max-w-md text-xs sm:text-sm shadow-sm leading-relaxed">
-                                ${escapeHtml(msg.text)}
-                            </div>
-                        </div>
-                    `;
-                } else {
-                    return `
-                        <div class="flex items-start gap-2.5">
-                            <div class="w-8 h-8 rounded-full bg-teal-600 text-white flex items-center justify-center text-xs flex-shrink-0 mt-0.5">
-                                <i class="fa-solid fa-robot"></i>
-                            </div>
-                            <div class="bg-white border border-slate-200 p-3.5 rounded-2xl rounded-tl-none max-w-xs sm:max-w-md text-xs sm:text-sm text-slate-700 shadow-sm leading-relaxed space-y-2">
-                                ${msg.text}
-                            </div>
-                        </div>
-                    `;
-                }
-            }).join('');
-            container.scrollTop = container.scrollHeight;
-        }
-
-        function handleChatSubmit(e) {
-            e.preventDefault();
-            const input = document.getElementById('chat-input');
-            const text = input.value.trim();
-            if (!text) return;
-
-            processUserChatMessage(text);
-            input.value = '';
-        }
-
-        function sendQuickPrompt(promptText) {
-            processUserChatMessage(promptText);
-        }
-
-
-
-
-
-
-
-async function processUserChatMessage(text) {
-    const mensaje = text.trim();
-    if (!mensaje) return;
-
-    const normalizar = (s) => s
-        .toLowerCase()
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .replace(/[¿?¡!.,;:…]/g, ' ')
-        .replace(/\s+/g, ' ')
-        .trim();
-
-    const lower = normalizar(mensaje);
-
-    const coincide = (...frases) =>
-        frases.some(frase => lower.includes(normalizar(frase)));
-
-    const elegir = (respuestas) =>
-        respuestas[Math.floor(Math.random() * respuestas.length)];
-
-    state.chatMessages.push({ sender: 'user', text: mensaje });
-    renderChatMessages();
-
-    state.chatCount = (state.chatCount || 0) + 1;
-
-    const metrica = document.getElementById('metric-chats');
-    if (metrica) {
-        metrica.innerText = state.chatCount.toLocaleString('es-CO');
-    }
-
-    let respuesta = '';
-
-    // 1. RIESGO PERSONAL: SIEMPRE TIENE PRIORIDAD.
-    const riesgoDirecto = [
-        'quiero suicidarme',
-        'quiero matarme',
-        'me quiero matar',
-        'quiero quitarme la vida',
-        'quitarme la vida',
-        'acabar con mi vida',
-        'no quiero seguir viviendo',
-        'no quiero vivir',
-        'me quiero morir',
-        'quiero morir',
-        'voy a suicidarme',
-        'planeo suicidarme',
-        'quiero hacerme daño',
-        'quiero hacerme dano',
-        'hacerme daño',
-        'hacerme dano',
-        'me estoy autolesionando',
-        'me autolesiono',
-        'me hice daño a propósito',
-        'me hice dano a proposito',
-        'los demas estarian mejor sin mi',
-        'estarian mejor sin mi',
-        'no quiero existir'
-    ];
-
-    if (coincide(...riesgoDirecto)) {
-        if (typeof toggleCrisisModal === 'function') {
-            toggleCrisisModal(true);
-        }
-
-        respuesta =
-            '💚 Gracias por contármelo. Me importa que estés a salvo. ' +
-            'Si puedes hacerte daño ahora o estás en peligro inmediato, ' +
-            'llama al 123 en Colombia o acude a urgencias. Busca a alguien ' +
-            'de confianza que pueda acompañarte y aléjate de cualquier cosa ' +
-            'con la que pudieras lastimarte. ¿Estás en peligro inmediato ' +
-            'ahora mismo? Este asistente es una demostración académica y ' +
-            'no sustituye la atención profesional.';
-
-    // 2. EJERCICIOS DE RESPIRACIÓN Y CALMA.
-    } else if (coincide(
-        'quiero hacer un ejercicio',
-        'ejercicio para calmarme',
-        'ejercicio de respiracion',
-        'respiracion guiada',
-        'quiero respirar',
-        'quiero relajarme',
-        'necesito relajarme',
-        'ayudame a calmarme',
-        'como puedo tranquilizarme',
-        'quiero controlar mis nervios',
-        'necesito un momento de calma',
-        'quiero hacer meditacion',
-        'ejercicio de relajacion',
-        'quiero bajar mi ansiedad'
-    )) {
-        respuesta =
-            '💚 Hagamos una pausa. Si te resulta cómodo, apoya los pies ' +
-            'en el suelo, relaja los hombros y respira suavemente, sin ' +
-            'forzar el aire. Puedes probar el ejercicio guiado de la página. ' +
-            '<button onclick="openBreathingModal()" ' +
-            'class="mt-2 text-brand-turq font-bold underline block">' +
-            'Iniciar ejercicio de respiración →</button>';
-
-    // 3. SALUDOS.
-    } else if (/^(hola|holi|hey|buenas|buenos dias|buenas tardes|buenas noches)$/.test(lower)) {
-        respuesta = elegir([
-            '¡Hola! 💚 Me alegra que estés aquí. ¿Cómo te has sentido hoy?',
-            '¡Hola! 💚 Puedes contarme lo que tengas en mente. ¿Cómo va tu día?',
-            'Hola, bienvenida o bienvenido. 💚 ¿Hay algo que te preocupe o que quieras conversar?'
-        ]);
-
-    // 4. DEPRESIÓN, DESÁNIMO Y PÉRDIDA DE INTERÉS.
-    } else if (coincide(
-        'creo que tengo depresion',
-        'creo que estoy deprimida',
-        'creo que estoy deprimido',
-        'tengo depresion',
-        'me siento deprimida',
-        'me siento deprimido',
-        'no tengo ganas de nada',
-        'no quiero hacer nada',
-        'nada me hace feliz',
-        'nada me alegra',
-        'ya nada me interesa',
-        'perdi el interes por todo',
-        'no disfruto nada',
-        'no le encuentro sentido a mi vida',
-        'siento un vacio enorme',
-        'me siento vacia',
-        'me siento vacio',
-        'no tengo motivacion',
-        'no tengo ilusion',
-        'no tengo esperanza',
-        'me cuesta levantarme cada dia',
-        'me cuesta levantarme de la cama',
-        'no quiero salir de mi cuarto',
-        'quiero aislarme de todos',
-        'siento que estoy apagada',
-        'siento que estoy apagado',
-        'siento que no avanzo en la vida',
-        'cada dia me siento peor',
-        'llevo semanas sintiendome mal',
-        'llevo mucho tiempo triste'
-    )) {
-        respuesta = elegir([
-            '💚 Siento que estés pasando por algo tan difícil. Perder las ganas ' +
-            'o dejar de disfrutar lo que antes importaba puede ser muy ' +
-            'desgastante. No puedo diagnosticarte por este chat, pero mereces ' +
-            'apoyo. ¿Desde cuándo te sientes así y cómo está afectando tu vida diaria?',
-
-            '💚 Gracias por expresarlo. No tienes que fingir que todo está bien. ' +
-            'Cuando la tristeza o la falta de interés persisten, hablar con un ' +
-            'profesional puede ayudar a entender qué ocurre. ¿Esto empezó ' +
-            'recientemente o llevas tiempo sintiéndote así?',
-
-            '💚 Debe ser difícil sentir que las cosas han perdido su sentido. ' +
-            'No quiero minimizar lo que estás viviendo. ¿Qué es lo que más ' +
-            'te está costando últimamente: levantarte, cumplir tus tareas, ' +
-            'relacionarte con otras personas o encontrar ganas de hacer cosas?'
-        ]);
-
-    // 5. TRISTEZA, LLANTO Y DOLOR EMOCIONAL.
-    } else if (coincide(
-        'me siento muy triste',
-        'estoy muy triste',
-        'siento una tristeza inmensa',
-        'tengo una tristeza enorme',
-        'me siento muy mal',
-        'me siento fatal',
-        'quiero llorar',
-        'tengo ganas de llorar',
-        'no puedo parar de llorar',
-        'lloro por todo',
-        'he llorado todo el dia',
-        'me siento destrozada',
-        'me siento destrozado',
-        'tengo el corazon roto',
-        'estoy pasando por un momento dificil',
-        'me duele mucho lo que paso',
-        'me siento herida',
-        'me siento herido',
-        'hoy ha sido un dia horrible',
-        'no puedo contener el llanto',
-        'me siento muy sensible',
-        'todo me afecta'
-    )) {
-        respuesta = elegir([
-            '💚 Siento mucho que estés sintiendo una tristeza tan grande. ' +
-            'No tienes que explicarlo todo de una vez. ¿Esta tristeza comenzó ' +
-            'por algo que ocurrió recientemente o llevas tiempo sintiéndote así?',
-
-            '💚 Parece que hoy está siendo especialmente difícil. Puedes ' +
-            'contarme lo que pasó, aunque tus ideas estén desordenadas. ' +
-            '¿Qué es lo que más te duele en este momento?',
-
-            '💚 No tienes que fingir fortaleza conmigo. Quiero comprender ' +
-            'lo que estás viviendo sin asumir que conozco tu situación. ' +
-            '¿Necesitas desahogarte o prefieres que pensemos juntas o juntos ' +
-            'en qué podría ayudarte ahora?'
-        ]);
-
-    // 6. SOBRECARGA, RUTINA Y AGOTAMIENTO.
-    } else if (coincide(
-        'estoy agotada',
-        'estoy agotado',
-        'estoy agotada de todo',
-        'estoy agotado de todo',
-        'estoy mamada de todo',
-        'estoy mamado de todo',
-        'estoy harta de todo',
-        'estoy harto de todo',
-        'no doy mas',
-        'no puedo con todo',
-        'no me da la vida',
-        'no me alcanza el dia',
-        'todo se me acumula',
-        'estoy saturada',
-        'estoy saturado',
-        'estoy al limite',
-        'siento que cargo con todo',
-        'siento que llevo el mundo encima',
-        'no tengo tiempo para mi',
-        'no tengo ni un minuto para mi',
-        'necesito un respiro',
-        'necesito un descanso de todo',
-        'estoy cansada de la rutina',
-        'estoy cansado de la rutina',
-        'estoy mentalmente agotada',
-        'estoy mentalmente agotado',
-        'no descanso nunca',
-        'siento que no paro nunca',
-        'estoy funcionando en automatico',
-        'hago todo por inercia',
-        'no puedo mas con las responsabilidades',
-        'tengo demasiadas cosas que hacer',
-        'estoy cansada de hacer todo',
-        'estoy cansado de hacer todo'
-    )) {
-        respuesta = elegir([
-            '💚 Suena a que llevas muchas cosas encima. Cuando todo se acumula, ' +
-            'hasta las tareas pequeñas pueden sentirse enormes. ¿Qué te está ' +
-            'pesando más: las responsabilidades, la falta de apoyo o no tener ' +
-            'tiempo para descansar?',
-
-            '💚 No tienes que resolverlo todo hoy. A veces ayuda separar lo ' +
-            'urgente de lo que puede esperar y pedir ayuda concreta con una tarea. ' +
-            '¿Qué podrías dejar para después o compartir con alguien?',
-
-            '💚 Parece que necesitas un poco de espacio para ti. No significa ' +
-            'que estés fallando. ¿Qué es lo que más te está agotando últimamente? ' +
-            'Podemos pensar en un pequeño cambio realista para aliviar la carga.'
-        ]);
-
-    // 7. CASA, OFICIOS, MATERNIDAD Y CRIANZA.
-    } else if (coincide(
-        'los oficios del hogar me estresan',
-        'los quehaceres me agotan',
-        'las tareas de la casa me estresan',
-        'los niños me estresan',
-        'los ninos me estresan',
-        'los niños me tienen agotada',
-        'los ninos me tienen agotada',
-        'los niños me tienen agotado',
-        'los ninos me tienen agotado',
-        'no me dejan ni un momento',
-        'no tengo ayuda con los niños',
-        'no tengo ayuda con los ninos',
-        'siento que crio sola',
-        'siento que crio solo',
-        'amo a mis hijos pero estoy agotada',
-        'amo a mis hijos pero estoy agotado',
-        'me da culpa querer estar sola',
-        'me da culpa querer estar solo',
-        'no puedo con la casa y los niños',
-        'no puedo con la casa y los ninos',
-        'nadie me ayuda en casa',
-        'nadie ve todo lo que hago',
-        'la casa nunca termina',
-        'no tengo tiempo para mis hijos',
-        'necesito un rato sin que me necesiten',
-        'me siento desbordada con mis hijos',
-        'me siento desbordado con mis hijos',
-        'estoy cansada de repetir lo mismo',
-        'estoy cansado de repetir lo mismo',
-        'la rutina me tiene agotada',
-        'la rutina me tiene agotado'
-    )) {
-        respuesta = elegir([
-            '💚 Llevar la casa, atender a los niños y cumplir con tantas ' +
-            'responsabilidades puede ser agotador, especialmente cuando ' +
-            'sientes que no tienes tiempo para ti. ¿Qué te pesa más: la cantidad ' +
-            'de tareas, la falta de apoyo o no tener tiempo para descansar?',
-
-            '💚 Puedes querer mucho a tu familia y, al mismo tiempo, sentirte ' +
-            'agotada o agotado. Una cosa no invalida la otra. ¿Hay alguien con ' +
-            'quien puedas repartir alguna tarea o pedir un descanso concreto?',
-
-            '💚 Parece que estás necesitando apoyo, no más exigencias. No tienes ' +
-            'que hacerlo todo perfectamente. ¿Qué tarea de hoy te gustaría poder ' +
-            'compartir con alguien para tener un momento de descanso?'
-        ]);
-
-    // 8. ANSIEDAD, MIEDO Y PREOCUPACIÓN.
-    } else if (coincide(
-        'tengo ansiedad',
-        'me da ansiedad',
-        'estoy ansiosa',
-        'estoy ansioso',
-        'me siento nerviosa',
-        'me siento nervioso',
-        'tengo muchos nervios',
-        'no puedo dejar de pensar',
-        'mi mente no para',
-        'pienso demasiado',
-        'le doy vueltas a todo',
-        'me preocupo por todo',
-        'siempre pienso lo peor',
-        'siento que algo malo va a pasar',
-        'tengo miedo sin razon',
-        'siento mucha angustia',
-        'me cuesta estar tranquila',
-        'me cuesta estar tranquilo',
-        'no puedo controlar mis pensamientos',
-        'me da miedo equivocarme',
-        'me da miedo el futuro',
-        'tengo miedo de salir',
-        'tengo miedo de hablar en publico',
-        'me asusta lo que pueda pasar',
-        'me bloqueo por los nervios',
-        'me cuesta tomar decisiones',
-        'me preocupa lo que piensen de mi',
-        'no puedo apagar mi mente',
-        'mi cabeza va a mil',
-        'siento una presion constante'
-    )) {
-        respuesta = elegir([
-            '💚 Vivir con tantas preocupaciones puede ser agotador. ¿Hay algo ' +
-            'concreto que te preocupa o sientes inquietud por muchas cosas ' +
-            'al mismo tiempo? Podemos ir una por una.',
-
-            '💚 Cuando la mente no para, puede ser difícil encontrar descanso. ' +
-            'Si te ayuda, mira a tu alrededor y nombra cinco cosas que ves, ' +
-            'cuatro que sientes con el tacto y tres que escuchas. ¿Qué pensamiento ' +
-            'se repite más en tu cabeza?',
-
-            '💚 Gracias por contármelo. No tienes que resolver todos los posibles ' +
-            'problemas antes de que ocurran. ¿Qué sabes con certeza de la situación ' +
-            'que te preocupa y qué parte es todavía una posibilidad?'
-        ]);
-
-    // 9. ESTRÉS LABORAL, UNIVERSIDAD Y ESTUDIOS.
-    } else if (coincide(
-        'tengo problemas en el trabajo',
-        'mi jefe me trata mal',
-        'no soporto mi trabajo',
-        'me siento presionada en el trabajo',
-        'me siento presionado en el trabajo',
-        'tengo demasiado trabajo',
-        'no me alcanza el tiempo para trabajar',
-        'me da miedo perder mi empleo',
-        'voy a perder mi trabajo',
-        'no valoran mi trabajo',
-        'me siento explotada en el trabajo',
-        'me siento explotado en el trabajo',
-        'mis compañeros me hacen sentir mal',
-        'tengo problemas con mis compañeros',
-        'tengo problemas con mis companeros',
-        'me fue mal en un examen',
-        'no puedo con la universidad',
-        'tengo demasiados trabajos de la universidad',
-        'voy a perder el semestre',
-        'me da miedo fracasar',
-        'no puedo concentrarme para estudiar',
-        'siento que no voy a graduarme',
-        'estoy atrasada con mis estudios',
-        'estoy atrasado con mis estudios',
-        'siento que no soy capaz',
-        'me siento incapaz',
-        'tengo miedo de decepcionar a mi familia'
-    )) {
-        respuesta = elegir([
-            '💚 La presión laboral o académica puede hacer que todo parezca ' +
-            'más difícil. ¿Qué ocurrió y qué es lo que más te preocupa ahora? ' +
-            'Podemos separar el problema en partes sin que tengas que resolverlo todo hoy.',
-
-            '💚 Parece que estás cargando con muchas expectativas. Un resultado ' +
-            'o un día difícil no define toda tu capacidad. ¿Lo que más te preocupa ' +
-            'es el tiempo, el trato de otras personas o el miedo a equivocarte?',
-
-            '💚 Debe ser desgastante sentir tanta presión. Si quieres, podemos ' +
-            'organizar lo que tienes pendiente y distinguir lo urgente de lo que ' +
-            'puede esperar. ¿Cuál es el problema más inmediato?'
-        ]);
-
-    // 10. FAMILIA, DISCUSIONES Y CONFLICTOS EN CASA.
-    } else if (coincide(
-        'tuve problemas en la casa',
-        'tengo problemas en casa',
-        'problemas con mi familia',
-        'discuto con mi familia',
-        'pelee con mi mama',
-        'pelee con mi papa',
-        'mi familia no me entiende',
-        'en mi casa no hay paz',
-        'hay muchas peleas en casa',
-        'mis padres me hacen sentir mal',
-        'siento que mi familia me rechaza',
-        'no me llevo bien con mi familia',
-        'mi familia me critica',
-        'siempre terminamos discutiendo',
-        'no puedo hablar con mi familia',
-        'siento que no me escuchan en casa',
-        'me siento juzgada por mi familia',
-        'me siento juzgado por mi familia',
-        'estoy cansada de las discusiones',
-        'estoy cansado de las discusiones'
-    )) {
-        respuesta =
-            '💚 Los conflictos familiares pueden afectar mucho la tranquilidad. ' +
-            'No tienes que justificar lo que sientes. ¿Qué ocurrió y qué fue lo ' +
-            'que más te dolió? Si no te sientes segura o seguro en casa, lo primero ' +
-            'es pensar en cómo buscar apoyo y protegerte.';
-
-    // 11. PAREJA, RUPTURAS Y RECHAZO.
-    } else if (coincide(
-        'mi pareja me ignora',
-        'mi esposo me trata mal',
-        'mi esposa me trata mal',
-        'termine con mi pareja',
-        'termino conmigo',
-        'me fueron infiel',
-        'me siento rechazada',
-        'me siento rechazado',
-        'mi pareja no me escucha',
-        'siempre discutimos',
-        'mi pareja no me apoya',
-        'siento que no me valoran',
-        'mi pareja me controla',
-        'tengo miedo de mi pareja',
-        'no se si seguir con mi pareja',
-        'me siento sola en mi relacion',
-        'me siento solo en mi relacion',
-        'estoy pasando por una ruptura',
-        'extrano a mi ex',
-        'mi pareja me humilla'
-    )) {
-        respuesta =
-            '💚 Las dificultades de pareja pueden despertar dolor, confusión ' +
-            'y muchas preguntas. Mereces respeto y poder expresar lo que sientes. ' +
-            '¿Quieres contarme qué pasó y cómo te está afectando? Si tienes miedo ' +
-            'de tu pareja o sientes peligro, prioricemos tu seguridad y busquemos apoyo.';
-
-    // 12. AUTOESTIMA, CULPA Y COMPARACIÓN.
-    } else if (coincide(
-        'no valgo nada',
-        'no soy suficiente',
-        'soy un fracaso',
-        'me siento inutil',
-        'no hago nada bien',
-        'me odio',
-        'me siento fea',
-        'me siento feo',
-        'me comparo con los demas',
-        'todo es culpa mia',
-        'no me perdono mis errores',
-        'no merezco descansar',
-        'siempre decepciono a todos',
-        'siento que soy una mala madre',
-        'siento que soy un mal padre',
-        'siento que soy mala persona',
-        'siento que soy una carga',
-        'me siento inferior a los demas',
-        'nunca estoy a la altura',
-        'me exijo demasiado',
-        'no me gusta quien soy',
-        'me da vergüenza ser como soy',
-        'me cuesta poner limites',
-        'siempre pongo a todos primero'
-    )) {
-        respuesta =
-            '💚 Siento que estés siendo tan dura o duro contigo. Un error, una ' +
-            'dificultad o un momento de inseguridad no resume quién eres. ¿Pasó ' +
-            'algo que te hizo sentir así o es una idea que vienes cargando desde hace tiempo?';
-
-    // 13. SOLEDAD Y FALTA DE APOYO.
-    } else if (coincide(
-        'me siento sola',
-        'me siento solo',
-        'nadie me entiende',
-        'nadie me escucha',
-        'no tengo a nadie',
-        'no tengo amigos',
-        'me siento invisible',
-        'me siento abandonada',
-        'me siento abandonado',
-        'no tengo con quien hablar',
-        'siento que no le importo a nadie',
-        'no encajo en ningun lugar',
-        'nadie pregunta como estoy',
-        'siempre soy yo quien busca a los demas',
-        'me siento sola aunque estoy acompañada',
-        'me siento solo aunque estoy acompañado',
-        'me da miedo molestar a los demas',
-        'siento que no tengo apoyo'
-    )) {
-        respuesta =
-            '💚 Sentirse sin apoyo puede doler mucho. Gracias por compartirlo. ' +
-            'No quiero asumir que sé exactamente cómo te sientes. ¿Qué es lo que ' +
-            'más te hace sentir desconectada o desconectado de los demás últimamente?';
-
-    // 14. SUEÑO, CANSANCIO Y ENERGÍA.
-    } else if (coincide(
-        'no puedo dormir',
-        'me cuesta dormir',
-        'me despierto en la noche',
-        'duermo demasiado',
-        'no tengo energia',
-        'me levanto cansada',
-        'me levanto cansado',
-        'no tengo fuerzas para nada',
-        'me cuesta hasta bañarme',
-        'me cuesta levantarme de la cama',
-        'estoy agotada todo el dia',
-        'estoy agotado todo el dia',
-        'no logro descansar',
-        'me despierto cansada',
-        'me despierto cansado',
-        'no tengo ganas ni de comer',
-        'me cuesta concentrarme'
-    )) {
-        respuesta =
-            '💚 Sentir que hasta las tareas básicas cuestan puede ser desgastante. ' +
-            'El sueño y la energía pueden verse afectados por muchas razones. ' +
-            '¿Desde cuándo te ocurre y cuánto está interfiriendo con tu rutina? ' +
-            'Si persiste, sería importante consultarlo con un profesional de salud.';
-
-    // 15. DUELO Y PÉRDIDAS.
-    } else if (coincide(
-        'fallecio alguien',
-        'murio alguien',
-        'perdi a un ser querido',
-        'extrano a mi mama',
-        'extrano a mi papa',
-        'no supero su muerte',
-        'estoy de duelo',
-        'desde que murio',
-        'me cuesta aceptar la perdida',
-        'no puedo dejar de pensar en esa persona',
-        'me hace mucha falta',
-        'no se como vivir sin esa persona'
-    )) {
-        respuesta =
-            '💚 Perder a alguien importante puede dejar un dolor profundo. ' +
-            'No existe una única manera de vivir el duelo ni tienes que apresurarte ' +
-            'a sentirte mejor. Si quieres, cuéntame qué es lo que más extrañas ' +
-            'de esa persona o qué ha sido lo más difícil.';
-
-    // 16. ENOJO Y FRUSTRACIÓN.
-    } else if (coincide(
-        'tengo mucha rabia',
-        'estoy furiosa',
-        'estoy furioso',
-        'estoy frustrada',
-        'estoy frustrado',
-        'todo me molesta',
-        'me dan ganas de gritar',
-        'exploto por cualquier cosa',
-        'no puedo controlar mi enojo',
-        'estoy cansada de aguantar',
-        'estoy cansado de aguantar',
-        'me desespero por todo',
-        'me irrito muy facilmente',
-        'me siento fuera de control'
-    )) {
-        respuesta =
-            '💚 Parece que la emoción está siendo muy intensa. Si puedes, toma ' +
-            'un poco de distancia de la situación antes de responder o actuar. ' +
-            'No tienes que resolverlo en este instante. ¿Qué ocurrió para que ' +
-            'la rabia o la frustración llegaran a este punto?';
-
-    // 17. DINERO E INCERTIDUMBRE ECONÓMICA.
-    } else if (coincide(
-        'tengo problemas de dinero',
-        'no me alcanza el dinero',
-        'estoy endeudada',
-        'estoy endeudado',
-        'perdi mi trabajo',
-        'no puedo pagar las cuentas',
-        'me preocupa el futuro economico',
-        'no se como mantener a mi familia',
-        'tengo muchas deudas',
-        'estoy preocupada por la plata',
-        'estoy preocupado por la plata',
-        'no se como voy a pagar el arriendo'
-    )) {
-        respuesta =
-            '💚 La incertidumbre económica puede sentirse como una carga constante. ' +
-            'No voy a decirte que es sencillo. Si te ayuda, podemos separar lo más ' +
-            'urgente de lo que puede esperar. ¿Qué es lo que más te preocupa en este momento?';
-
-    // 18. PEDIR UN PSICÓLOGO O AYUDA PROFESIONAL.
-    } else if (coincide(
-        'necesito un psicologo',
-        'quiero ir a terapia',
-        'necesito ayuda profesional',
-        'quiero hablar con un psicologo',
-        'busco un terapeuta',
-        'necesito un especialista',
-        'donde consigo ayuda psicologica',
-        'quiero que me vea un profesional',
-        'necesito tratamiento psicologico'
-    )) {
-        respuesta =
-            '💚 Buscar apoyo profesional puede ser un paso importante. Puedes ' +
-            'consultar el directorio de esta plataforma y verificar las credenciales ' +
-            'y los datos de contacto de cada profesional. ' +
-            '<button onclick="navigateTo(\'directorio\')" ' +
-            'class="mt-2 text-indigo-600 font-bold underline block">' +
-            'Consultar directorio →</button>';
-
-    // 19. QUIERE HABLAR O DESAHOGARSE.
-    } else if (coincide(
-        'necesito desahogarme',
-        'quiero desahogarme',
-        'necesito hablar',
-        'quiero que me escuches',
-        'solo quiero que me escuchen',
-        'quiero contar lo que me pasa',
-        'necesito sacar esto de mi pecho',
-        'no se por donde empezar',
-        'puedo contarte algo',
-        'necesito hablar con alguien',
-        'quiero hablar de mis problemas',
-        'necesito que alguien me escuche'
-    )) {
-        respuesta =
-            '💚 Claro, puedes empezar por donde te resulte más fácil. No necesitas ' +
-            'ordenar tus ideas ni encontrar las palabras perfectas. ¿Qué es lo que ' +
-            'más necesitas expresar en este momento?';
-
-    // 20. AGRADECIMIENTOS.
-    } else if (coincide(
-        'gracias',
-        'muchas gracias',
-        'me ayudaste',
-        'gracias por escucharme'
-    )) {
-        respuesta =
-            '💚 Gracias a ti por compartirlo. Puedes seguir explorando tus ideas ' +
-            'a tu ritmo. ¿Hay algo más que quieras contar o prefieres pensar en ' +
-            'un pequeño paso que pueda ayudarte hoy?';
-
-    // 21. RESPUESTA ABIERTA PARA FRASES NUEVAS.
-    } else {
-        respuesta = elegir([
-            '💚 Gracias por contármelo. No quiero asumir que sé lo que significa ' +
-            'para ti. ¿Podrías contarme un poco más sobre lo que ocurrió o cómo te hizo sentir?',
-
-            '💚 Te leo. A veces cuesta encontrar las palabras para explicar lo que ' +
-            'pasa. ¿Qué parte de esta situación te está afectando más?',
-
-            '💚 Podemos ir paso a paso. ¿Te ayudaría más desahogarte, ordenar tus ' +
-            'ideas o pensar en una acción pequeña y realista para este momento?'
-        ]);
-    }
-
-    state.chatMessages.push({
-        sender: 'bot',
-        text: respuesta
-    });
-
-    renderChatMessages();
-}
-
-
-
-
-        function resetChat() {
-            state.chatMessages = [
-                { sender: 'bot', text: '¡Hola! Conversación reiniciada. ¿En qué te puedo acompañar el día de hoy?' }
-            ];
-            renderChatMessages();
-        }
-
-        /* ==================== FORUM MODULE ==================== */
-        function renderForumPosts(categoryFilter = 'Todas') {
-            const container = document.getElementById('forum-posts-container');
-            const filtered = categoryFilter === 'Todas' 
-                ? state.forumPosts 
-                : state.forumPosts.filter(p => p.category === categoryFilter);
-
-            if (filtered.length === 0) {
-                container.innerHTML = `<div class="bg-white p-8 rounded-2xl border text-center text-xs text-slate-500">No hay publicaciones en esta categoría aún. ¡Sé el primero en compartir!</div>`;
-                return;
-            }
-
-            container.innerHTML = filtered.map(post => `
-                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-                    <div class="flex justify-between items-center text-xs">
-                        <div class="flex items-center gap-2">
-                            <div class="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center text-[10px]">
-                                ${post.pseudonym.substring(0, 2).toUpperCase()}
-                            </div>
-                            <span class="font-bold text-slate-800">${escapeHtml(post.pseudonym)}</span>
-                            <span class="text-slate-400">&bull; ${post.timestamp}</span>
-                        </div>
-                        <span class="bg-slate-100 text-slate-600 font-semibold px-2.5 py-0.5 rounded-full text-[10px]">${post.category}</span>
-                    </div>
-
-                    <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">${escapeHtml(post.content)}</p>
-
-                    <div class="flex items-center justify-between pt-3 border-t border-slate-100 text-xs">
-                        <div class="flex items-center gap-4">
-                            <button onclick="likePost(${post.id})" class="text-slate-500 hover:text-emerald-600 flex items-center gap-1 font-medium transition">
-                                <i class="fa-regular fa-heart"></i> <span>${post.likes}</span>
-                            </button>
-                            <span class="text-slate-400"><i class="fa-regular fa-comment"></i> ${post.comments.length} comentarios</span>
-                        </div>
-                        <button onclick="reportPost(${post.id})" class="text-slate-400 hover:text-red-500 text-[11px] transition">
-                            <i class="fa-regular fa-flag"></i> Reportar
-                        </button>
-                    </div>
-
-                    <!-- Comments Sub-section -->
-                    ${post.comments.length > 0 ? `
-                        <div class="bg-slate-50 p-3 rounded-xl space-y-2 mt-2">
-                            ${post.comments.map(c => `
-                                <div class="text-xs">
-                                    <strong class="text-slate-700">${escapeHtml(c.pseudonym)}:</strong> 
-                                    <span class="text-slate-600">${escapeHtml(c.text)}</span>
-                                </div>
-                            `).join('')}
-                        </div>
-                    ` : ''}
-
-                    <!-- Add Comment Form -->
-                    <form onsubmit="handleAddComment(event, ${post.id})" class="flex gap-2 pt-1">
-                        <input type="text" placeholder="Escribir un comentario empático..." required class="flex-grow bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500" />
-                        <button type="submit" class="bg-emerald-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-emerald-700 transition">Comentar</button>
-                    </form>
-                </div>
-            `).join('');
-
-            document.getElementById('metric-posts').innerText = state.forumPosts.length;
-        }
-
-        function filterForum(cat) {
-            renderForumPosts(cat);
-        }
-
-        function updateForumCounts() {
-            document.getElementById('count-cat-todas').innerText = state.forumPosts.length;
-            document.getElementById('count-cat-ansiedad').innerText = state.forumPosts.filter(p => p.category === 'Ansiedad').length;
-            document.getElementById('count-cat-duelo').innerText = state.forumPosts.filter(p => p.category === 'Duelo').length;
-            document.getElementById('count-cat-laboral').innerText = state.forumPosts.filter(p => p.category === 'Laboral').length;
-            document.getElementById('count-cat-relaciones').innerText = state.forumPosts.filter(p => p.category === 'Relaciones').length;
-        }
-
-        function handleCreatePost(e) {
-            e.preventDefault();
-            const pseudonym = document.getElementById('post-pseudonym').value.trim();
-            const category = document.getElementById('post-category').value;
-            const content = document.getElementById('post-content').value.trim();
-
-            if (!pseudonym || !content) return;
-
-            const newPost = {
-                id: Date.now(),
-                pseudonym,
-                category,
-                content,
-                timestamp: 'Hace un momento',
-                likes: 0,
-                comments: []
-            };
-
-            state.forumPosts.unshift(newPost);
-            renderForumPosts();
-            updateForumCounts();
-            toggleNewPostModal(false);
-            e.target.reset();
-        }
-
-        function likePost(id) {
-            const post = state.forumPosts.find(p => p.id === id);
-            if (post) {
-                post.likes++;
-                renderForumPosts();
-            }
-        }
-
-        function handleAddComment(e, postId) {
-            e.preventDefault();
-            const input = e.target.querySelector('input');
-            const text = input.value.trim();
-            if (!text) return;
-
-            const post = state.forumPosts.find(p => p.id === postId);
-            if (post) {
-                post.comments.push({ pseudonym: 'UsuarioApoyo', text });
-                renderForumPosts();
-            }
-        }
-
-        function reportPost(id) {
-            alert('Publicación reportada para revisión por el equipo de moderación.');
-        }
-
-        /* ==================== DIRECTORY MODULE ==================== */
-        function renderDirectorio() {
-            const specFilter = document.getElementById('filter-especialidad').value;
-            const cityFilter = document.getElementById('filter-ubicacion').value;
-            const modFilter = document.getElementById('filter-modalidad').value;
-
-            const grid = document.getElementById('specialists-grid');
-
-            const filtered = state.specialists.filter(s => {
-                const matchSpec = specFilter === 'Todas' || s.especialidad === specFilter;
-                const matchCity = cityFilter === 'Todas' || s.city === cityFilter;
-                const matchMod = modFilter === 'Todas' || s.modality === modFilter;
-                return matchSpec && matchCity && matchMod;
-            });
-
-            if (filtered.length === 0) {
-                grid.innerHTML = `<div class="col-span-full bg-white p-8 rounded-2xl border text-center text-xs text-slate-500">No se encontraron especialistas con los filtros seleccionados.</div>`;
-                return;
-            }
-
-            grid.innerHTML = filtered.map(s => `
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col justify-between hover:shadow-md transition">
-                    <div>
-                        <div class="flex items-center gap-4 mb-4">
-                            <img src="${s.avatar}" alt="${s.name}" class="w-14 h-14 rounded-2xl object-cover border border-slate-200" />
-                            <div>
-                                <h3 class="font-bold text-slate-900 text-sm leading-snug">${s.name}</h3>
-                                <p class="text-[11px] text-brand-turq font-medium">${s.title}</p>
-                                <span class="inline-block mt-1 bg-emerald-50 text-emerald-700 text-[10px] font-semibold px-2 py-0.5 rounded-full">
-                                    <i class="fa-solid fa-circle-check mr-1"></i> ReTHUS: ${s.rethus}
-                                </span>
-                            </div>
-                        </div>
-                        <p class="text-xs text-slate-600 leading-relaxed mb-4">${s.bio}</p>
-                    </div>
-
-                    <div class="pt-3 border-t border-slate-100 space-y-2">
-                        <div class="flex justify-between items-center text-xs text-slate-500">
-                            <span><i class="fa-solid fa-location-dot text-slate-400 mr-1"></i> ${s.city} (${s.modality})</span>
-                            <span class="font-bold text-slate-800">${s.fee}</span>
-                        </div>
-                        <button onclick="openAppointmentModal('${s.name}')" class="w-full py-2 bg-slate-900 hover:bg-brand-turq text-white rounded-xl text-xs font-bold transition">
-                            Agendar Cita / Contactar
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        /* ==================== BIBLIOTECA MODULE ==================== */
-        let currentBiblioTab = 'Todos';
-
-        function renderBiblioteca() {
-            const query = document.getElementById('biblio-search').value.toLowerCase();
-            const grid = document.getElementById('articles-grid');
-
-            const filtered = state.articles.filter(a => {
-                const matchTab = currentBiblioTab === 'Todos' || a.category === currentBiblioTab;
-                const matchQuery = a.title.toLowerCase().includes(query) || a.summary.toLowerCase().includes(query);
-                return matchTab && matchQuery;
-            });
-
-            grid.innerHTML = filtered.map(a => `
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between hover:border-amber-400 transition">
-                    <div>
-                        <div class="flex justify-between items-center mb-3 text-xs">
-                            <span class="bg-amber-50 text-amber-800 font-bold px-2.5 py-0.5 rounded-full text-[10px]">${a.category}</span>
-                            <span class="text-slate-400 text-[11px]"><i class="fa-regular fa-clock mr-1"></i>${a.readTime}</span>
-                        </div>
-                        <h3 class="font-bold text-slate-900 text-base mb-2 leading-snug">${a.title}</h3>
-                        <p class="text-xs text-slate-600 leading-relaxed mb-4">${a.summary}</p>
-                    </div>
-                    <button onclick="openArticleModal(${a.id})" class="text-xs font-bold text-amber-700 hover:text-amber-900 flex items-center gap-1">
-                        Leer artículo completo <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-            `).join('');
-        }
-
-        function setBiblioTab(tab) {
-            currentBiblioTab = tab;
-            document.querySelectorAll('.biblio-tab-btn').forEach(btn => btn.classList.remove('active', 'bg-brand-darkNavy', 'text-white'));
-            renderBiblioteca();
-        }
-
-        function openArticleModal(id) {
-            const art = state.articles.find(a => a.id === id);
-            if (!art) return;
-
-            document.getElementById('art-cat').innerText = art.category;
-            document.getElementById('art-title').innerText = art.title;
-            document.getElementById('art-content').innerHTML = art.body;
-            toggleArticleModal(true);
-        }
-
-        /* ==================== MODALS TOGGLES ==================== */
         function toggleCrisisModal(show) {
             document.getElementById('modal-crisis').classList.toggle('hidden', !show);
         }
-
-        
-let breathingTimer = null;
-let breathingTimeouts = [];
-
-function openBreathingModal() {
-    const modal = document.getElementById('modal-breathing');
-    const circle = document.getElementById('breathe-circle');
-    const text = document.getElementById('breathe-text');
-    const instruction = document.getElementById('breathe-instruction');
-
-    closeBreathingModal();
-    modal.classList.remove('hidden');
-
-    let cycle = 0;
-    const totalCycles = 4;
-
-    function phase(label, seconds, scale, message) {
-        text.textContent = label;
-        instruction.textContent = message;
-
-        circle.style.transition = `transform ${seconds}s linear, opacity ${seconds}s linear`;
-        circle.style.transform = `scale(${scale})`;
-        circle.style.opacity = scale > 1 ? '0.95' : '0.65';
-
-        let remaining = seconds;
-        instruction.textContent = `${message} (${remaining} s)`;
-
-        breathingTimer = setInterval(() => {
-            remaining--;
-
-            if (remaining > 0) {
-                instruction.textContent = `${message} (${remaining} s)`;
-            }
-        }, 1000);
-
-        const timeout = setTimeout(() => {
-            clearInterval(breathingTimer);
-            breathingTimer = null;
-            next();
-        }, seconds * 1000);
-
-        breathingTimeouts.push(timeout);
-    }
-
-    function next() {
-        if (cycle >= totalCycles) {
-            text.textContent = '¡Muy bien!';
-            instruction.textContent = 'Has terminado los 4 ciclos. Respira con naturalidad.';
-            circle.style.transition = 'transform 1s ease';
-            circle.style.transform = 'scale(1)';
-            circle.style.opacity = '0.8';
-            return;
-        }
-
-        cycle++;
-
-        phase('Inhala', 4, 1.25, `Ciclo ${cycle} de ${totalCycles}: inhala suavemente`);
-        breathingTimeouts.push(setTimeout(() => {
-            phase('Mantén', 7, 1.25, 'Mantén el aire solo si te resulta cómodo');
-            breathingTimeouts.push(setTimeout(() => {
-                phase('Exhala', 8, 0.9, 'Exhala lentamente, sin forzar');
-                breathingTimeouts.push(setTimeout(next, 8000));
-            }, 7000));
-        }, 4000));
-    }
-
-    next();
-}
-
-function closeBreathingModal() {
-    if (breathingTimer) {
-        clearInterval(breathingTimer);
-        breathingTimer = null;
-    }
-
-    breathingTimeouts.forEach(timeout => clearTimeout(timeout));
-    breathingTimeouts = [];
-
-    const modal = document.getElementById('modal-breathing');
-    const circle = document.getElementById('breathe-circle');
-
-    modal.classList.add('hidden');
-    circle.style.transition = '';
-    circle.style.transform = '';
-    circle.style.opacity = '';
-    circle.classList.remove('animate-breathe');
-}
-
 
         function toggleNewPostModal(show) {
             document.getElementById('modal-new-post').classList.toggle('hidden', !show);
         }
 
-        function openAppointmentModal(specName) {
-            document.getElementById('appoint-spec-name').innerText = `Especialista: ${specName}`;
-            toggleAppointmentModal(true);
+        /* CHATBOT CON RESPUESTAS PREDEFINIDAS */
+        let chatCount = 0;
+
+        const chatbotResponses = [
+            {
+                keywords: [
+                    'ansiedad', 'ansioso', 'ansiosa', 'angustia',
+                    'nervioso', 'nerviosa', 'estresado', 'estresada',
+                    'abrumado', 'abrumada', 'mucho estrés', 'mucho estres'
+                ],
+                response: 'Siento que estés pasando por un momento de tanta tensión. A veces, cuando se acumulan muchas preocupaciones, puede ser difícil encontrar por dónde empezar. ¿Qué situación es la que más te está preocupando en este momento? Si te resulta cómodo, podemos revisar un paso pequeño para atenderla.'
+            },
+            {
+                keywords: [
+                    'universidad', 'estudio', 'estudios', 'examen',
+                    'materia', 'semestre', 'profesor', 'profesora',
+                    'tarea', 'trabajo académico', 'trabajo academico',
+                    'carrera', 'notas', 'perder el semestre',
+                    'tengo problemas con la universidad',
+                    'tengo problemas en la universidad',
+                    'problemas con mis estudios',
+                    'estoy mal en la universidad',
+                    'me siento mal en la universidad',
+                    'estoy triste por la universidad',
+                    'no me siento bien en la universidad',
+                    'tengo problemas con la carrera',
+                    'me está yendo mal en la universidad',
+                    'me esta yendo mal en la universidad',
+                    'no puedo con la universidad'
+                ],
+                response: 'Lamento que estés teniendo dificultades con la universidad. La carga académica, las evaluaciones y las responsabilidades pueden sentirse abrumadoras. No tienes que resolverlo todo de una vez. ¿Qué te preocupa más: una materia, las notas, los trabajos pendientes o sentir que no estás avanzando? Podemos pensar en un primer paso realista.'
+            },
+            {
+                keywords: [
+                    'trabajo', 'jefe', 'jefa', 'compañero',
+                    'compañera', 'oficina', 'laboral', 'empleo',
+                    'despedido', 'despedida', 'sobrecarga',
+                    'tengo problemas en el trabajo',
+                    'tengo problemas con el trabajo',
+                    'problemas con mi trabajo',
+                    'estoy mal en el trabajo',
+                    'me siento mal en el trabajo',
+                    'estoy triste por el trabajo',
+                    'no me siento bien en el trabajo'
+                ],
+                response: 'Siento que el trabajo esté siendo una fuente de preocupación. Las responsabilidades, el ambiente laboral o las relaciones con otras personas pueden afectar cómo nos sentimos. ¿Qué está ocurriendo en tu trabajo y qué es lo que más te está pesando? Podemos organizar las ideas y pensar en una acción pequeña.'
+            },
+            {
+                keywords: [
+                    'triste', 'tristeza', 'llorar', 'lloro',
+                    'solo', 'sola', 'soledad', 'vacío', 'vacio',
+                    'desanimado', 'desanimada', 'sin ganas',
+                    'me siento muy mal', 'me siento mal',
+                    'estoy mal', 'me siento fatal'
+                ],
+                response: 'Gracias por compartir cómo te sientes. Lamento que estés pasando por un momento difícil. No tienes que encontrar todas las respuestas ahora mismo. Si quieres, cuéntame qué ocurrió o desde cuándo te has sentido así. Puedo ofrecerte orientación inicial y recursos para que explores opciones de apoyo.'
+            },
+            {
+                keywords: [
+                    'desahogarme', 'escuchar', 'hablar',
+                    'necesito hablar', 'quiero hablar',
+                    'necesito que alguien me escuche',
+                    'ayudame por favor', 'por favor ayudame',
+                    'necesito ayuda por favor',
+                    'estoy mal y necesito ayuda',
+                    'no se que hacer', 'no sé qué hacer'
+                ],
+                response: 'Claro, puedes contarme lo que estás viviendo. Este espacio utiliza respuestas predefinidas para ofrecer orientación inicial, no es una persona ni reemplaza el acompañamiento profesional. ¿Qué es lo que te gustaría expresar primero?'
+            },
+            {
+                keywords: [
+                    'respiración', 'respiracion', 'respirar',
+                    'calmarme', 'relajarme', 'relajación', 'relajacion'
+                ],
+                response: 'Podemos hacer una pausa. En la parte superior del chat encontrarás el botón “Ejercicio Respiración”. Allí puedes probar una guía de respiración. Hazla solo si te resulta cómoda y detente si sientes mareo o incomodidad.'
+            },
+            {
+                keywords: [
+                    'psicólogo', 'psicologa', 'psicóloga',
+                    'psiquiatra', 'terapia', 'profesional',
+                    'especialista', 'ayuda profesional'
+                ],
+                response: 'Buscar apoyo profesional puede ser un paso importante. En el menú de Bienestar Contigo encontrarás el Directorio de Especialistas, pensado como una sección de orientación. Verifica siempre la información y las credenciales del profesional antes de iniciar una atención.'
+            },
+            {
+                keywords: [
+                    'hola', 'buenos días', 'buenos dias',
+                    'buenas tardes', 'buenas noches', 'buenas'
+                ],
+                response: '¡Hola! Bienvenido a Bienestar Contigo. Este es un espacio de orientación emocional inicial. Puedes contarme qué te gustaría explorar o seleccionar uno de los temas sugeridos.'
+            },
+            {
+                keywords: [
+                    'gracias', 'muchas gracias', 'te agradezco'
+                ],
+                response: 'Con gusto. Gracias por darte este espacio. Recuerda que pedir apoyo cuando lo necesitas es válido. Puedes explorar la biblioteca de recursos o buscar acompañamiento profesional si lo consideras necesario.'
+            }
+        ];
+
+        function normalizeText(value) {
+            return value
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .trim();
         }
 
-        function toggleAppointmentModal(show) {
-            document.getElementById('modal-appointment').classList.toggle('hidden', !show);
+        function addChatMessage(message, sender) {
+            const container = document.getElementById('chat-messages');
+            const wrapper = document.createElement('div');
+            wrapper.className = sender === 'user'
+                ? 'flex justify-end'
+                : 'flex justify-start';
+
+            const bubble = document.createElement('div');
+            bubble.className = sender === 'user'
+                ? 'max-w-[85%] bg-teal-600 text-white rounded-2xl rounded-br-sm px-4 py-3 text-sm shadow-sm'
+                : 'max-w-[85%] bg-white border border-slate-200 text-slate-700 rounded-2xl rounded-bl-sm px-4 py-3 text-sm shadow-sm';
+
+            bubble.textContent = message;
+            wrapper.appendChild(bubble);
+            container.appendChild(wrapper);
+            container.scrollTop = container.scrollHeight;
         }
 
-        function handleAppointmentSubmit(e) {
-            e.preventDefault();
-            alert('Solicitud enviada correctamente. El especialista revisará tu mensaje.');
-            toggleAppointmentModal(false);
+        function getBotResponse(message) {
+            const normalized = normalizeText(message);
+
+            for (const item of chatbotResponses) {
+                const match = item.keywords.some(keyword =>
+                    normalized.includes(normalizeText(keyword))
+                );
+                if (match) return item.response;
+            }
+
+            return 'Gracias por escribir. Quiero entender mejor lo que necesitas. ¿Podrías contarme un poco más sobre lo que estás viviendo? Puedes mencionar si se relaciona con tus estudios, el trabajo, tus emociones o alguna situación personal. Recuerda que este chatbot utiliza respuestas predefinidas y ofrece orientación inicial.';
         }
 
-        function toggleArticleModal(show) {
-            document.getElementById('modal-article').classList.toggle('hidden', !show);
+        function sendMessage(message) {
+            const cleanMessage = message.trim();
+            if (!cleanMessage) return;
+
+            addChatMessage(cleanMessage, 'user');
+            chatCount++;
+            const metric = document.getElementById('metric-chats');
+            if (metric) metric.textContent = chatCount;
+
+            const response = getBotResponse(cleanMessage);
+            setTimeout(() => addChatMessage(response, 'bot'), 350);
         }
 
-        /* ==================== USER PRIVACY & EXPORT ==================== */
+        function sendQuickPrompt(message) {
+            sendMessage(message);
+        }
+
+        function handleChatSubmit(event) {
+            event.preventDefault();
+            const input = document.getElementById('chat-input');
+            sendMessage(input.value);
+            input.value = '';
+        }
+
+        function resetChat() {
+            const container = document.getElementById('chat-messages');
+            container.innerHTML = '';
+            addChatMessage('Hola, soy el asistente virtual de Bienestar Contigo. Utilizo respuestas predefinidas para ofrecer orientación emocional inicial. ¿Cómo te sientes hoy?', 'bot');
+        }
+
+        /* EJERCICIO DE RESPIRACIÓN 4-7-8 */
+        let breathingTimer = null;
+        let breathingTimeouts = [];
+        let breathingRunId = 0;
+        let breathingCount = 0;
+
+        function openBreathingModal() {
+            const modal = document.getElementById('modal-breathing');
+            const circle = document.getElementById('breathe-circle');
+            const text = document.getElementById('breathe-text');
+            const instruction = document.getElementById('breathe-instruction');
+
+            // Detiene cualquier ejecución anterior antes de iniciar una nueva.
+            closeBreathingModal();
+            modal.classList.remove('hidden');
+
+            const runId = ++breathingRunId;
+            const totalCycles = 4;
+            const phases = [
+                {
+                    label: 'Inhala',
+                    seconds: 4,
+                    scale: 1.25,
+                    opacity: '0.95',
+                    message: 'Inhala suavemente por la nariz'
+                },
+                {
+                    label: 'Mantén',
+                    seconds: 7,
+                    scale: 1.25,
+                    opacity: '0.95',
+                    message: 'Mantén el aire solo si te resulta cómodo'
+                },
+                {
+                    label: 'Exhala',
+                    seconds: 8,
+                    scale: 0.9,
+                    opacity: '0.65',
+                    message: 'Exhala lentamente, sin forzar'
+                }
+            ];
+
+            let cycle = 1;
+            let phaseIndex = 0;
+
+            breathingCount++;
+            const metric = document.getElementById('metric-breathing');
+            if (metric) metric.textContent = breathingCount;
+
+            function showPhase() {
+                if (runId !== breathingRunId) return;
+
+                if (cycle > totalCycles) {
+                    text.textContent = '¡Muy bien!';
+                    instruction.textContent =
+                        'Has terminado los 4 ciclos. Respira con naturalidad.';
+                    circle.style.transition = 'transform 500ms ease, opacity 500ms ease';
+                    circle.style.transform = 'scale(1)';
+                    circle.style.opacity = '0.8';
+                    breathingTimer = null;
+                    return;
+                }
+
+                const current = phases[phaseIndex];
+                const phaseEndsAt = Date.now() + current.seconds * 1000;
+
+                text.textContent = current.label;
+                instruction.textContent =
+                    `Ciclo ${cycle} de ${totalCycles}: ${current.message} (${current.seconds} s)`;
+
+                circle.style.transition =
+                    `transform ${current.seconds}s linear, opacity ${current.seconds}s linear`;
+                circle.style.transform = `scale(${current.scale})`;
+                circle.style.opacity = current.opacity;
+
+                function updateCountdown() {
+                    if (runId !== breathingRunId) return;
+
+                    const millisecondsLeft = phaseEndsAt - Date.now();
+                    const secondsLeft = Math.max(0, Math.ceil(millisecondsLeft / 1000));
+
+                    instruction.textContent =
+                        `Ciclo ${cycle} de ${totalCycles}: ${current.message} (${secondsLeft} s)`;
+
+                    if (millisecondsLeft <= 0) {
+                        phaseIndex++;
+
+                        if (phaseIndex >= phases.length) {
+                            phaseIndex = 0;
+                            cycle++;
+                        }
+
+                        showPhase();
+                        return;
+                    }
+
+                    breathingTimer = setTimeout(
+                        updateCountdown,
+                        Math.min(200, millisecondsLeft)
+                    );
+                }
+
+                updateCountdown();
+            }
+
+            showPhase();
+        }
+
+        function closeBreathingModal() {
+            // Invalida callbacks pendientes para que no puedan reiniciar el ejercicio.
+            breathingRunId++;
+
+            if (breathingTimer) {
+                clearTimeout(breathingTimer);
+                clearInterval(breathingTimer);
+                breathingTimer = null;
+            }
+
+            breathingTimeouts.forEach(timeout => clearTimeout(timeout));
+            breathingTimeouts = [];
+
+            const modal = document.getElementById('modal-breathing');
+            const circle = document.getElementById('breathe-circle');
+
+            if (modal) modal.classList.add('hidden');
+
+            if (circle) {
+                circle.style.transition = '';
+                circle.style.transform = '';
+                circle.style.opacity = '';
+                circle.classList.remove('animate-breathe');
+            }
+        }
+
+        /* FORO COMUNITARIO */
+        let forumPosts = [];
+        let activeForumFilter = 'Todas';
+
+        function createForumPost(event) {
+            event.preventDefault();
+
+            const alias = document.getElementById('post-alias').value.trim();
+            const category = document.getElementById('post-category').value;
+            const content = document.getElementById('post-content').value.trim();
+
+            if (!alias || !content) return;
+
+            forumPosts.unshift({
+                alias,
+                category,
+                content,
+                date: new Date().toLocaleDateString('es-CO')
+            });
+
+            event.target.reset();
+            toggleNewPostModal(false);
+            renderForum();
+        }
+
+        function filterForum(category) {
+            activeForumFilter = category;
+            renderForum();
+        }
+
+        function renderForum() {
+            const container = document.getElementById('forum-posts-container');
+            if (!container) return;
+
+            const filtered = activeForumFilter === 'Todas'
+                ? forumPosts
+                : forumPosts.filter(post => post.category === activeForumFilter);
+
+            container.innerHTML = '';
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="bg-white border border-slate-200 rounded-2xl p-8 text-center">
+                        <i class="fa-solid fa-comments text-3xl text-slate-300 mb-3"></i>
+                        <p class="font-semibold text-slate-600">Todavía no hay publicaciones en esta categoría.</p>
+                        <p class="text-xs text-slate-400 mt-1">Puedes crear una publicación de demostración.</p>
+                    </div>`;
+            }
+
+            filtered.forEach(post => {
+                const card = document.createElement('div');
+                card.className = 'bg-white border border-slate-200 rounded-2xl p-5 shadow-sm';
+                const heading = document.createElement('div');
+                heading.className = 'flex justify-between items-center mb-3';
+                const name = document.createElement('strong');
+                name.className = 'text-sm text-slate-800';
+                name.textContent = post.alias;
+                const date = document.createElement('span');
+                date.className = 'text-xs text-slate-400';
+                date.textContent = post.date;
+                heading.append(name, date);
+
+                const category = document.createElement('span');
+                category.className = 'inline-block bg-emerald-50 text-emerald-700 text-xs rounded-full px-3 py-1 mb-3';
+                category.textContent = post.category;
+
+                const body = document.createElement('p');
+                body.className = 'text-sm text-slate-600 whitespace-pre-wrap';
+                body.textContent = post.content;
+
+                card.append(heading, category, body);
+                container.appendChild(card);
+            });
+
+            const metric = document.getElementById('metric-posts');
+            if (metric) metric.textContent = forumPosts.length;
+
+            updateForumCounts();
+        }
+
+        function updateForumCounts() {
+            const categories = ['Todas', 'Ansiedad', 'Duelo', 'Laboral', 'Relaciones'];
+
+            categories.forEach(category => {
+                const id = category === 'Todas'
+                    ? 'count-cat-todas'
+                    : `count-cat-${category.toLowerCase()}`;
+                const element = document.getElementById(id);
+                if (!element) return;
+
+                const count = category === 'Todas'
+                    ? forumPosts.length
+                    : forumPosts.filter(post => post.category === category).length;
+
+                element.textContent = count;
+            });
+        }
+
+        /* BIBLIOTECA DE RECURSOS */
+        let activeBiblioTab = 'Todos';
+
+        const articles = [
+            {
+                title: 'Reconocer y gestionar la ansiedad',
+                category: 'Ansiedad',
+                description: 'Identifica algunas señales de ansiedad y conoce estrategias generales para afrontar momentos de preocupación.',
+                icon: 'fa-brain'
+            },
+            {
+                title: 'Organizar las responsabilidades académicas',
+                category: 'Autocuidado',
+                description: 'Ideas para dividir tareas, priorizar actividades y planear pausas durante el estudio.',
+                icon: 'fa-graduation-cap'
+            },
+            {
+                title: 'Hábitos para descansar mejor',
+                category: 'Sueño',
+                description: 'Recomendaciones generales de higiene del sueño y rutinas para preparar el descanso.',
+                icon: 'fa-moon'
+            },
+            {
+                title: 'Poner nombre a las emociones',
+                category: 'Regulacion',
+                description: 'Una guía sencilla para identificar emociones y expresar lo que estás sintiendo.',
+                icon: 'fa-heart'
+            },
+            {
+                title: 'Pausas conscientes durante el trabajo',
+                category: 'Autocuidado',
+                description: 'Pequeñas pausas para reconocer el cansancio y organizar mejor la jornada.',
+                icon: 'fa-mug-hot'
+            },
+            {
+                title: 'Afrontar momentos de estrés',
+                category: 'Ansiedad',
+                description: 'Herramientas generales para reconocer situaciones estresantes y buscar apoyo.',
+                icon: 'fa-leaf'
+            }
+        ];
+
+        function setBiblioTab(tab) {
+            activeBiblioTab = tab;
+            renderBiblioteca();
+        }
+
+        function renderBiblioteca() {
+            const container = document.getElementById('articles-grid');
+            if (!container) return;
+
+            const search = normalizeText(
+                document.getElementById('biblio-search')?.value || ''
+            );
+
+            const filtered = articles.filter(article => {
+                const matchesTab = activeBiblioTab === 'Todos' ||
+                    article.category === activeBiblioTab;
+                const matchesSearch = normalizeText(
+                    article.title + ' ' + article.description
+                ).includes(search);
+                return matchesTab && matchesSearch;
+            });
+
+            container.innerHTML = '';
+
+            filtered.forEach(article => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-2xl p-6 border border-slate-200 shadow-sm';
+
+                const icon = document.createElement('div');
+                icon.className = 'w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center text-xl mb-4';
+                icon.innerHTML = `<i class="fa-solid ${article.icon}"></i>`;
+
+                const title = document.createElement('h3');
+                title.className = 'font-bold text-slate-800 mb-2';
+                title.textContent = article.title;
+
+                const description = document.createElement('p');
+                description.className = 'text-sm text-slate-600 leading-relaxed';
+                description.textContent = article.description;
+
+                const category = document.createElement('span');
+                category.className = 'inline-block mt-4 text-xs bg-teal-50 text-teal-700 rounded-full px-3 py-1';
+                category.textContent = article.category;
+
+                card.append(icon, title, description, category);
+                container.appendChild(card);
+            });
+
+            if (!filtered.length) {
+                container.innerHTML = '<p class="text-sm text-slate-500">No se encontraron recursos con esos criterios.</p>';
+            }
+        }
+
+        /* DIRECTORIO DE ESPECIALISTAS - DATOS DE EJEMPLO */
+        const specialists = [
+            {
+                name: 'Perfil de demostración 1',
+                specialty: 'Psicología Clínica',
+                city: 'Bogotá',
+                modality: 'Virtual',
+                description: 'Registro de ejemplo para mostrar el diseño del directorio.'
+            },
+            {
+                name: 'Perfil de demostración 2',
+                specialty: 'Terapia Cognitivo-Conductual',
+                city: 'Medellín',
+                modality: 'Presencial',
+                description: 'Registro de ejemplo para mostrar los filtros de búsqueda.'
+            },
+            {
+                name: 'Perfil de demostración 3',
+                specialty: 'Psicología Infantil',
+                city: 'Cali',
+                modality: 'Virtual',
+                description: 'Registro de ejemplo para mostrar la presentación de perfiles.'
+            }
+        ];
+
+        function renderDirectorio() {
+            const container = document.getElementById('specialists-grid');
+            if (!container) return;
+
+            const specialty = document.getElementById('filter-especialidad')?.value || 'Todas';
+            const city = document.getElementById('filter-ubicacion')?.value || 'Todas';
+            const modality = document.getElementById('filter-modalidad')?.value || 'Todas';
+
+            const filtered = specialists.filter(person =>
+                (specialty === 'Todas' || person.specialty === specialty) &&
+                (city === 'Todas' || person.city === city) &&
+                (modality === 'Todas' || person.modality === modality)
+            );
+
+            container.innerHTML = '';
+
+            filtered.forEach(person => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-2xl border border-slate-200 p-6 shadow-sm';
+
+                const icon = document.createElement('div');
+                icon.className = 'w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center text-xl mb-4';
+                icon.innerHTML = '<i class="fa-solid fa-user-doctor"></i>';
+
+                const name = document.createElement('h3');
+                name.className = 'font-bold text-slate-800';
+                name.textContent = person.name;
+
+                const detail = document.createElement('p');
+                detail.className = 'text-xs text-indigo-600 mt-1';
+                detail.textContent = `${person.specialty} · ${person.city} · ${person.modality}`;
+
+                const description = document.createElement('p');
+                description.className = 'text-sm text-slate-600 mt-3';
+                description.textContent = person.description;
+
+                const disclaimer = document.createElement('p');
+                disclaimer.className = 'text-xs text-amber-700 bg-amber-50 p-3 rounded-lg mt-4';
+                disclaimer.textContent = 'Perfil ilustrativo. No corresponde a un profesional real verificado.';
+
+                card.append(icon, name, detail, description, disclaimer);
+                container.appendChild(card);
+            });
+
+            if (!filtered.length) {
+                container.innerHTML = '<p class="text-sm text-slate-500">No hay perfiles de demostración que coincidan con los filtros seleccionados.</p>';
+            }
+        }
+
+        /* EXPORTACIÓN Y DATOS LOCALES */
         function exportUserData() {
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state, null, 2));
-            const downloadAnchor = document.createElement('a');
-            downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", "mis_datos_bienestarmental.json");
-            document.body.appendChild(downloadAnchor);
-            downloadAnchor.click();
-            downloadAnchor.remove();
+            const data = {
+                fechaExportacion: new Date().toISOString(),
+                publicacionesLocales: forumPosts
+            };
+
+            downloadJSON(data, 'bienestar-contigo-datos.json');
         }
 
         function purgeUserData() {
-            if (confirm('¿Estás seguro de que deseas solicitar la eliminación total de tus registros locales conforme a la Ley 1581 de 2012?')) {
-                alert('Tus datos han sido purgados del almacenamiento local de demostración.');
-            }
+            if (!confirm('¿Deseas eliminar las publicaciones de esta sesión de demostración?')) return;
+            forumPosts = [];
+            renderForum();
+            alert('Se eliminaron las publicaciones locales de esta sesión.');
         }
 
         function exportMetrics() {
             const metrics = {
-                chatsAtendidos: state.chatCount,
-                publicacionesForo: state.forumPosts.length,
-                especialistasDisponibles: state.specialists.length,
-                fechaReporte: new Date().toISOString()
+                fecha: new Date().toISOString(),
+                interaccionesChatbot: chatCount,
+                publicacionesForo: forumPosts.length,
+                ejerciciosRespiracion: breathingCount
             };
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(metrics, null, 2));
-            const downloadAnchor = document.createElement('a');
-            downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", "metricas_plataforma_bienestarmental.json");
-            document.body.appendChild(downloadAnchor);
-            downloadAnchor.click();
-            downloadAnchor.remove();
+
+            downloadJSON(metrics, 'bienestar-contigo-metricas.json');
         }
 
-        function escapeHtml(text) {
-            return text
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
+        function downloadJSON(data, filename) {
+            const blob = new Blob(
+                [JSON.stringify(data, null, 2)],
+                { type: 'application/json' }
+            );
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            link.click();
+            URL.revokeObjectURL(url);
         }
+
+        /* INICIALIZACIÓN */
+        document.addEventListener('DOMContentLoaded', () => {
+            resetChat();
+            renderForum();
+            renderBiblioteca();
+            renderDirectorio();
+            navigateTo('home');
+        });
     </script>
 </body>
 </html>
