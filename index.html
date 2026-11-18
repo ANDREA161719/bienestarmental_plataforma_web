@@ -1496,103 +1496,354 @@
             }
         }
 
-        /* FORO COMUNITARIO */
-        let forumPosts = [];
-        let activeForumFilter = 'Todas';
+        
+/* ==========================================
+   FORO COMUNITARIO ANÓNIMO
+========================================== */
 
-        function createForumPost(event) {
-            event.preventDefault();
+let activeForumFilter = 'Todas';
 
-            const alias = document.getElementById('post-alias').value.trim();
-            const category = document.getElementById('post-category').value;
-            const content = document.getElementById('post-content').value.trim();
-
-            if (!alias || !content) return;
-
-            forumPosts.unshift({
-                alias,
-                category,
-                content,
-                date: new Date().toLocaleDateString('es-CO')
-            });
-
-            event.target.reset();
-            toggleNewPostModal(false);
-            renderForum();
-        }
-
-        function filterForum(category) {
-            activeForumFilter = category;
-            renderForum();
-        }
-
-        function renderForum() {
-            const container = document.getElementById('forum-posts-container');
-            if (!container) return;
-
-            const filtered = activeForumFilter === 'Todas'
-                ? forumPosts
-                : forumPosts.filter(post => post.category === activeForumFilter);
-
-            container.innerHTML = '';
-
-            if (filtered.length === 0) {
-                container.innerHTML = `
-                    <div class="bg-white border border-slate-200 rounded-2xl p-8 text-center">
-                        <i class="fa-solid fa-comments text-3xl text-slate-300 mb-3"></i>
-                        <p class="font-semibold text-slate-600">Todavía no hay publicaciones en esta categoría.</p>
-                        <p class="text-xs text-slate-400 mt-1">Puedes crear una publicación de demostración.</p>
-                    </div>`;
+let forumPosts = [
+    {
+        id: 'foro-1',
+        alias: 'Estudiante_2026',
+        category: 'Laboral',
+        content: 'Hola a todos. Últimamente me he sentido muy estresada porque tengo muchas responsabilidades de la universidad y del trabajo. Siento que no me alcanza el tiempo para cumplir con todo. ¿A alguien más le ha pasado? 💚',
+        date: '16/11/2026',
+        likes: 8,
+        liked: false,
+        comments: [
+            {
+                alias: 'Buscando_calma',
+                content: 'Te entiendo. A mí me ayuda organizar mis actividades por prioridades y tomar pequeños descansos.'
+            },
+            {
+                alias: 'Un_dia_a_la_vez',
+                content: 'No te exijas tanto. Recuerda que también necesitas tiempo para ti. 💚'
             }
+        ]
+    },
+    {
+        id: 'foro-2',
+        alias: 'Buscando_calma',
+        category: 'Ansiedad',
+        content: 'A veces siento que tengo demasiadas cosas en la cabeza y me cuesta descansar. Estoy intentando aprender a manejar mejor mis emociones. ¿Qué hacen ustedes cuando se sienten así?',
+        date: '13/11/2026',
+        likes: 12,
+        liked: false,
+        comments: [
+            {
+                alias: 'Esperanza_2026',
+                content: 'A mí me sirve salir a caminar un rato y alejarme del celular.'
+            },
+            {
+                alias: 'Estudiante_2026',
+                content: 'También puedes probar los ejercicios de respiración de esta plataforma.'
+            }
+        ]
+    },
+    {
+        id: 'foro-3',
+        alias: 'Un_dia_a_la_vez',
+        category: 'Duelo',
+        content: 'He pasado por unos días difíciles debido a una situación familiar. Hay momentos en los que me siento triste, pero estoy tratando de darme tiempo y buscar apoyo. ❤️',
+        date: '11/11/2026',
+        likes: 6,
+        liked: false,
+        comments: [
+            {
+                alias: 'Buscando_calma',
+                content: 'Te mando mucha fuerza. No tienes que pasar por todo esto sin apoyo.'
+            }
+        ]
+    },
+    {
+        id: 'foro-4',
+        alias: 'Esperanza_2026',
+        category: 'Relaciones',
+        content: 'Quiero aprender a expresar mejor lo que siento. A veces me guardo las cosas por miedo a preocupar a los demás. Creo que hablar de nuestras emociones es importante.',
+        date: '16/11/2026',
+        likes: 10,
+        liked: false,
+        comments: [
+            {
+                alias: 'Un_dia_a_la_vez',
+                content: 'Estoy de acuerdo. Expresar lo que sentimos puede ser un primer paso para sentirnos mejor. 💚'
+            }
+        ]
+    }
+];
 
-            filtered.forEach(post => {
-                const card = document.createElement('div');
-                card.className = 'bg-white border border-slate-200 rounded-2xl p-5 shadow-sm';
-                const heading = document.createElement('div');
-                heading.className = 'flex justify-between items-center mb-3';
-                const name = document.createElement('strong');
-                name.className = 'text-sm text-slate-800';
-                name.textContent = post.alias;
-                const date = document.createElement('span');
-                date.className = 'text-xs text-slate-400';
-                date.textContent = post.date;
-                heading.append(name, date);
 
-                const category = document.createElement('span');
-                category.className = 'inline-block bg-emerald-50 text-emerald-700 text-xs rounded-full px-3 py-1 mb-3';
-                category.textContent = post.category;
+/* CREAR UNA PUBLICACIÓN */
 
-                const body = document.createElement('p');
-                body.className = 'text-sm text-slate-600 whitespace-pre-wrap';
-                body.textContent = post.content;
+function createForumPost(event) {
+    event.preventDefault();
 
-                card.append(heading, category, body);
-                container.appendChild(card);
-            });
+    const alias = document.getElementById('post-alias').value.trim();
+    const category = document.getElementById('post-category').value;
+    const content = document.getElementById('post-content').value.trim();
 
-            const metric = document.getElementById('metric-posts');
-            if (metric) metric.textContent = forumPosts.length;
+    if (!alias || !content) return;
 
-            updateForumCounts();
-        }
+    forumPosts.unshift({
+        id: 'post-' + Date.now(),
+        alias: alias,
+        category: category,
+        content: content,
+        date: new Date().toLocaleDateString('es-CO'),
+        likes: 0,
+        liked: false,
+        comments: []
+    });
 
-        function updateForumCounts() {
-            const categories = ['Todas', 'Ansiedad', 'Duelo', 'Laboral', 'Relaciones'];
+    event.target.reset();
+    toggleNewPostModal(false);
+    activeForumFilter = 'Todas';
+    renderForum();
+}
 
-            categories.forEach(category => {
-                const id = category === 'Todas'
-                    ? 'count-cat-todas'
-                    : `count-cat-${category.toLowerCase()}`;
-                const element = document.getElementById(id);
-                if (!element) return;
 
-                const count = category === 'Todas'
-                    ? forumPosts.length
-                    : forumPosts.filter(post => post.category === category).length;
+/* FILTRAR PUBLICACIONES */
 
-                element.textContent = count;
-            });
-        }
+function filterForum(category) {
+    activeForumFilter = category;
+    renderForum();
+}
+
+
+/* DAR O QUITAR REACCIÓN */
+
+function togglePostLike(postId) {
+    const post = forumPosts.find(item => item.id === postId);
+    if (!post) return;
+
+    if (post.liked) {
+        post.likes--;
+        post.liked = false;
+    } else {
+        post.likes++;
+        post.liked = true;
+    }
+
+    renderForum();
+}
+
+
+/* AGREGAR COMENTARIO */
+
+function addForumComment(postId) {
+    const post = forumPosts.find(item => item.id === postId);
+    const input = document.getElementById('comment-' + postId);
+
+    if (!post || !input) return;
+
+    const content = input.value.trim();
+    if (!content) return;
+
+    post.comments.push({
+        alias: 'Participante_anónimo',
+        content: content
+    });
+
+    renderForum();
+}
+
+
+/* MOSTRAR PUBLICACIONES */
+
+function renderForum() {
+    const container = document.getElementById('forum-posts-container');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    const filtered = activeForumFilter === 'Todas'
+        ? forumPosts
+        : forumPosts.filter(post => post.category === activeForumFilter);
+
+    if (filtered.length === 0) {
+        container.innerHTML = `
+            <div class="bg-white border border-slate-200 rounded-2xl p-8 text-center">
+                <i class="fa-solid fa-comments text-3xl text-slate-300 mb-3"></i>
+                <p class="font-semibold text-slate-600">
+                    Todavía no hay publicaciones en esta categoría.
+                </p>
+                <p class="text-xs text-slate-400 mt-1">
+                    ¡Puedes ser la primera persona en compartir tu experiencia!
+                </p>
+            </div>
+        `;
+    }
+
+    filtered.forEach(post => {
+        const card = document.createElement('div');
+        card.className =
+            'bg-white border border-slate-200 rounded-2xl p-5 shadow-sm mb-4';
+
+        // ENCABEZADO
+        const heading = document.createElement('div');
+        heading.className = 'flex justify-between items-center mb-3';
+
+        const userInfo = document.createElement('div');
+        userInfo.className = 'flex items-center gap-3';
+
+        const avatar = document.createElement('div');
+        avatar.className =
+            'w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center';
+        avatar.innerHTML = '<i class="fa-solid fa-user"></i>';
+
+        const userText = document.createElement('div');
+
+        const name = document.createElement('strong');
+        name.className = 'text-sm text-slate-800 block';
+        name.textContent = post.alias;
+
+        const date = document.createElement('span');
+        date.className = 'text-xs text-slate-400';
+        date.textContent = post.date;
+
+        userText.append(name, date);
+        userInfo.append(avatar, userText);
+
+        const category = document.createElement('span');
+        category.className =
+            'text-xs bg-emerald-50 text-emerald-700 rounded-full px-3 py-1';
+        category.textContent = post.category;
+
+        heading.append(userInfo, category);
+
+        // CONTENIDO
+        const body = document.createElement('p');
+        body.className =
+            'text-sm text-slate-600 leading-relaxed whitespace-pre-wrap mb-4';
+        body.textContent = post.content;
+
+        // REACCIONES
+        const actions = document.createElement('div');
+        actions.className =
+            'flex items-center gap-5 border-t border-slate-100 pt-3';
+
+        const likeButton = document.createElement('button');
+        likeButton.className =
+            'text-xs font-semibold flex items-center gap-2 ' +
+            (post.liked ? 'text-emerald-700' : 'text-slate-500');
+
+        likeButton.innerHTML = `
+            <i class="fa-solid fa-heart"></i>
+            Me identifico (${post.likes})
+        `;
+
+        likeButton.onclick = () => togglePostLike(post.id);
+
+        const commentLabel = document.createElement('span');
+        commentLabel.className =
+            'text-xs text-slate-500 flex items-center gap-2';
+
+        commentLabel.innerHTML = `
+            <i class="fa-solid fa-comment"></i>
+            ${post.comments.length} comentarios
+        `;
+
+        actions.append(likeButton, commentLabel);
+
+        // COMENTARIOS
+        const commentsSection = document.createElement('div');
+        commentsSection.className =
+            'mt-4 bg-slate-50 rounded-xl p-4';
+
+        const commentsTitle = document.createElement('h4');
+        commentsTitle.className =
+            'text-xs font-bold text-slate-700 mb-3';
+        commentsTitle.textContent = 'Conversación de la comunidad';
+
+        commentsSection.appendChild(commentsTitle);
+
+        post.comments.forEach(comment => {
+            const commentBox = document.createElement('div');
+            commentBox.className =
+                'border-l-2 border-emerald-300 pl-3 mb-3';
+
+            const commentAlias = document.createElement('strong');
+            commentAlias.className =
+                'text-xs text-emerald-700 block mb-1';
+            commentAlias.textContent = comment.alias;
+
+            const commentBody = document.createElement('p');
+            commentBody.className =
+                'text-xs text-slate-600 leading-relaxed';
+            commentBody.textContent = comment.content;
+
+            commentBox.append(commentAlias, commentBody);
+            commentsSection.appendChild(commentBox);
+        });
+
+        // FORMULARIO DE COMENTARIOS
+        const commentForm = document.createElement('div');
+        commentForm.className = 'flex gap-2 mt-3';
+
+        const commentInput = document.createElement('input');
+        commentInput.id = 'comment-' + post.id;
+        commentInput.type = 'text';
+        commentInput.placeholder = 'Escribe un comentario...';
+        commentInput.maxLength = 300;
+        commentInput.className =
+            'flex-1 min-w-0 px-3 py-2 text-xs border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-300';
+
+        const commentButton = document.createElement('button');
+        commentButton.type = 'button';
+        commentButton.className =
+            'bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-xs font-bold';
+        commentButton.textContent = 'Comentar';
+        commentButton.onclick = () => addForumComment(post.id);
+
+        commentInput.addEventListener('keydown', event => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                addForumComment(post.id);
+            }
+        });
+
+        commentForm.append(commentInput, commentButton);
+        commentsSection.appendChild(commentForm);
+
+        card.append(heading, body, actions, commentsSection);
+        container.appendChild(card);
+    });
+
+    const metric = document.getElementById('metric-posts');
+    if (metric) metric.textContent = forumPosts.length;
+
+    updateForumCounts();
+}
+
+
+/* ACTUALIZAR CONTADORES */
+
+function updateForumCounts() {
+    const categories = [
+        'Todas',
+        'Ansiedad',
+        'Duelo',
+        'Laboral',
+        'Relaciones'
+    ];
+
+    categories.forEach(category => {
+        const id = category === 'Todas'
+            ? 'count-cat-todas'
+            : `count-cat-${category.toLowerCase()}`;
+
+        const element = document.getElementById(id);
+        if (!element) return;
+
+        const count = category === 'Todas'
+            ? forumPosts.length
+            : forumPosts.filter(post => post.category === category).length;
+
+        element.textContent = count;
+    });
+}
 
         /* BIBLIOTECA DE RECURSOS */
         let activeBiblioTab = 'Todos';
